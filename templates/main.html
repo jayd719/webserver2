@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    {% if title%}
+    <title>{{title}}</title>
+    {% elif message%}
+    <title>Invalid Work Order</title>
+    {% else %}
+    <title>JD</title>
+    {% endif%}
+    <link rel="icon" href="{% static 'j.png'%}" type="image/x-icon"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+
+
+
+  <body class="cover-container"  >
+    {% include 'components/header.html' %}
+      {% block content%}
+      {% endblock %}
+  <!-- <script src="{% static 'location.js' %}"></script> -->
+
+  {% include 'components/contact.html'%}
+  {% include 'components/themeController.html'%}
+    </body>
+</html>

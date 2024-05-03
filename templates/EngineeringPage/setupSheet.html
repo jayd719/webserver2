@@ -1,0 +1,41 @@
+{% load static %}
+<div class="container px-4 py-5 mt-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{% static 'code/Image1.PNG'%}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Tooling Sheetings For Mastercam</h1>
+        <p class="lead">Integrated with Mastercam, meticulously designed to streamline the machining process by providing machinists with all the essential tooling details required to set up the machine accurately and efficiently.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
+          <a type="button"  href="{% static 'sampleSetupSheet.pdf'%}"  target="_blank" class="btn btn-outline-dark px-5 py-2 me-md-2 rounded-5">Sample Tooling Sheet</a>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3"> 
+      <div class="feature col rounded-4 shadow-sm p-4">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-white bg-gradient fs-2 mb-3 rounded-3">
+          <img src="{% static 'code/tool3.png'%}" alt="" class="card-img-top" alt="Card image cap">
+        </div>
+        <h3 class="fs-2 text-body-emphasis mt-5">Tool Information</h3>
+        <p class="text-justify">In a dynamic job shop environment, where setups are frequent and time is critical, having comprehensive setup sheets can make a significant difference in productivity and accuracy. Each setup sheet catalogs the tools used by the programmer including vitial information like cutter diameter, flute lenght, number of flutes</p>
+        
+        </div>
+        
+        <div class="feature col rounded-4 shadow-sm p-4">
+        <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-white bg-gradient fs-2 mb-3 rounded-3">
+          <img src="{% static 'code/tool4.png'%}" alt="" class="card-img-top" alt="Card image cap">
+        </div>
+        <h3 class="fs-2 text-body-emphasis">Machining Operations</h3>
+        <p>Each setup sheet outlines the sequence of operations required to complete the machining job. This includes a clear breakdown of the individual steps involved, ensuring that machinists are fully informed about the scope and complexity of the job</p>
+        </div>
+
+        <div class="feature col rounded-4 shadow-sm p-4">
+          <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-white bg-gradient fs-2 mb-3 rounded-3">
+            <img src="{% static 'code/tool1.png'%}" alt="" class="card-img-top w-50" alt="Card image cap">
+          </div>
+          <h3 class="fs-2 text-body-emphasis mt-3">Tool Assembly</h3>
+          <p> Describes the style of tool holder required for each tool, ensuring compatibility with the machine's tooling system. Provides a visual of tool assembly.</p>
+        </div>
+    </div>
+  </div>

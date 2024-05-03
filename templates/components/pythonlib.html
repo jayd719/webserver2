@@ -1,0 +1,23 @@
+{% load static %}
+<div class="container px-5 text-center mt-5" id="icon-grid">
+  <h2 class="pb-2 text-center">Python Libraries</h2>
+
+  <div
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-2"
+  >
+    {% for lib in pythonLibs%} {% if lib.onHold%}
+    <div
+      class="col list-group-item d-flex align-items-center justify-content-center eml mb-2 shadow-sm"
+    >
+      <img
+        src="{{lib.imageLink}}"
+        class="mx-2"
+        alt=""
+        width="50px"
+        height="50px"
+      />
+      <h3 class="fw-bold mb-0 fs-6 text-body-emphasis">{{lib.name}}</h3>
+    </div>
+    {% endif%} {% endfor %}
+  </div>
+</div>

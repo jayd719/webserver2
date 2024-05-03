@@ -1,0 +1,35 @@
+{% load static %}
+<script src="{% static 'changeAppearOnLiveBox.js'%}"></script>
+
+<div class="container my-5 py-5" >
+    <div class="px-4 pt-5 my-5 text-center border-bottom shadow-lg rounded-4" style="background-color: #e2d0f8;" id="box1">
+        <h1 class="display-4 fw-bold text-body-emphasis">I Call It Live</h1>
+        <div class="col-lg-10 mx-auto">
+            <p class="lead mb-5">Developed with passion, <span class="text-primary">Live</span> showcases the prowess of Django, JavaScript, Bootstrap, and MySQL, harmoniously orchestrated to deliver a robust and intuitive user experience. Hosted on an Ubuntu server, this endeavour has significantly enriched my understanding of programming and system designs.</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">;
+            <button type="button"class="btn  btn-dark px-5 py-2 me-md-2 rounded-5 text-white">More Detials</button>
+            <a href="http://35.183.44.11:8080/" target="_blank" type="button" class="btn  btn-dark px-5 py-2 me-md-2 rounded-5 text-white">Deployed Version </a>
+          </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 30vh;">
+          <div class="container px-5">
+            <img src="{% static 'code/i.png'%}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+<script>
+  let liveBox = document.getElementById("box1");
+  liveBox.addEventListener("mouseenter", () => {
+  liveBox.style.scale = "105%";
+  liveBox.style.transitionDuration='.6s'
+});
+
+
+liveBox.addEventListener("mouseleave",()=>{
+  liveBox.style.scale='1'
+  liveBox.style.transitionDuration='1s'
+})
+</script>
