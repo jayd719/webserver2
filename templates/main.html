@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en" data-theme="cupcake">
+<html lang="en" data-theme="light">
   <head>
     <!-- <meta http-equiv="refresh" content="1"> -->
     <meta charset="utf-8">
@@ -37,7 +37,7 @@
 
 
 
-  <body class="cover-container"  >
+  <body class=""  >
     {% include 'components/header.html' %}
       {% block content%}
       {% endblock %}
@@ -46,5 +46,8 @@
   {% include 'components/contact.html'%}
   {% include 'components/themeController.html'%}
   {% include 'components/footer.html'%}
+
+  <script src="{% static 'app.js'%}"></script>
     </body>
+
 </html>
