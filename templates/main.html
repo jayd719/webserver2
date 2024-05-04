@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="cupcake">
   <head>
     <!-- <meta http-equiv="refresh" content="1"> -->
     <meta charset="utf-8">
@@ -10,8 +10,6 @@
     <meta name="generator" content="Hugo 0.122.0">
     {% if title%}
     <title>{{title}}</title>
-    {% elif message%}
-    <title>Invalid Work Order</title>
     {% else %}
     <title>JD</title>
     {% endif%}
@@ -33,35 +31,31 @@
       html {
         scroll-behavior: smooth;
       }
-      
-p {
-  margin: 0;
-}
+    
+    body::-webkit-scrollbar { 
+      /* this sets the width of the bar, in the div.main (::-webkit-scrollbar is fro the body/html)*/
+      width: 20px; /* change for scrollbar width */
+      height: 200px;
+      transform: rotate(-90deg);
 
-body::-webkit-scrollbar { 
-  /* this sets the width of the bar, in the div.main (::-webkit-scrollbar is fro the body/html)*/
-  width: 20px; /* change for scrollbar width */
-  height: 200px;
-  transform: rotate(-90deg);
-  overflow: visible;
-}
+    }
 
-body::-webkit-scrollbar-track { 
-  /* scrollbar background */
-  background-color: rgba(211, 211, 211, 0);
-}
+    body::-webkit-scrollbar-track { 
+      /* scrollbar background */
+      background-color: rgba(211, 211, 211, 0);
+    }
 
-body::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0); /* will leave after image loads */
-  background-image: url("https://cdn.iconscout.com/icon/premium/png-512-thumb/airplane-1975654-1664060.png?f=webp&w=512");
-  background-size: contain;
-  background-repeat: no-repeat;
-  scale: 1.5;
-}
-html {
-  scroll-behavior: smooth;
-  cursor: url("https://i.imgur.com/8Jhi9oS.png"),auto;
-}
+    body::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0); /* will leave after image loads */
+      background-image: url("https://cdn.iconscout.com/icon/premium/png-512-thumb/airplane-1975654-1664060.png?f=webp&w=512");
+      background-size: contain;
+      background-repeat: no-repeat;
+      scale: 1.5;
+    }
+    html {
+      scroll-behavior: smooth;
+      cursor: url("https://i.imgur.com/8Jhi9oS.png"),auto;
+    }
 
 
 
