@@ -1,35 +1,24 @@
 {% load static %}
-<script src="{% static 'changeAppearOnLiveBox.js'%}"></script>
-
-<div class="container my-5 py-5" >
-    <div class="px-4 pt-5 my-5 text-center border-bottom shadow-lg rounded-4" style="background-color: #e2d0f8;" id="box1">
-        <h1 class="display-4 fw-bold text-body-emphasis">I Call It Live</h1>
-        <div class="col-lg-10 mx-auto">
-            <p class="lead mb-5">Developed with passion, <span class="text-primary">Live</span> showcases the prowess of Django, JavaScript, Bootstrap, and MySQL, harmoniously orchestrated to deliver a robust and intuitive user experience. Hosted on an Ubuntu server, this endeavour has significantly enriched my understanding of programming and system designs.</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">;
-            <button type="button"class="btn  btn-dark px-5 py-2 me-md-2 rounded-5 text-white">More Detials</button>
-            <a href="http://35.183.44.11:8080/" target="_blank" type="button" class="btn  btn-dark px-5 py-2 me-md-2 rounded-5 text-white">Deployed Version </a>
+<div class="hero min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="text-center lg:text-left px-2 md:px-6">
+      <div class="text-center">
+          <h2 class="font-title relative z-[2] mx-auto text-[clamp(2rem,6vw,4.5rem)] font-black leading-none">
+            I Call It Live
+          </h2>        
+          <p class="text-base-content/70 font-title relative z-[2] py-4 font-light md:text-xl">Developed with passion, Live showcases the prowess of Django, JavaScript, Bootstrap, and MySQL, harmoniously orchestrated to deliver a robust and intuitive user experience.</p> 
+          <div class="h-4"></div> 
+          <p class="text-base-content/70 font-title relative z-[2] py-4 font-light md:text-xl">Hosted on an Ubuntu server, this endeavour has significantly enriched my understanding of programming and system designs.</p> 
+          <div class="mx-auto w-72 flex justify-center align-center gap-5 m-5">
+            <!-- <span class="text-base-content/70 inline-block -translate-y-2 -rotate-12">Click</span> <svg class="text-base-content/20 inline-block h-8 w-20 rtl:[transform:rotateY(180deg)]" viewBox="0 0 45 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.50244C23.4 -1.69756 38.3333 11.1691 43 18.0024M43 18.0024L38 17.0024M43 18.0024V13.0024" stroke="currentColor"></path></svg></div> <div class="flex justify-center pb-10 pt-4"><label class="flex cursor-pointer items-center gap-3">Tailwind only <div class="relative"><div class="pointer-events-none absolute start-1/2 top-1/2 grid h-20 w-60 -translate-x-1/2 -translate-y-1/2"><div class="bg-primary/30 col-start-1 row-start-1 scale-[2] rounded-full blur-[5rem] [transform:translate3d(0,0,0)]"></div></div> <input name="tailwind-va-daisyui" type="checkbox" class="toggle toggle-lg toggle-primary relative z-[2]"></div> Tailwind + daisyUI</label> -->
+            <a href="" type="button" class="btn btn-outline px-4 rounded-xl">More Information</a>
+            <a href="http://35.183.44.11:8080/" target="_blank" type="button" class="btn btn-outline px-4 rounded-xl">Deployed Version </a>
           </div>
         </div>
-        <div class="overflow-hidden" style="max-height: 30vh;">
-          <div class="container px-5">
-            <img src="{% static 'code/i.png'%}" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="w-full max-w-sm shadow-2xl overflow-hidden card">
+     <img class="object-contain" src="{%static 'code/project-main.png' %}" alt="">
+    </div>
   </div>
+</div>
 
-
-<script>
-  let liveBox = document.getElementById("box1");
-  liveBox.addEventListener("mouseenter", () => {
-  liveBox.style.scale = "105%";
-  liveBox.style.transitionDuration='.6s'
-});
-
-
-liveBox.addEventListener("mouseleave",()=>{
-  liveBox.style.scale='1'
-  liveBox.style.transitionDuration='1s'
-})
-</script>

@@ -1,17 +1,17 @@
 {% extends 'main.html' %}
+{% load static%}
 {% block content%}
 
 
 
-
+<div class="h-24"></div>
+{% include 'projects/machineSim.html'%}
+<div class="h-24"></div>
 {% include 'projects/projects-1.html'%}
-
+<div class="h-48"></div>
 {% include 'projects/live.html'%}
 
 {% include 'ganttChart/index.html'%}
 
-<div class="div" style="height: 20vh;"></div>
-{% include 'projects/stats.html'%}
 
-{% include 'components/footer.html'%}
 {%endblock%}
