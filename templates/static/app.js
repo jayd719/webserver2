@@ -36,7 +36,7 @@ function updateGradute() {
 // [transform:rotateX(20deg)rotateZ(-20deg)skewY(8deg)scale(1)] rtl:[--rtl-reverse:-1] rtl:[transform:rotateX(20deg)rotateZ(20deg)skewY(-8deg)scale(1)]
 // Get the div element
 let browser = document.getElementById("browser");
-browser.style.transform = "rotateX(20deg)rotateZ(-20deg)skewY(8deg)";
+browser.style.transform = "translateX(360px)translateY(20px)";
 // Function to update the position of the div based on scroll
 function updateDivPosition() {
   let scrollY = window.scrollY; // Get current scroll position
@@ -48,7 +48,8 @@ function updateDivPosition() {
     let skew = 8 - scrollY / 20;
     let translateX = scrollY / 2.5;
     let translateY = scrollY /4;
-    browser.style.transform = `rotateX(${deg}deg)rotateZ(-${deg}deg)skewY(${skew}deg)translateX(-${translateX}px)translateY(${translateY}px)`;
+
+    browser.style.transform = `translateX(${deg*16}px)translateY(${20}px)`;
   }
 
   let text = document.getElementById("textDis");
@@ -62,6 +63,9 @@ function updateDivPosition() {
     text.textContent = sourceText.substring(0, scrollY);
   }
 }
+
+
+
 
 setInterval(updateGradute, 1000);
 window.addEventListener("scroll", updateDivPosition);
