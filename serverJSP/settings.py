@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(8y@7*r3u&5vm_d)fznqqb9&w*(g%v5ugnc)%sa_c6$z_&l=70
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['35.183.44.11','jashandeep.co.uk']
+ALLOWED_HOSTS = ['35.183.44.11','jashandeep.co.uk','127.0.0.1']
 
 
 # Application definition
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'T01.apps.T01Config',
-    'django_recaptcha'
 ]
 
 MIDDLEWARE = [
@@ -122,8 +121,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'templates/'
-STATIC_ROOT = 'staticfiles'
+STATIC_URL = 'https://jayd719.github.io/staticfiles/'
+
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
 STATICFILES_DIRS = [
     BASE_DIR / "templates/static/",
@@ -135,8 +135,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-RECAPTCHA_PUBLIC_KEY = '6Lch9KEpAAAAAAnKRrNWMSqLIpOhHk-kzd6m-6M0'
-RECAPTCHA_PRIVATE_KEY = '6Lch9KEpAAAAANNG_oB_NT8DwFYVRcmRDBQ6Adkh'
 
 X_FRAME_OPTIONS = 'ALLOW-FROM http://jashandeep.co.uk/'
 
