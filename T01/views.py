@@ -25,6 +25,9 @@ def projects(requests):
 }   
     return render(requests,f'projects/projects.html',DATA)
 
+def aboutme(requests):
+    return render(requests,'aboutpage/main.html')
+
 
 @csrf_exempt
 def locationFromCords(request):
