@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
 from serverJSP.settings import COMPANYNAME
 from .models import PythonLibs 
 from .models import CNC
@@ -8,14 +9,16 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 
-def main(requests):
-    DATA={
-    'companyName':COMPANYNAME,
-    'pythonLibs': PythonLibs.objects.all(),
-    'machines':CNC.objects.all()
-}   
-    
-    return render(requests,f'components/homepage.html',DATA)
+def main(requests):  
+    newUser=False
+    if 'cookiesCreated' not in requests.session:
+        newUser=True
+    data={'newUser':newUser}
+    return render(requests,f'components/homepage.html',data)
+
+def createCookies(requests):
+    requests.session['cookiesCreated']=True
+    return HttpResponse(f'true')
 
 def projects(requests):
     DATA={

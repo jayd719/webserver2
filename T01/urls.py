@@ -4,6 +4,7 @@ from .views import locationFromCords
 from .views import engineeringPage
 from .views import gantchart
 from .views import aboutme
+from .views import createCookies
 urlpatterns = [
     path('',main,name='home-main'),
     path('',main,name='homepage'),
@@ -11,6 +12,7 @@ urlpatterns = [
     path('locationFromCords/',locationFromCords,name='location-from-cords'),
     path('engineering/',engineeringPage,name='engineeringPage'),
     path('gantchart/',gantchart,name='gantchart'),
-    path('aboutme/',aboutme,name='about-me')
+    path('aboutme/',aboutme,name='about-me'),
+    path('createCookies/',createCookies,name='createCookies')
     
 ]
