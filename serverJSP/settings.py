@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'serverJSP.urls'
@@ -140,6 +141,7 @@ X_FRAME_OPTIONS = 'ALLOW-FROM http://jashandeep.co.uk/'
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 # RECAPTCHA_DEFAULT_ACTION = 'generic'
 # RECAPTCHA_SCORE_THRESHOLD = 0.5
 # RECAPTCHA_LANGUAGE = 'en'
