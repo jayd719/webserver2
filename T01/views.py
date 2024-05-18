@@ -15,7 +15,7 @@ def main(requests):
     newUser=False
     if 'cookiesCreated' not in requests.session:
         newUser=True
-    data={'newUser':newUser}
+    data={'newUser':False}
     return render(requests,f'components/homepage.html',data)
 
 def createCookies(requests):
