@@ -53,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'utilities.middlware.CrossDomainSessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+
 
 ]
 
@@ -140,5 +143,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 X_FRAME_OPTIONS = 'ALLOW-FROM http://jashandeep.co.uk/'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SESSION_COOKIE_DOMAIN = '.jashandeep.co.uk.com'
+SESSION_COOKIE_NAME = 'jashandeep.co.uk'
 # SECURE_SSL_REDIRECT = True
