@@ -13,6 +13,7 @@ def main(requests):
     newUser=False
     if 'cookiesCreated' not in requests.session:
         newUser=True
+        requests.session['cookiesCreated']=True
     data={'newUser':newUser}
     return render(requests,f'components/homepage.html',data)
 
