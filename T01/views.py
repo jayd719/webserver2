@@ -13,14 +13,15 @@ from django.views.decorators.csrf import csrf_exempt
 
 def main(requests):  
     newUser=False
-    if 'cookiesCreated' not in requests.session:
+    if requests.COOKIES.get('cookiesThisIsUseless') is None:  
         newUser=True
-    data={'newUser':False}
+    data={'newUser':newUser}
     return render(requests,f'components/homepage.html',data)
 
 def createCookies(requests):
-    requests.session['cookiesCreated']=True
-    return HttpResponse(f'true')
+    html = HttpResponse("")
+    html.set_cookie('cookiesThisIsUseless', 'cookiesCreated')
+    return html
 
 def projects(requests):
     DATA={
