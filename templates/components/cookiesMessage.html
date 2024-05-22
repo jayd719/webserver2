@@ -1,11 +1,11 @@
 
-<div class="fixed bottom-5 right-20 w-100 cookies" id="cookiesMessage">
-    <div role="alert" class="alert w-100 shadow-3xl">
+<div class="fixed bottom-5 right-20 w-100 shadow-3xl" id="cookiesMessage" style="z-index: 100;">
+    <div role="alert" class="alert w-100 shadow-3xl bg-white border-1 border-black cookies" >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span>we use cookies for no reason.</span>
+        <span class="text-black">we use cookies.</span>
         <div>
-          <button id="remove" class="btn btn-sm">Deny</button>
-          <button hx-get="/createCookies/" hx-target="#cookiesMessage"  hx-swap="outerHTML" class="btn btn-sm btn-primary" >Accept</button>
+          <button id="remove" class="btn btn-sm btn-error">Deny</button>
+          <button hx-get="/createCookies/" hx-target="#cookiesMessage"  hx-swap="outerHTML" class="btn btn-sm btn-success" >Accept</button>
         </div>
       </div>
 </div>
