@@ -1,16 +1,46 @@
 {% load static %}
- 
-<a href="https://jashandeep.co.uk/static/Resume-JashandeepSingh.pdf" target="_blank" class="">
-    <div class="card w-80 bg-base-100 shadow-xl hover:scale-[1.05] transition duration-150 ease-in-out p-2 pt-5 text-left border border-2 border-success">
-    <figure><img class="w-[200px]" src="{% static 'resume.png'%}" alt=""> </figure>
-    <div class="card-body">
-      <h2 class="card-title">
-        Resume
-      </h2>
-      <p>Discover my professional journey and qualifications by checking out my resume.</p>
-      <div class="card-actions justify-end mt-5">
-        <div class="badge badge-success text-white p-3"> <span>updated 2 Days ago</span> </div>
-      </div>
-    </div>
-  </div></a>
 
+<div class="chat chat-end">
+ 
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img alt="Tailwind CSS chat bubble component" src="https://media.licdn.com/dms/image/D5603AQHIdTpgUOnB3g/profile-displayphoto-shrink_200_200/0/1693327786531?e=2147483647&v=beta&t=FackbGd8iJkaH2jGNKrhdih6NvC0IuxOjGEvLJk-P94" />
+    </div>
+  </div>
+  <div class="chat-header">
+    Jay D <time id="timeSpan1" class="text-xs opacity-50">12:46</time>
+  </div>
+  <div class="chat-bubble bg-info text-black">Discover my professional journey and qualifications by checking out my resume.</div>
+</div>
+<div class="chat chat-end">
+ 
+  <div class="chat-image avatar">
+    <div class="w-10 rounded-full">
+      <img alt="Tailwind CSS chat bubble component" src="https://media.licdn.com/dms/image/D5603AQHIdTpgUOnB3g/profile-displayphoto-shrink_200_200/0/1693327786531?e=2147483647&v=beta&t=FackbGd8iJkaH2jGNKrhdih6NvC0IuxOjGEvLJk-P94" />
+    </div>
+  </div>
+  <div class="chat-bubble bg-info text-black"><a href="https://jashandeep.co.uk/static/Resume-JashandeepSingh.pdf" target="_blank"><figure><img class="w-[75px] hover:scale-[1.05]" src="{% static 'resume.png'%}" alt=""> </figure></a></div>
+</div>
+
+
+<script> 
+updateTime('timeSpan1',2)
+
+function updateTime(id,offset) {
+  // Get the current date and time
+  const now = new Date();
+
+  // Subtract 2 minutes
+  now.setMinutes(now.getMinutes() - offset);
+
+  // Format the time (e.g., HH:MM:SS)
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+  // Update the span element
+  const timeSpan = document.getElementById(id);
+  timeSpan.textContent = formattedTime;
+}</script>
