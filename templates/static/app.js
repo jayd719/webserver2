@@ -53,14 +53,16 @@ function updateDivPosition() {
   }
 
   let text = document.getElementById("textDis");
+  let text2 = document.getElementById("textDis1");
   let sourceText = "My name is JD, a junior-year computer science student. Explore my educational background, skills, and projects";
   if (scrollY < 450) {
     text.textContent = "";
+    text2.textContent = "";
   }
   if (scrollY >= 450 && scrollY <= 3000) {
     scrollY = scrollY/15 - 27.5;
-    console.log(scrollY);
     text.textContent = sourceText.substring(0, scrollY);
+    text2.textContent = sourceText.substring(0, scrollY);
   }
 }
 

@@ -1,46 +1,71 @@
 {% load static %}
-<div class="flex max-w-[100vw] flex-col items-center justify-start xl:flex-row xl:items-start xl:justify-between">
-  <div class="shrink xl:w-1/2  min-h-[100vh] xl:min-h-[350vh]">
-    <div class="hidden xl:block" style=" height:60vh;"><h1></h1></div>
-    <div class="flex items-center justify-center px-2 py-10 text-center xl:justify-start xl:pe-0 xl:ps-10 xl:text-start sticky top-20">
-      <h1 class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]">
-        <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20">Welcome To My Corner of The</span>
-        <span class="inline-grid"><span class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true" data-text="Digital World!"
+<div
+  class="flex max-w-[100vw] flex-col items-center justify-start xl:flex-row xl:items-start xl:justify-between"
+>
+  <div class="shrink xl:w-1/2 min-h-[350vh]">
+    <div class="hidden xl:block" style="height: 60vh"><h1></h1></div>
+    <div
+      class="flex items-center justify-center px-2 py-5 text-center xl:justify-start xl:pe-0 xl:ps-10 xl:text-start sticky top-20"
+    >
+      <h1
+        class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]"
+      >
+        <span
+          class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20"
+          >Welcome To My Corner of The</span
+        >
+        <span class="inline-grid"
+          ><span
+            class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]"
+            aria-hidden="true"
+            data-text="Digital World!"
           ></span>
-          <span id="main-text"
+          <span
+            id="main-text"
             class="[&amp;::selection]:text-base-content relative col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [&amp;::selection]:bg-blue-700/20 [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]"
-            > Digital World!</span
+          >
+            Digital World!</span
           ></span
         >
         <br />
         <span
           class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20"
-          ><span
-        >
+        ></span>
       </h1>
     </div>
-    
   </div>
 
   <div class="hidden xl:flex mt-10 xl:mt-0 sticky bottom-4 flex w-[calc(100%-2rem)] shrink duration-700 xl:visible xl:-end-32 xl:bottom-auto xl:top-10 xl:w-auto xl:!transform-none xl:overflow-x-hidden xl:overflow-y-clip xl:bg-transparent xl:pb-16 xl:pt-16">
-    
-    
-    
     <div id="browser" class="mockup-browser bg-base-200/90 xl:bg-base-200 mx-auto origin-top overflow-visible pb-4 backdrop-blur will-change-auto [--rtl-reverse:1] max-[1279px]:![transform:translate3d(0,0,0)] xl:-end-20 xl:-me-10 xl:h-[32rem] xl:w-[50rem] xl:rounded-e-none xl:pe-4 xl:shadow-[-0.05rem_0.1rem_0rem_#00000014] xl:backdrop-blur-0">
       <div class="mockup-browser-toolbar">
         <div class="input">https://jashandeep.co.uk</div>
       </div>
       <div class="flex-col justify-center px-4 py-16 bg-base-200">
-        <img class="h-24 mx-auto" src="https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f44b-1f3fb.gif" alt=""> 
-        <h3 id="textDis" class="text-base-content/80 max-w-lg font-sans font-bold text-4xl px-5 mt-10"></h3>
+        <img
+          class="h-24 mx-auto"
+          src="https://images.emojiterra.com/google/noto-emoji/unicode-15/animated/1f44b-1f3fb.gif"
+          alt=""
+        />
+        <h3
+          id="textDis"
+          class="text-base-content/80 max-w-lg font-sans font-bold text-4xl px-5 mt-10"
+        ></h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="xl:hidden sticky bottom-4 flex mt-10 p-5 md:mt-10">
+    <div class="mockup-phone scale-[.8]">
+      <div class="camera"></div> 
+      <div class="display">
+        <div class="artboard artboard-demo phone-1">
+          <h2
+          id="textDis1"
+          class="text-base-content/80 max-w-lg font-sans font-bold text-2xl px-5 mt-10"
+        ></h2></div>
       </div>
     </div>
   </div>
 </div>
 
-
-
-<style>
-  
-  
-</style>
+<style></style>
