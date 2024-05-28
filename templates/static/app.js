@@ -153,15 +153,14 @@ function waitAndLog() {
   }, 4000); // 2000 milliseconds = 2 seconds
 }
 
+document.getElementById('timeSpan1').textContent=""
+      container.innerHTML = '<div id="loader-dots" class="loaders">';
 const typingText = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       let container = document.getElementById("typeBox1");
-      document.getElementById('timeSpan1').textContent=""
-      container.innerHTML = '<div id="loader-dots" class="loaders">';
       waitAndLog();
-    }else{
-      document.getElementById('messageBox2').classList.remove('show')
+    
     }
   });
 });

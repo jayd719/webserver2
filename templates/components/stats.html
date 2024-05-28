@@ -6,7 +6,7 @@
  </style>
 
 <div class="w-full px-2 lg:px-10">
-  <div class="sticky top-0 pt-10 text-center" style="z-index: 10;">
+  <div class="sticky top-0 pt-10 text-center">
     <div class="bg-info  pointer-events-none absolute bottom-0 left-1/2 aspect-square w-1/2 -translate-x-1/2 rounded-full opacity-10 blur-3xl">
   </div>
 
@@ -18,24 +18,24 @@
 
   <div class="grid gap-10 p-6 xl:grid-cols-3 justify-center px-5">
    
-    <div class="card w-80 sm:w-96 bg-base-100 shadow-xl appear" style="transition-delay: .5s;">
-      <figure><img src="https://plus.unsplash.com/premium_vector-1682311194007-88eabc4de424?bg=FFFFFF&q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Django" /></figure>
+    <div id="card1" class="card w-80 sm:w-96 bg-base-100 shadow-xl appear hover:scale-[1.05]" style="transition-delay: .5s;">
+      <figure><img class="h-72 w-full" src="https://plus.unsplash.com/premium_vector-1682310979404-d8b3a7789482?bg=FFFFFF&q=80&w=3216&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Django" /></figure>
       <div class="card-body">
-        <h2 class="font-title relative z-[2] mx-auto text-3xl font-black leading-none mb-2">Django</h2>
+        <h2 class="font-title relative z-[2] mx-auto text-3xl font-black leading-none mb-2">Development</h2>
         <p class="text-justify text-sm">Delving deeper into Django’s robust features. This included mastering Django’s ORM (Object-Relational Mapping), which simplifies database interactions, and learning to implement authentication, URL routing, and form handling. I also worked on creating RESTful APIs using Django REST framework to build scalable and maintainable web applications</p>
       </div>
     </div>
 
-    <div class="card w-80 sm:w-96 bg-base-100 shadow-xl animateBottom" style="transition-delay: .2s;">
-      <figure><img src="https://plus.unsplash.com/premium_vector-1682309081920-d2725d3e620c?bg=FFFFFF&q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Big Data" /></figure>
+    <div id="card2" class="card w-80 sm:w-96 bg-base-100 shadow-xl animateBottom hover:scale-[1.05]" style="transition-delay: .2s;">
+      <figure><img class="h-72" src="https://plus.unsplash.com/premium_vector-1711987723335-09a7959c443e?bg=FFFFFF&q=80&w=3322&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Big Data" /></figure>
       <div class="card-body">
         <h2 class="font-title relative z-[2] mx-auto text-3xl font-black leading-none mb-2">Big Data</h2>
         <p class="text-justify text-sm">The world of Big Data is vast and constantly evolving. My journey began with understanding the fundamental concepts of Big Data, such as the 3 Vs: Volume, Velocity, and Variety. I explored various data processing frameworks and tools like Hadoop and Spark to grasp how massive datasets are managed and analyzed</p>
       </div>
     </div>
 
-    <div class="card w-80 sm:w-96  bg-base-100 shadow-xl appear" style="transition-delay: .7s;">
-      <figure><img src="https://plus.unsplash.com/premium_vector-1682300809036-4038cc032b33?bg=FFFFFF&q=80&w=2844&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="CNCs" /></figure>
+    <div id="card3" class="card w-80 sm:w-96  bg-base-100 shadow-xl appear hover:scale-[1.05]" style="transition-delay: .7s;">
+      <figure><img  class="h-72" src="https://plus.unsplash.com/premium_vector-1682300809036-4038cc032b33?bg=FFFFFF&q=80&w=2844&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="CNCs" /></figure>
       <div class="card-body">
         <h2 class="font-title relative z-[2] mx-auto text-3xl font-black leading-none mb-2">CNCs</h2>
         <p class="text-justify text-sm">To deepen my knowledge, I studied G-code programming, which is essential for controlling CNC machines. I also learned about CAD (Computer-Aided Design) and CAM (Computer-Aided Manufacturing) software, which are used to design and translate those designs into machine-readable instructions. This phase involved hands-on practice with various CNC simulators and machines.</p>
@@ -47,6 +47,44 @@
   <div class="h-32"></div>
   <div class="h-32"></div>
 </div>
+
+
+<script>
+  const card1 = document.getElementById('card1')
+  const card2 = document.getElementById('card2')
+  const card3 = document.getElementById('card3')
+
+card1.addEventListener("mouseenter",()=>{
+  card2.style.opacity=.10;
+  card3.style.opacity=.10;
+})
+
+card1.addEventListener("mouseleave",()=>{
+  card2.style.opacity=1;
+  card3.style.opacity=1;
+})
+
+
+card2.addEventListener("mouseenter",()=>{
+  card1.style.opacity=.1;
+  card3.style.opacity=.1;
+})
+
+card2.addEventListener("mouseleave",()=>{
+  card1.style.opacity=1;
+  card3.style.opacity=1;
+})
+
+card3.addEventListener("mouseenter",()=>{
+  card2.style.opacity=.10;
+  card1.style.opacity=.10;
+})
+
+card3.addEventListener("mouseleave",()=>{
+  card2.style.opacity=100;
+  card1.style.opacity=100;
+})
+</script>
 
 
 
