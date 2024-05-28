@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="text-center px-5 px-10 my-5">
+<div class="text-center mt-5 bg-base-100">
   <h2 class="font-title relative z-[2] mx-auto text-[clamp(2rem,6vw,4.5rem)] font-black leading-none">
     CNC Machine Simulations
     <span class="inline-grid">
@@ -13,9 +13,9 @@
   <div class="flex w-full justify-center mb-10">
     <a data-sveltekit-preload-data="" href="" class="btn btn-outline md:btn-wide">See All Machines</a>
   </div>
+  <video width="100%" class="name-image-before" autoplay muted loop playback="3">
+    <source src="{% static 'videos/MachSim_Video_20231107_101540.mp4'%}" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
 </div>
 
-<video width="100%" class="name-image-before" autoplay muted loop playback="3">
-  <source src="{% static 'videos/MachSim_Video_20231107_101540.mp4'%}" type="video/mp4">
-Your browser does not support the video tag.
-</video>

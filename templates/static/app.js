@@ -41,6 +41,9 @@ browser.style.transform = "translateX(360px)translateY(20px)";
 function updateDivPosition() {
   let scrollY = window.scrollY; // Get current scroll position
 
+  if(scrollY>2){
+    moveJacks()
+  }
   //  rotate to 0
   if (scrollY >= 201 && scrollY <= 360) {
     scrollY = scrollY - 200;
@@ -71,3 +74,82 @@ function updateDivPosition() {
 
 setInterval(updateGradute, 1000);
 window.addEventListener("scroll", updateDivPosition);
+
+
+function jacks(numberOfJacks) {
+  let jacksContainer = document.getElementById("cards");
+  for (i = 0; i < numberOfJacks; i++) {
+    let img = new Image();
+    img.src = "https://jayd719.github.io/assets/images/jacks/jack1.jpeg";
+    img.id = "jack-one";
+    // img.className = `jack-image${Math.floor(Math.random() * 3) + 1}`;
+    img.style.left = `${10 + Math.floor(Math.random() * 80)}%`;
+    img.style.top = `${125 + Math.floor(Math.random() * 50)}%`;
+
+    let degree = Math.floor(Math.random() * 100);
+    if (i % 2 == 0) {
+      img.style.transform = `rotate(-${degree}deg)`;
+    } else {
+      img.style.transform = `rotate(${degree}deg)`;
+    }
+    jacksContainer.appendChild(img);
+  }
+}
+
+jacks(12);
+function moveJacks() {
+  let jacks = document.querySelectorAll("#jack-one");
+  for (j = 0; j < jacks.length; j++) {
+    jacks[j].style.transitionDuration = `${
+      Math.floor(Math.random() * 10) + 4
+    }s`;
+    jacks[j].style.top = "-200%";
+  }
+}
+
+
+
+
+const slideFromLeft = new IntersectionObserver((elements)=>{
+  elements.forEach((element)=>{
+    if(element.isIntersecting){
+      element.target.classList.add('show')
+
+    }else{
+      element.target.classList.remove('show')
+    }
+  })
+})
+const elementsFromLeft = document.querySelectorAll('.animateLeft')
+const elementsFromRight = document.querySelectorAll('.animateRight')
+const elementsFromBottom = document.querySelectorAll('.animateBottom')
+const elementsToAppear = document.querySelectorAll('.appear')
+elementsFromLeft.forEach((element)=>slideFromLeft.observe(element))
+elementsFromRight.forEach((element)=>slideFromLeft.observe(element))
+elementsFromBottom.forEach((element)=>slideFromLeft.observe(element))
+elementsToAppear.forEach((element)=>slideFromLeft.observe(element))
+
+
+const boxes = document.getElementById("boxes");
+function addBoxes(n) {
+  if (document.documentElement.clientWidth > 800) {
+    for (k = 0; k <= n; ++k) {
+      let loader = document.createElement("div");
+      loader.className = "loader";
+      loader.style.top = `${Math.floor(Math.random() * 100)}%`;
+      loader.style.left = `${Math.floor(Math.random() * 100)}%`;
+      loader.style.scale = `1.${k}`;
+      let cube = document.createElement("div");
+      cube.className = "cube";
+      for (i = 0; i <= 5; ++i) {
+        let face = document.createElement("div");
+        face.className = "face";
+        cube.appendChild(face);
+      }
+      loader.appendChild(cube);
+      boxes.appendChild(loader);
+    }
+  }
+}
+
+addBoxes(10)

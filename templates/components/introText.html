@@ -1,13 +1,13 @@
 {% load static %}
-<div
+<div 
   class="flex max-w-[100vw] flex-col items-center justify-start xl:flex-row xl:items-start xl:justify-between"
 >
-  <div class="shrink xl:w-1/2 min-h-[350vh]">
+  <div class="shrink xl:w-1/2 min-h-[350vh]" id="boxes">
     <div class="hidden xl:block" style="height: 60vh"><h1></h1></div>
     <div
       class="flex items-center justify-center px-2 py-5 text-center xl:justify-start xl:pe-0 xl:ps-10 xl:text-start sticky top-20"
     >
-      <h1
+      <h1 id="introTextOne"
         class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]"
       >
         <span
@@ -55,7 +55,7 @@
   </div>
 
   <div class="xl:hidden sticky bottom-4 flex mt-10 p-5 md:mt-10">
-    <div class="mockup-phone scale-[.8]  translate-y-[50px]">
+    <div  id="browser" class="mockup-phone scale-[.8]  translate-y-[50px]">
       <div class="camera"></div> 
       <div class="display">
         <div class="artboard artboard-demo phone-1">
