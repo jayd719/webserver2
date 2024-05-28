@@ -58,13 +58,13 @@ html {
 
 
 .animateRight{
-  transform: translateX(300px) translateY(0px);
+  transform: translateY(300px);
   opacity: 0;
   transition: 1.4s;
 }
 .animateLeft{
   filter: blur(10px);
-  transform: translateX(-300px);
+  transform: translateY(-300px);
   opacity: 0;
   transition: 1.4s;
 }
@@ -77,8 +77,12 @@ html {
 }
 .appear{
   opacity: 0%;
-  transform: translateX(100px) translateY(0px);
+  transform: translateX(0px) translateY(0px);
+  scale: .3;
   transition: 1.5s;
+}
+.nsv{
+  opacity: 0;
 }
 .show{
   filter: blur(0px);

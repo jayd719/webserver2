@@ -144,3 +144,51 @@ function addBoxes(n) {
     }
   }
 }
+
+function waitAndLog() {
+  setTimeout(() => {
+    document.getElementById("typeBox1").innerHTML="<span class='show'>Discover my professional journey and qualifications by checking out my resume.</span>"
+    document.getElementById('messageBox2').classList.add('show')
+    updateTime('timeSpan1',1)
+  }, 4000); // 2000 milliseconds = 2 seconds
+}
+
+const typingText = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      let container = document.getElementById("typeBox1");
+      document.getElementById('timeSpan1').textContent=""
+      container.innerHTML = '<div id="loader-dots" class="loaders">';
+      waitAndLog();
+    }else{
+      document.getElementById('messageBox2').classList.remove('show')
+    }
+  });
+});
+
+let obj = document.getElementById('typeBox1');
+if (obj) {
+  typingText.observe(obj);
+}
+
+
+
+function updateTime(id,offset) {
+  // Get the current date and time
+  const now = new Date();
+
+  // Subtract 2 minutes
+  now.setMinutes(now.getMinutes() - offset);
+
+  // Format the time (e.g., HH:MM:SS)
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+
+  const formattedTime = `${hours}:${minutes}:${seconds}`;
+
+  // Update the span element
+  const timeSpan = document.getElementById(id);
+  timeSpan.textContent = formattedTime;
+}
+

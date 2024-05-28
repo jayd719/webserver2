@@ -9,9 +9,10 @@
   <div class="chat-header">
     Jay D <time id="timeSpan1" class="text-xs opacity-50">12:46</time>
   </div>
-  <div class="chat-bubble bg-info text-black">Discover my professional journey and qualifications by checking out my resume.</div>
+  <div id="typeBox1" class="chat-bubble bg-info text-black">
+    Discover my professional journey and qualifications by checking out my resume.</div>
 </div>
-<div class="chat chat-end animateRight" style="transition-delay: 1s;">
+<div id="messageBox2" class="chat chat-end nsv" style="transition-duration: .5s; transition-delay: 1s;">
  
   <div class="chat-image avatar">
     <div class="w-10 rounded-full">
@@ -23,23 +24,26 @@
 
 
 <script> 
-updateTime('timeSpan1',2)
+</script>
 
-function updateTime(id,offset) {
-  // Get the current date and time
-  const now = new Date();
 
-  // Subtract 2 minutes
-  now.setMinutes(now.getMinutes() - offset);
-
-  // Format the time (e.g., HH:MM:SS)
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-
-  const formattedTime = `${hours}:${minutes}:${seconds}`;
-
-  // Update the span element
-  const timeSpan = document.getElementById(id);
-  timeSpan.textContent = formattedTime;
-}</script>
+<style>
+.loaders {
+  width: 60px;
+  aspect-ratio: 2;
+  --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+  background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 50%;
+  animation: l3 1.1s infinite linear;
+  scale: .5;
+}
+@keyframes l3 {
+    20%{background-position:0%   0%, 50%  50%,100%  50%}
+    40%{background-position:0% 100%, 50%   0%,100%  50%}
+    60%{background-position:0%  50%, 50% 100%,100%   0%}
+    80%{background-position:0%  50%, 50%  50%,100% 100%}
+}
+</style>
