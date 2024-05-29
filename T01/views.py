@@ -1,20 +1,20 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse
-from serverJSP.settings import COMPANYNAME
-from .models import PythonLibs 
-from .models import CNC
-import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
-
-
+import json
+from .models import visitor
+from .functions import *
+from datetime import datetime
 
 
 def main(requests):  
     newUser=False
     if requests.COOKIES.get('cookiesThisIsUseless') is None:  
         newUser=True
+        newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today())
+        newVisitor.save()
+        
     data={'newUser':newUser}
     return render(requests,f'components/homepage.html',data)
 
@@ -23,18 +23,22 @@ def createCookies(requests):
     html.set_cookie('cookiesThisIsUseless', 'cookiesCreated',secure=True)
     return html
 
+def visitors(requests):
+    data={
+        'visitors':visitor.objects.all()
+    }
+    return render(requests,'visitors/main.html',data)
 
 
 def projects(requests):
     DATA={
-    'companyName':COMPANYNAME,
-    'pythonLibs': PythonLibs.objects.all(),
-    'machines':CNC.objects.all()
+    'companyName':None,
 }   
     return render(requests,f'projects/projects.html',DATA)
 def aboutme(requests):
     return render(requests,'aboutpage/main.html')
 @csrf_exempt
+
 def locationFromCords(request):
     """request - the HTTP request object (HttpRequest)
     Returns:

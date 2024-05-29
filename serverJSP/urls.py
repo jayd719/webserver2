@@ -16,11 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from serverJSP.settings import COMPANYNAME
 
-from homepage.views import landingPage_1
-from homepage.views import projects
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin12/', admin.site.urls),
     path('',include('T01.urls')),
 ]

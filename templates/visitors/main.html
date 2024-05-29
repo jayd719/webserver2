@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content%}
+
+
+<div class="h-20"></div>
+<div class="overflow-x-auto">
+    <table class="table table-zebra">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>So.No.</th>
+          <th>Name</th>
+          <th>Job</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        {% for visitor in visitors %}
+        <tr>
+            <th>{{visitor.id}}</th>
+            <td>{{visitor.ip}}</td>
+            <td>{{visitor.visitTime}}</td>
+          </tr>
+        {% endfor%}
+        
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+{%endblock%}
