@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(8y@7*r3u&5vm_d)fznqqb9&w*(g%v5ugnc)%sa_c6$z_&l=70'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['35.183.44.11','jashandeep.co.uk','127.0.0.1']
 
@@ -54,9 +54,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-
-
 ]
 
 ROOT_URLCONF = 'serverJSP.urls'
@@ -83,22 +80,22 @@ WSGI_APPLICATION = 'serverJSP.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-# 	'default': {
-# 		'ENGINE': 'django.db.backends.mysql',
-# 		'NAME': 'protfolio',
-# 		'USER': 'myuser',
-# 		'PASSWORD': config['database'],
-# 		'HOST':'35.183.44.11',
-# 		'PORT':'3306',
-# 	}
-# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'portfolio',
+		'USER': 'myuser',
+		'PASSWORD': config['database'],
+		'HOST':'15.156.34.180',
+		'PORT':'3306',
+	}
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
