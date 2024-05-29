@@ -29,13 +29,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="{% static 'contact.css'%}">
     <link rel="icon" href="{% static 'j.png'%}" type="image/x-icon"/>
+    
 
   </head>
 
 
 
   <body class="cover-container"  >
-    {% include 'components/header.html' %}
+
       {% block content%}
       {% endblock %}
   <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
