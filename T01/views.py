@@ -12,8 +12,13 @@ def main(requests):
     newUser=False
     if requests.COOKIES.get('cookiesThisIsUseless') is None:  
         newUser=True
-        newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today())
-        newVisitor.save()
+        try:
+            location = getLocation(requests.META.get("REMOTE_ADDR"))
+            print(location)
+            newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today(),country = location.country,city= location.city,state = location.state)
+            newVisitor.save()
+        except:
+            pass
         
     data={'newUser':newUser}
     return render(requests,f'components/homepage.html',data)
