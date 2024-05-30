@@ -63,3 +63,6 @@ def gantchart(requests):
     return render(requests,'ganttChart/ganttchart.html')
 
 
+
+def requirements(requests):
+    return JsonResponse({'req': 'This is the data'}, status=400)

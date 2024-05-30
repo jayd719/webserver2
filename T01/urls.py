@@ -1,5 +1,6 @@
 from django.urls import path,include
 from .views import *
+
 urlpatterns = [
     path('',main,name='home-main'),
     path('',main,name='homepage'),
@@ -9,6 +10,7 @@ urlpatterns = [
     path('gantchart/',gantchart,name='gantchart'),
     path('aboutme/',aboutme,name='about-me'),
     path('createCookies/',createCookies,name='createCookies'),
-    path('visitors/',visitors,name='visitors')
+    path('visitors/',visitors,name='visitors'),
+    path('req/',requirements,name='require')
     
 ]
