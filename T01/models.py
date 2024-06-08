@@ -6,4 +6,4 @@ class visitor(models.Model):
     city = models.CharField(max_length=145)
     country = models.CharField(max_length=135)
     state = models.CharField(max_length=134)
-    
+

@@ -66,3 +66,6 @@ def gantchart(requests):
 
 def requirements(requests):
     return JsonResponse({'req': 'This is the data'}, status=400)
+
+def test(request):
+    return render(request,'visitor/main.html')

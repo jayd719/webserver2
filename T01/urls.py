@@ -11,6 +11,7 @@ urlpatterns = [
     path('aboutme/',aboutme,name='about-me'),
     path('createCookies/',createCookies,name='createCookies'),
     path('visitors/',visitors,name='visitors'),
-    path('req/',requirements,name='require')
+    path('req/',requirements,name='require'),
+    path('test/',test,name='rest')
     
 ]

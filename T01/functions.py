@@ -31,3 +31,5 @@ def getLocation(ip):
     return Location(cleanedList)
 
 
+def requirementsReturn(file):
+    return open(file,'r','')
