@@ -1,15 +1,18 @@
-{% extends 'main.html' %}
-{% load static%}
+{% extends 'main.html' %} 
+{% load static%} 
 {% block content%}
 
-
-
 <div class="h-24"></div>
-{% include 'projects/machineSim.html'%}
+
+{% include 'DSA/DSA-main.html'%} 
+<div class="h-24"></div>
+
+{% include 'projects/machineSim.html'%} 
 {% include 'projects/live.html'%}
-{% include 'ganttChart/index.html'%}
+{%include 'ganttChart/index.html'%}
 <div class="h-24"></div>
-
-
 <div class="h-48"></div>
+
+
+
 {%endblock%}
