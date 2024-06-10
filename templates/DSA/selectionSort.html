@@ -9,7 +9,7 @@
     </select>
 
     <div class="stat-desc">Speed</div>
-    <select class="select w-full max-w-xs speed">
+    <select class="select w-full max-w-xs speed ">
         <option>1</option>
         <option>2</option>
         <option>10</option>
@@ -18,7 +18,7 @@
       </select>
     
     <div
-      class="preview border-base-300 bg-base-100 rounded-b-box rounded-se-box flex min-h-[6rem] min-w-[18rem] max-w-4xl flex-wrap items-center justify-center gap-2 overflow-x-hidden bg-cover bg-top p-4 [border-width:var(--tab-border)] undefined"
+      class="shadow preview border-base-300 bg-base-100 rounded-b-box rounded-se-box flex min-h-[6rem] min-w-[18rem] max-w-4xl flex-wrap items-center justify-center gap-2 overflow-x-hidden bg-cover bg-top p-4 [border-width:var(--tab-border)] undefined"
     >
       <input
         type="range"
@@ -30,20 +30,15 @@
       />
     </div>
 
-    <div class="shadow stats">
-      <div class="stat">
+    <div class="shadow bg-base-100 p-5 rounded-box">
         <div class="stat-title">Nodes</div>
         <div class="stat-value" id="slider-value">89,400</div>
-      </div>
     </div>
-    <button class="btn btn-primary mb-10" onclick="selectionSort();">Sort</button>
+    <button class="btn btn-primary mb-5" onclick="selectionSort();">Sort</button>
 
-    <div class="shadow stats">
-      <div class="stat">
+      <div class="shadow bg-base-100 p-5 rounded-box">
         <div class="stat-title">Total Comparisons</div>
         <div class="stat-value" id="checks">0</div>
-        <div class="stat-desc"></div>
-      </div>
     </div>
   </div>
 
