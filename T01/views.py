@@ -62,10 +62,12 @@ def engineeringPage(requests):
 def gantchart(requests):
     return render(requests,'ganttChart/ganttchart.html')
 
-
+def sorting(requests):
+    return render(requests,'DSA/DSA-main.html')
 
 def requirements(requests):
     return JsonResponse({'req': 'This is the data'}, status=400)
 
 def test(request):
     return render(request,'visitor/main.html')
+

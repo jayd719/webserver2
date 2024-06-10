@@ -12,6 +12,7 @@ urlpatterns = [
     path('createCookies/',createCookies,name='createCookies'),
     path('visitors/',visitors,name='visitors'),
     path('req/',requirements,name='require'),
+    path('sorting-algorithms/',sorting,name = 'sorting'),
     path('test/',test,name='rest')
     
 ]
