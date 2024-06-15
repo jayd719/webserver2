@@ -154,11 +154,12 @@ function waitAndLog() {
 }
 
 document.getElementById('timeSpan1').textContent=""
-      container.innerHTML = '<div id="loader-dots" class="loaders">';
 const typingText = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      document.getElementById('messageBox2').classList.remove('show')
       let container = document.getElementById("typeBox1");
+      container.innerHTML = '<div id="loader-dots" class="loaders">';
       waitAndLog();
     
     }
