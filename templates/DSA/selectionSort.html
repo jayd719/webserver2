@@ -102,25 +102,23 @@
       const length = nodes.length;
 
       let checks = 0;
+      let minIndex;
       for (let i = 0; i < length; i++) {
-        for (let j = i + 1; j < length; j++) {
-          if (parseInt(nodes[i].innerText) > parseInt(nodes[j].innerText)) {
-            // Swap the innerText values of nodes[i] and nodes[j]
-            let temp = nodes[i].innerText;
-            nodes[i].innerText = nodes[j].innerText;
-            nodes[j].innerText = temp;
+        minIndex=i
+        for (let j = i; j < length; j++) {
+          if (parseInt(nodes[j].innerText)< parseInt(nodes[minIndex].innerText)) {
+            minIndex = j;
           }
-
+          let temp = nodes[i].innerText;
+          nodes[i].innerText = nodes[minIndex].innerText;
+          nodes[minIndex].innerText = temp;
           nodes[i].style.scale = 1.08;
           nodes[j].style.scale = 1.08;
           nodes[i].className = "btn btn-error";
           nodes[j].className = "btn btn-warning";
           checks++;
           document.getElementById("checks").innerText = checks;
-
           await sleep(101 -parseInt(document.querySelector(".select.w-full.max-w-xs.speed").value));
-          console.log(101 -parseInt(document.querySelector(".select.w-full.max-w-xs.speed").value))
-
           nodes[i].style.scale = 1.0;
           nodes[j].style.scale = 1.0;
           nodes[j].className = "btn btn-primary";
