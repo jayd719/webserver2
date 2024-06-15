@@ -60,26 +60,26 @@ html {
 .animateRight{
   transform: translateY(300px);
   opacity: 0;
-  transition: 1.4s;
+  transition: 500ms;
 }
 .animateLeft{
   filter: blur(10px);
   transform: translateY(-300px);
   opacity: 0;
-  transition: 1.4s;
+  transition: 500ms;
 }
 
 .animateBottom{
   filter: blur(10px);
   opacity: 0%;
   scale: .5;
-  transition: 1.5s;
+  transition: 500ms;
 }
 .appear{
   opacity: 0%;
   transform: translateX(0px) translateY(0px);
   scale: .3;
-  transition: 1.5s;
+  transition: 500ms;
 }
 .nsv{
   opacity: 0;
