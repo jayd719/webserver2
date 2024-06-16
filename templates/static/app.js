@@ -71,6 +71,7 @@ function updateDivPosition() {
 }
 
 setInterval(updateGradute, 1000);
+
 window.addEventListener("scroll", updateDivPosition);
 
 function jacks(numberOfJacks) {
