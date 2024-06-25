@@ -10,11 +10,10 @@ from datetime import datetime
 
 def main(requests):  
     newUser=False
-    if not visitor.objects.filter(ip='requests.META.get("REMOTE_ADDR")').exists():  
+    if not visitor.objects.filter(ip=requests.META.get("REMOTE_ADDR")).exists():  
         newUser=True
         try:
             location = getLocation(requests.META.get("REMOTE_ADDR"))
-            print(location)
             newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today(),country = location.country,city= location.city,state = location.state)
             newVisitor.save()
         except:
@@ -57,6 +56,9 @@ def locationFromCords(request):
         except json.JSONDecodeError as e:
             return JsonResponse({'error': 'Invalid JSON format'}, status=400)
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+
 def engineeringPage(requests):
     return render(requests,f'EngineeringPage/engineeringPage.html')
 def gantchart(requests):
