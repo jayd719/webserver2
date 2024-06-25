@@ -2,32 +2,41 @@
 {% load static %}
 {% block content%}
 
+
+{% include 'EngineeringPage/solidworks.html'%}
+{% include 'EngineeringPage/mastercamExp.html'%}
+
+{% include 'EngineeringPage/introText.html'%}
 {% include 'EngineeringPage/setupSheet.html'%}
-<div style="height: 10vh;"></div>
+<div style="height: 5vh;"></div>
 
 
-<video width="100%" class="name-image-before" autoplay muted loop playback="3">
-  <source src="{% static 'videos/MachSim_Video_20231107_101540.mp4'%}" type="video/mp4">
-Your browser does not support the video tag.
-</video>
+{% include 'EngineeringPage/cncSimIntro.html'%}
+
 <div class="container-fluid py-5 text-white" style="background-color: #330072;">
   <div style="height: 25vh;"></div>
   <div class="p-5 text-center rounded-3">
     <h2 class="featurette-heading fw-normal text-center lh-1 m-5 fs-1 te slideanim">In my journey, I've been fortunate to be involved in the production of nuclear components for Power Generation Stations in <span class="fw-bold">Canada </span>and <span class="fw-bold">worldwide.</span></h2>
   </div>
-  
-
   <div style="height: 25vh;"></div>
 </div>
-<div class="container" style="padding-bottom: 75px;">
-  {% include 'EngineeringPage/me_overviw.html'%}
-</div>
 
+
+<div style="height: 5vh;"></div>
 <!-- cnc machines -->
 <div class="container">
   {% include 'EngineeringPage/cncMachinesOutter.html'%}
 </div>
 
+
+
 {% include 'EngineeringPage/homeButton.html'%}
+
+<footer class="text-center py-3 bg-body-secondary mt-5">
+  <aside>
+    <a class="text-black" href="http://jashandeep.co.uk">© 2024 jashandeep.co.uk</a>
+  </aside>
+</footer>
+
 
 {%endblock%}

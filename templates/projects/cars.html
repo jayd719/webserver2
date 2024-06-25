@@ -1,0 +1,46 @@
+
+<div class="" id="graph">
+    <div class="absolute" id="graphnode"><img class="rotate-[-90deg] w-20" src="https://cdn-icons-png.flaticon.com/512/5737/5737563.png" alt=""></div>
+    <div class="absolute" id="graphnode"><img class="rotate-[90deg] w-20" src="https://cdn-icons-png.flaticon.com/256/1505/1505502.png" alt=""></div>
+    <div class="absolute z-[1]" id="graphnode"><img class="rotate-[90deg] w-20" src="https://cdn-icons-png.flaticon.com/512/1850/1850715.png" alt=""></div>
+    
+</div>
+
+<script>
+    let executed = false;    
+    const graph = document.getElementById('graph')
+    let nodes=document.querySelectorAll('#graphnode')
+    
+    let x =0
+    let do2 = true
+
+    function updateGraphPlotter(){
+        
+        nodes[0].style.right = `${x+2}%`
+        nodes[0].style.top = `${x*x+Math.cos(x)}%`
+
+        nodes[1].style.right = `${x}%`
+        nodes[1].style.top = `${x*x/2+Math.log(x)}%`
+
+
+        nodes[2].style.right = `${x+4}%`
+        nodes[2].style.top = `${x*5}%`
+
+        x=x+.05
+        
+    }
+
+    
+
+const intervalId = setInterval(updateGraphPlotter, 10);
+
+// Stop the updateGraphPlotter function after 10 seconds (10000 milliseconds)
+setTimeout(() => {
+    clearInterval(intervalId);
+    graph.remove()
+}, 10000)
+       
+
+    
+
+</script>

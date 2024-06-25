@@ -1,0 +1,15 @@
+{% load static %}
+<div class="container mt-5">
+    
+    <div class="row pt-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <video width="100%" class="name-image-before rounded-5 shadow-lg mb-5" autoplay muted loop playback="3">
+            <source src="{% static 'videos/MachSim_Video_20231107_101540.mp4'%}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+      <div class="col-lg-8 p-3 p-lg-5 pt-lg-3 mt-5">
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">CNC Machine Simulations <span class="text-danger">Precision in Motion</span></h1>
+        <p class="lead">Visualize, simulate, and optimize with unparalleled accuracy, transforming your operations</p>
+      </div>
+      {% include 'EngineeringPage/simImages.html'%}
+    </div>
+  </div>
