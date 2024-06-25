@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content%}
+
+
+<div class="">
+    <div class="sticky top-0 grid content-start bg-base-100 z-[-10]">
+        {% include 'engineeringPageNew/video.html'%}
+    </div>
+
+    <div class="">
+        <div class="h-96">
+            <div class="translate-y-[50%]">
+                {% include 'DSA/Dsa_outer.html'%} 
+            </div>
+        </div>
+        <div class="h-48 bg-base-100"></div>
+            {%include 'ganttChart/index.html'%}
+            {% include 'projects/live.html'%}
+            <div class="h-10 rounded-b-full bg-base-200"></div>
+            <div class="h-96"></div>
+            <div class="h-96"></div>
+            
+            <!-- <div class="bg-base-200 px-4 py-10 rounded-lg text-center">
+                <div class="absolute z-[100]">
+                    {% include 'engineeringPageNew/heading.html'%}
+                </div>
+                {% include 'engineeringPageNew/carosel.html'%}
+            </div> -->
+    </div>
+    <div class="h-10 rounded-t-full bg-base-200"></div>
+    {% include 'projects/machineSim.html'%}    
+    
+</div>
+
+
+
+
+
+
+<!-- <div class="bg-gradient-to-b from-base-100 from-10% to-blue-500 to-100% h-screen">
+       
+</div>
+ -->
+
+
+
+{% include 'components/backbutton.html'%}
+{%endblock%}
+
+

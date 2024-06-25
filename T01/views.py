@@ -10,7 +10,7 @@ from datetime import datetime
 
 def main(requests):  
     newUser=False
-    if requests.COOKIES.get('cookiesThisIsUseless') is None:  
+    if not visitor.objects.filter(ip='requests.META.get("REMOTE_ADDR")').exists():  
         newUser=True
         try:
             location = getLocation(requests.META.get("REMOTE_ADDR"))
@@ -71,3 +71,7 @@ def requirements(requests):
 def test(request):
     return render(request,'visitor/main.html')
 
+
+
+def cncSimPage(request):
+    return render(request,'engineeringPageNew/index.html')
