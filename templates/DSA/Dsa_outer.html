@@ -1,3 +1,4 @@
+{% load static%}
 <div class="px-2 md:px-10 mt-10 mpt-10">
   <div class="grid gap-10 xl:grid-cols-2 justify-center px-5 mt-10">
 
@@ -9,6 +10,19 @@
           <div class="card-body items-center text-center">
             <h2 class="card-title">Sorting Alogrithms</h2>
             <p>Data Structues & Algorithms</p>
+          </div>
+    </div>
+    </a>
+
+
+    <a href="{%url 'engineeringPage'%}">
+      <div id="card1" class="w-80 sm:w-96 bg-base-200 shadow-xl hover:scale-[1.05] hover:bg-base-100 transition transition-delay-200 overflow-hidden rounded-box">
+          <figure class="">
+            <img src="{% static 'code/cnc2.png'%}" alt="Shoes" class="rounded-xl" />
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">CNC Section</h2>
+            <p>CNC Programming</p>
           </div>
     </div>
     </a>

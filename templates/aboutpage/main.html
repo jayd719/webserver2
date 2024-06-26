@@ -162,23 +162,20 @@
   <body>
 
     {% include 'EngineeringPage/navBar.html'%}
-    <div class="container-fluid" tabindex="-1" id="offcanvasTop" aria-labelledby="staticBackdropLabel" style="height:auto; margin: 0%;">
-      <div class="offcanvas-body">
+    <div class="container" tabindex="-1" id="offcanvasTop" aria-labelledby="staticBackdropLabel">
+      <div class="container">
         {% include 'aboutpage/flags-heading.html'%}
-        
-        <main class="container">
          {% include 'aboutpage/introTextOne.html'%}
          {% include 'aboutpage/exp.html'%}
-         {% include 'aboutpage/education.html'%}
-         <div class="" style="height: 10vh;"></div>
-        </main>
        
       </div>
     </div>
 
+    <div style="height: 20vh;"></div>
 
 
 
+    {% include 'EngineeringPage/footer.html'%}
    
   
 
