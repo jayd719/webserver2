@@ -38,7 +38,7 @@ def projects(requests):
     DATA={
     'companyName':None,
 }   
-    return render(requests,f'projects/projects.html',DATA)
+    return render(requests,f'engineeringPageNew/index.html',DATA)
 def aboutme(requests):
     return render(requests,'aboutpage/main.html')
 @csrf_exempt
@@ -76,4 +76,4 @@ def test(request):
 
 
 def cncSimPage(request):
-    return render(request,'engineeringPageNew/index.html')
+    return render(request,'simulationReport/index.html')
