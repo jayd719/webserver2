@@ -1,7 +1,10 @@
 {% load static %}
+<div class="h-24"></div>
 <div class="w-full px-2 py-40 lg:px-10">
   <div class="sticky top-0 text-center">
-    <div class="loader3 dark:shadow-slate-50 mx-auto translate-y-[-100%]"></div>
+    <div class="flex justify-center scale-[2.5]">
+      {% include 'components/currentArt.html'%}
+    </div>
     <div class="bg-success pointer-events-none absolute bottom-0 left-1/2 aspect-square w-1/2 -translate-x-1/2 rounded-full opacity-10 blur-3xl"
     ></div>
     
@@ -22,55 +25,5 @@
   </div>
 </div>
 
-<div class="h-12"></div>
+<div class="h-24"></div>
 
-<style>
-  /*  */
-  .loader3 {
-    width: 120px;
-    aspect-ratio: 1;
-    position: relative;
-    z-index: 100;
-  }
-  .loader3:before,
-  .loader3:after {
-    content: "";
-    position: absolute;
-    border-radius: 50px;
-    box-shadow: 0 0 0 3px inset;
-    animation: l5 4.5s infinite;
-  }
-  .loader3:after {
-    animation-delay: -1.25s;
-    border-radius: 0;
-  }
-  @keyframes l5 {
-    0% {
-      inset: 0 35px 35px 0;
-    }
-    12.5% {
-      inset: 0 35px 0 0;
-    }
-    25% {
-      inset: 35px 35px 0 0;
-    }
-    37.5% {
-      inset: 35px 0 0 0;
-    }
-    50% {
-      inset: 35px 0 0 35px;
-    }
-    62.5% {
-      inset: 0 0 0 35px;
-    }
-    75% {
-      inset: 0 0 35px 35px;
-    }
-    87.5% {
-      inset: 0 0 35px 0;
-    }
-    100% {
-      inset: 0 35px 35px 0;
-    }
-  }
-</style>
