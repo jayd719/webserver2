@@ -14,6 +14,7 @@ urlpatterns = [
     path('visitors/',visitors,name='visitors'),
     path('req/',requirements,name='require'),
     path('sorting-algorithms/',sorting,name = 'sorting'),
-    path('test/',test,name='rest')
+    path('test/',test,name='rest'),
+    path('website-cost-estimator/',websiteEstimator,name="est")
     
 ]

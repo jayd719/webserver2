@@ -77,3 +77,7 @@ def test(request):
 
 def cncSimPage(request):
     return render(request,'simulationReport/index.html')
+
+
+def websiteEstimator(request):
+    return render(request,'websiteEstimator/main.html')

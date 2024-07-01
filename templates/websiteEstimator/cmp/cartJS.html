@@ -1,0 +1,74 @@
+<script>
+  let cookieName = "this";
+
+  let itemsInCart = getCookie(cookieName).split(":");
+
+  if(itemsInCart[0].length>1){
+    cartCount(itemsInCart.length)
+  }else{
+    cartCount(0)
+  }
+  
+  itemsInCart.forEach((element) => {
+    // if element Present on Screen
+    if (document.getElementById(element)) {
+      markInCartOnHTML(element);
+    }
+  });
+
+  function addToCart(itemCode) {
+    let existingCookie = getCookie(cookieName);
+    if (existingCookie) {
+      setCookie(cookieName, `${existingCookie}:${itemCode}`, 10);
+    } else {
+      setCookie(cookieName, itemCode, 10);
+    }
+    markInCartOnHTML(itemCode);
+    document.getElementById('item-counter').textContent = parseInt(document.getElementById('item-counter').textContent)+1
+  }
+
+
+  function removeFromCart(itemCode){
+    let existingCookies = getCookie(cookieName).split(":");
+    let newCookie = ""
+    existingCookies.forEach(cookie=>{
+        if(cookie!=itemCode){
+            newCookie+=`${cookie}:`
+        }
+        
+    })
+    setCookie(cookieName, newCookie.slice(0,-1), 10);
+    markOutOfCartOnHTML(itemCode)
+    document.getElementById('item-counter').textContent = parseInt(document.getElementById('item-counter').textContent)-1
+  }
+
+
+  function markInCartOnHTML(itemCode) {
+    let buttonCart = document.getElementById(`${itemCode}-cart-button`);
+    let card = document.getElementById(itemCode);
+    card.childNodes[1].style.opacity = 0.5;
+    card.childNodes[3].childNodes[1].style.opacity = 0.5;
+
+    buttonCart.innerHTML = `<a onclick="removeFromCart(${itemCode})" class="btn btn-sm border-2 bg-base-100 border-[#cc011b] text-[#cc011b] hover:scale-[1.1] hover:text-white hover:bg-[#cc011b] hover:px-8 hover:rounded-full hover:font-bold underline hover:no-underline transition duration-200 hover:border hover:border-2 hover:shadow hover:shadow-[#cc011b]">-Cart</a>`;
+    let newDiv = document.createElement("div");
+    newDiv.className = "absolute w-full  h-3/4 grid content-center justify-center text-green-700";
+    newDiv.innerHTML ='<img class="w-24 sepia" src="https://www.svgrepo.com/show/532154/check.svg">'
+    newDiv.id = `${itemCode}-check`;
+    card.appendChild(newDiv);
+  }
+
+  function markOutOfCartOnHTML(itemCode) {
+    let buttonCart = document.getElementById(`${itemCode}-cart-button`);
+    let card = document.getElementById(itemCode);
+    card.childNodes[1].style.opacity = 1;
+    card.childNodes[3].childNodes[1].style.opacity = 1;
+    buttonCart.innerHTML = `<a class="btn btn-sm bg-[#cc011b] border-0 px-5 text-white hover:px-8  hover:scale-[1.1] transition duration-200 hover:bg-base-100 hover:text-[#cc011b] hover:font-bold underline hover:no-underline hover:border-2 hover:border-[#cc011b] hover:shadow hover:shadow-[#cc011b] hover:rounded-full" onclick="addToCart(${itemCode})">+Cart</a>`;
+    card.lastChild.remove();
+    
+  }
+
+
+  function cartCount(items){
+    document.getElementById('item-counter').textContent=items
+  }
+</script>
