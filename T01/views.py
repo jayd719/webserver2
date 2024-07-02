@@ -83,5 +83,4 @@ def websiteEstimator(request):
     return render(request,'websiteEstimator/main.html')
 
 def updateCart(request):
-    print()
     return HttpResponse(request.COOKIES['this'])
