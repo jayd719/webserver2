@@ -1,0 +1,61 @@
+<html lang="en" data-theme="light"><head>
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="JD-9783">
+    
+    <title>Cricket Scorer</title>
+    
+    <link rel="icon" href="https://jayd719.github.io/staticfiles/j.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+
+
+
+    <body class="p-2 bg-base-300">
+        <!-- display -->
+        <div class="h-[48vh] border-4 rounded-lg bg-base-100 py-5">
+            <div class="flex px-4 gap-1 overflow-x-scroll py-2 e mt-5" id="overline">
+
+            </div>
+            <div class="h-full grid content-center">
+                <div class="flex justify-center">
+                    {%include 'cricketApp/components/score.html'%}
+                </div>
+                
+
+            </div>
+            
+
+        </div>
+        {%include 'cricketApp/components/menu.html'%}
+
+        <div class="h-[20vh] bg-base-100">
+            
+            {%include 'cricketApp/components/addSection.html'%}
+        </div>
+        <!-- controls -->
+        <div class="h-[30vh] border-4 p-2 bg-base-100">
+            {%include 'cricketApp/components/scard.html'%}
+        </div>
+
+      
+
+        <style>
+            /* Hide scrollbar for Chrome, Safari and Opera */
+.e::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.e {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+        </style>
+    </body>
+
+    </html>

@@ -1,0 +1,100 @@
+
+    <!-- extra -->
+    <ul class="menu menu-horizontal bg-base-200 rounded-box mb-2">
+        <li><a class="btn" onclick="extra('Nb')">No-ball</a></li>
+        <li><a class="btn" onclick="extra('Wd')">Wide</a></li>
+        <li><a class="btn" onclick="extra('lb')" >Leg-bye</a></li>
+        <li><a class="btn" onclick="extra('b')" >Bye</a></li>
+        <li><a class="btn" onclick="extra('P')">Penalty runs</a></li>
+    </ul>
+
+
+
+    <div class="flex gap-3 mb-2">
+        <ul class="menu menu-horizontal bg-base-200 rounded-box">
+            <li><a class="btn" onclick="runScored(6)">6</a></li>
+            <li><a class="btn" onclick="runScored(4)">4</a></li>
+        </ul>
+        <ul class="menu menu-horizontal bg-base-200 rounded-box">
+            <li><a class="btn" onclick="runScored(3)">3</a></li>
+            <li><a class="btn" onclick="runScored(2)">2</a></li>
+        </ul>
+    </div>
+    
+    <div class="flex justify-between">
+        <div class="flex gap-3">
+            <ul class="menu menu-horizontal bg-base-200 rounded-box">
+                <li><a class="btn" onclick="runScored(1)">1</a></li>
+                <li><a class="btn" onclick="runScored(0)">0</a></li>
+            </ul>
+    
+            <ul class="menu menu-horizontal bg-base-200 rounded-box">
+                <li><a class="btn">OverThrow</a></li>
+            </ul>
+        </div>
+        
+    
+        <ul class="menu menu-horizontal bg-base-200 rounded-box">
+            <li class="btn  btn-warning"  onclick="wicketScreen.showModal()">wicket</li>
+        </ul>
+    </div>
+    
+    <div>
+
+        
+
+
+    <script>
+        function extra(extraEvent){
+            appendOverLine(`1${extraEvent}`)
+            incrementRuns(1)
+        }
+
+        function fallOfWicket(){
+            appendOverLine("W")
+            let wicketsSpan = document.getElementById('wickets')
+            if (parseInt(wicketsSpan)>10){
+                allOutModal.showModal()
+
+            }else{
+                wicketsSpan.innerText = parseInt(wicketsSpan.innerText)+1
+                document.getElementById('f-cancel').click()
+            }
+            ballBlowed();
+           
+        }
+        function ballBlowed(){
+            let overNumber = document.getElementById('over')
+            let ballNumber = document.getElementById('ballNo')
+            let ballNumberInt = parseInt(ballNumber.innerText)
+
+            ballNumberInt= ballNumberInt+1
+            if(ballNumberInt==6){
+                ballNumberInt=0
+                overNumber.innerText = parseInt(overNumber.innerText)+1
+                let co = document.createElement('div')
+                co.className  ="divider divider-horizontal"
+                document.getElementById('overline').appendChild(co)
+            }
+            ballNumber.innerText=ballNumberInt
+        }
+
+        function appendOverLine(event){
+            let ballEvent = document.createElement('button')
+            ballEvent.className="btn"
+            ballEvent.innerText=event
+            document.getElementById('overline').appendChild(ballEvent)
+            document.getElementById('overline').scrollLeft = document.getElementById('overline').scrollWidth;
+        }
+
+        function incrementRuns(run){
+            document.getElementById('runs').innerText=parseInt(document.getElementById('runs').innerText)+run
+        }
+        function runScored(run){
+            incrementRuns(run)
+            appendOverLine(run)
+            ballBlowed();
+    }
+    </script>
+    {%include 'cricketApp/components/D_wickets.html'%}
+    {%include 'cricketApp/components/D_allOut.html'%}

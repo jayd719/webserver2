@@ -1,0 +1,33 @@
+<!-- Open the modal using ID.showModal() method -->
+<dialog id="wicketScreen" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">2<sup>nd</sup> Ball Of 16 Over</p>
+
+    <div class="flex w-full flex-col border-opacity-50">
+        <div class=" grid h-20 place-items-center ">
+            <ul class="menu menu-horizontal bg-base-200 rounded-box">
+                <li><a class="btn">1</a></li>
+                <li><a class="btn">0</a></li>
+                <li><a class="btn">1</a></li>
+                <li><a class="btn">0</a></li>
+                <li><a class="btn">1</a></li>
+                <li><a class="btn">0</a></li>
+                <li><a class="btn">Wide</a></li>
+                <li><a class="btn">No Ball</a></li>
+            </ul>
+
+        </div>
+        <div class="divider">OR</div>
+        <button class="btn bg-base-300 rounded-box grid h-20 place-items-center" onclick="fallOfWicket()">No,Just Wicket</button>
+      </div>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-sm" id="f-cancel">Cancel</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+

@@ -1,0 +1,32 @@
+<div class="carousel overflow-y-hidden">
+    <div id="item1" class="carousel-item bg-base-100 w-full p-2">
+        <img class="w-96" src="https://www.syntacticsinc.com/wp-content/uploads/2020/11/Advertise-on-Google-Ads-Official-Logo.png" alt="">
+    </div>
+    <div id="item2" class="carousel-item bg-base-100 w-full p-2">
+        <img class="w-96" src="https://www.gstatic.com/youtube/img/branding/youtubelogo/svg/youtubelogo.svg" alt="">
+    </div>
+    <div id="item3" class="carousel-item bg-base-100 w-full p-2">
+       asdf
+    </div>
+    <div id="item4" class="carousel-item bg-base-100 w-full p-2">
+     <h1>ad</h1>
+    </div>
+  </div>
+
+  <div class="hidden flex  justify-center gap-2 py-2">
+    <a href="#item1" class="btn btn-xs">1</a>
+    <a href="#item2" class="btn btn-xs">2</a>
+    
+  </div>
+
+  <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+    setInterval(()=>{
+        document.querySelectorAll('.btn.btn-xs')[getRandomInt(2)].click()
+
+        
+    },4000)
+  </script>
