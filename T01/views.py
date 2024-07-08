@@ -18,7 +18,8 @@ def main(requests):
             newVisitor.save()
         except:
             newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today(),country = "CNF",city= "CNF",state = "NCF")
-            pass
+            newVisitor.save()
+
         
     data={'newUser':newUser}
     return render(requests,f'components/homepage.html',data)
