@@ -17,6 +17,7 @@ def main(requests):
             newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today(),country = location.country,city= location.city,state = location.state)
             newVisitor.save()
         except:
+            newVisitor = visitor(ip=requests.META.get("REMOTE_ADDR"),visitTime=datetime.today(),country = "CNF",city= "CNF",state = "NCF")
             pass
         
     data={'newUser':newUser}
