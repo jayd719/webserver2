@@ -1,0 +1,94 @@
+
+<div class="h-24"></div>
+<div class="h-full rounded-lg p-[4px] bg-primar" id="outterContainer">
+    <div class="h-full rounded-lg">
+        <div class="">
+            <div id="object"></div>
+        </div>
+    </div>
+</div>
+<div class="lg:w-1/2 mt-[12vh]">
+    <div class="flex items-center justify-center px-2 py-5 text-center lg:justify-start xl:pe-0 xl:ps-10 xl:text-start sticky top-20">
+        <h1 id="introTextOne" class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]">
+          <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20">Welcome To My Corner of The</span>
+          <span class="inline-grid"><span class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true" data-text="Digital World!"></span>
+            <span id="main-text" class="[&amp;::selection]:text-base-content relative col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [&amp;::selection]:bg-blue-700/20 [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">
+              Digital World!</span></span>
+          <br>
+          <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20"></span>
+        </h1>
+      </div>
+</div>
+<div class="flex jusitify-center w-full translate-y-[400px]">
+    <img class="w-14" id="airplaneObject" src="https://www.svgrepo.com/show/396199/airplane.svg" alt="">
+</div>
+
+<script>
+    const ViewModel = document.getElementById("object")
+    let CSS = 'flex jusitify-center py-10'
+    ViewModel.className=CSS
+    if (window.innerWidth>700){
+        ViewModel.innerHTML = `<div class="mockup-browser bg-base-300 border w-3/4 mx-auto shadow-xl">
+            <div class="mockup-browser-toolbar">
+                <div class="input">https://jashandeep.co.uk</div>
+            </div>
+        <div class="bg-base-200 flex justify-center px-4 py-16 h-[60vh] px-[100px]">
+            <h1 id="outputObject1" class="mt-10"><span class="animate-blink">|</span></h1>
+        </div>
+    </div>`
+    
+    
+       
+    
+    }else{
+        ViewModel.innerHTML=`<div class="mockup-phone border-primary">
+        <div class="camera"></div><div class="display">
+            <div class="artboard artboard-demo phone-1 px-5">
+                <h1 id="outputObject1"><span class="animate-blink">|</span></h1>
+                </div>
+            </div>
+        </div>`
+    }
+    
+    let text = 'hi..! My name is JD, a junior-year computer science student. Explore my educational background, skills, and projects'
+    let x = 0
+    let outputObject1=document.getElementById("outputObject1")
+    outputObject1.className="tex font-title text-left text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&]:leading-[1.35]"
+    myInterval = setInterval(()=>{
+        outputObject1.innerText=text.substring(0,x)
+        x++;
+    }, 60);
+    
+    
+    
+    setTimeout(() => {
+        clearInterval(myInterval);
+    }, 9000);
+    
+    
+    setTimeout(()=>{
+        ViewModel.className="translate-y-[-800px] tranisiton duration-[2300ms]"
+        document.getElementById("outterContainer").className='h-12 tranisiton duration-[1000ms]'
+    },9000)
+    
+    
+    
+    setTimeout(()=>{
+        let airplaneObject = document.getElementById("airplaneObject")
+        let k=0;
+        airplaneAnimate = setInterval(()=>{
+            let y = k
+            airplaneObject.style.transform = `translateX(${k}px) translateY(-${y}px)`
+            k+=1
+        },10)
+    
+        setTimeout(() => {
+            clearInterval(airplaneAnimate);
+            airplaneObject.remove()
+        }, 25000);
+    },14000)
+    
+    
+    
+    
+    </script>

@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'T01.apps.T01Config',
-    'cricketAPP.apps.CricketappConfig'
 ]
 
 MIDDLEWARE = [
