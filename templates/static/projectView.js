@@ -22,12 +22,12 @@ const SKILLS = {
 };
 
 const PROJECTS = {
+  FoodApp: "https://github.com/jayd719/DjangoFoodOrderingApp",
+  HealthSyncApp: "https://github.com/simranbadwal/HealthSync",
   Portfolio: "https://github.com/jayd719/webserver2",
   Project2: "https://github.com/jayd719/webserver2",
   Project3: "https://github.com/jayd719/webserver2",
-  CP2: "link",
 };
-
 /**
  * Generates a random color string based on the given placement.
  * @param {string} placement - The placement identifier for the color.
@@ -35,11 +35,20 @@ const PROJECTS = {
  */
 function getColor(placement) {
   const base = [
-    "red", "green", "blue", "yellow", "purple", "orange", "teal", "sky"
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "orange",
+    "teal",
+    "sky",
   ];
   const shades = ["200", "300", "400", "500", "600", "700", "800", "900"];
 
-  return `${placement}-${base[getRandomNumber(base.length)]}-${shades[getRandomNumber(shades.length)]}`;
+  return `${placement}-${base[getRandomNumber(base.length)]}-${
+    shades[getRandomNumber(shades.length)]
+  }`;
 }
 
 /**
@@ -54,7 +63,8 @@ function getRandomNumber(upperLimit) {
 /**
  * Class representing common class names for project tiles.
  */
-const CLASS = "h-20 flex justify-center items-center group p-5 rounded transition duration-100 hover:shadow-xl";
+const CLASS =
+  "h-20 flex justify-center items-center group p-5 rounded transition duration-100 hover:shadow-xl";
 
 /**
  * Creates and returns an array of project tabs.
@@ -65,7 +75,8 @@ function createTabs(tabs) {
   let projectsList = [];
   let projectsMainContainer = document.createElement("div");
   projectsMainContainer.className = "h-screen w-full overflow-hidden";
-  projectsMainContainer.style = "background-image: url(https://jayd719.github.io/assets/images/code/img2.png); background-position: center; background-size: contain; background-repeat: no-repeat;";
+  projectsMainContainer.style =
+    "background-image: url(https://jayd719.github.io/assets/images/code/img2.png); background-position: center; background-size: contain; background-repeat: no-repeat;";
 
   let tilesContainer = document.createElement("div");
   tilesContainer.className = "grid grid-cols-12";
@@ -74,13 +85,14 @@ function createTabs(tabs) {
     let project = document.createElement("div");
     project.id = i;
     project.className = CLASS;
-    project.innerHTML = "<div class='hidden transition duration-1000 group-hover:flex'><h1 class='text-5xl text-7xl [text-shadow:_3px_4px_3px_rgb(130_100_2_/_60%)] translate-y-[100%] translate-x-[20%] '>d</h1></div>";
+    project.innerHTML =
+      "<div class='hidden transition duration-1000 group-hover:flex'><h1 class='text-5xl text-7xl [text-shadow:_3px_4px_3px_rgb(130_100_2_/_60%)] translate-y-[100%] translate-x-[20%] '>d</h1></div>";
     tilesContainer.appendChild(project);
     projectsList.push(project);
   }
 
   projectsMainContainer.appendChild(tilesContainer);
-  document.body.appendChild(projectsMainContainer);
+  document.getElementById("mm").appendChild(projectsMainContainer);
 
   return projectsList;
 }
@@ -94,7 +106,7 @@ function generateRandomRGBshadow(filter) {
   const r = Math.floor(Math.random() * 256);
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
-  return `[text-shadow:_10px_1px_10px_rgb(${r}_${g}_${b}_/_${filter}%)]`;
+  return `[text-shadow:_5px_5px_20px_rgb(${r}_${g}_${b}_/_${filter}%)]`;
 }
 
 /**
@@ -103,10 +115,10 @@ function generateRandomRGBshadow(filter) {
  */
 function createHeading() {
   let mainContainer = document.createElement("div");
-  mainContainer.className = "px-10";
+  mainContainer.className = "px-10 absolute w-full";
   let outputText = document.createElement("h1");
   mainContainer.appendChild(outputText);
-  document.body.appendChild(mainContainer);
+document.getElementById("mm").appendChild(mainContainer);
   return outputText;
 }
 
@@ -118,7 +130,8 @@ const TEXTOUTPUT = createHeading();
  * @param {string} textInner - The inner text to display.
  */
 function updateTextOutputShadow(text, textInner) {
-  const class_ = "text-8xl font-title font-bold absolute top-10 anton-sc-regular";
+  const class_ =
+    "text-8xl font-title font-bold absolute top-10 anton-sc-regular";
   TEXTOUTPUT.classList = `${class_} ${generateRandomRGBshadow(60)} flex`;
   TEXTOUTPUT.innerHTML = `${text} <span class='underline text-sm'>${textInner}<span>`;
 }
@@ -133,7 +146,9 @@ function addSkillsImageToTile(tab) {
     let keys = Object.keys(SKILLS);
     let skill = keys[getRandomNumber(keys.length)];
     updateTextOutputShadow("TOOLS", "Tools");
-    tab.children[0].innerHTML = `<div class="p-4 bg-white shadow-xl ${getColor("shadow")} rounded"><img class="w-16" src="${SKILLS[skill]}" alt=""></div>`;
+    tab.children[0].innerHTML = `<div class="p-4 bg-white shadow-xl ${getColor(
+      "shadow"
+    )} rounded"><img class="w-16" src="${SKILLS[skill]}" alt=""></div>`;
   });
 }
 
