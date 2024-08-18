@@ -25,3 +25,6 @@ def landingPage_1(requests):
 def projects(requests):
     return render(requests,'projects.html')
     
+
+def HVAC(request):
+    return render(request,"extra/hvac.html")

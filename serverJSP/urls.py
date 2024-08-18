@@ -17,7 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from homepage.views import HVAC
+
 urlpatterns = [
     path('admin12/', admin.site.urls),
+    path("hvac_system/",HVAC,name="hvac"),
     path('',include('T01.urls')),
 ]
