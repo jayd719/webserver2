@@ -6,3 +6,11 @@
   font-weight: 400;
   font-style: normal;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+html {
+  scroll-behavior: smooth;
+  cursor: url("https://i.imgur.com/8Jhi9oS.png"), auto;
+}

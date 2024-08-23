@@ -1,5 +1,5 @@
 {%load static %}
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -18,154 +18,46 @@
     <script src="{%static 'header.js'%}"></script>
     {%include 'components/contact.html' %}
     <section class="p-4 mx-auto">
-      <div
-        class="grid grid-cols-1 gap-5 list-none lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-3 xl:grid-rows-3"
-      >
-        <div class="lg:row-span-2 shadow rounded-3xl p-8 duration-500">
+      <div class="grid grid-cols-1 gap-5 list-none lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-3 xl:grid-rows-4">
+        <div class="lg:row-span-2 shadow rounded-3xl px-8  duration-500">
           <p class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight">
             Hey, welcome to my website!
           </p>
           <p id="outputObject1"></p>
         </div>
 
-        <a
-          href="{%url 'projects-page'%}"
-          class="rounded-3xl justify-between shadow items-center flex flex-col p-8 h-full min-h-32 dark:bg-base-300"
-        >
-          <div class="w-full">
-            <p
-              class="text-xl font-normal tracking-tight font-title lg:text-8xl"
-            >
-              Projects
-            </p>
-            <p
-              class="mt-4 text-sm text-zinc-500 dark:text-zinc-400 font-light lg:text-xl group-hover:text-purple-800 group-hover:scale-[1.075] transtion duration-500 group-hover:text-indigo-800"
-            >
-              Take a detailed look at the diverse range of work I've completed,
-              showcasing my skills, creativity, and problem-solving abilities.
-              Discover the innovative solutions I've developed, the challenges
-              I've overcome, and the impact my projects have made
-            </p>
-            <div
-              class="absolute bottom-0 right-0 p-5 group-hover:rotate-[45deg] group-hover:scale-[2] transition duration-500"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                fill="currentColor"
-                class="bi bi-arrow-up-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"
-                />
-              </svg>
-            </div>
-          </div>
-        </a>
+        {%include "projectsTiles/mainProjectsLink.html"%}
 
-        <div
-          class="lg:row-span-2 flex flex-col justify-center lg:row-start-2 md:grid-cols-2 md:grid md:items-center md:gap-12 lg:grid-cols-none lg:col-start-2 lg:col-span-2 rounded-3xl p-8 shadow"
-        >
-          <div class="">{%include 'landingPage/skills.html'%}</div>
-        </div>
-
-        <div
-          class="flex flex-col justify-between items-center rounded-3xl shadow p-8 overflow-hidden text-center lg:text-left"
-        >
-          <div>
-            <p class="text-xl lg:text-7xl tracking-tight">Grab my résumé!</p>
-            <p
-              class="mt-4 text-sm text-zinc-500 dark:text-zinc-400 font-light lg:text-xl group-hover:text-purple-800 group-hover:scale-[1.075] transtion duration-500"
-            >
-              Discover my work experience, explore the projects I've been
-              involved in, and learn about my educational achievements. Dive
-              deeper into the skills and expertise that have shaped my career.
-            </p>
-          </div>
-          <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
-            <a
-              type="button"
-              class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000"
-              href="/static/Resume-JashandeepSingh.pdf"
-            >
-              Download My Resume
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-download w-4 h-4"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
-                <path d="M7 11l5 5l5 -5"></path>
-                <path d="M12 4l0 12"></path>
-              </svg>
-            </a>
+        <div class="lg:row-span-2 flex flex-col justify-center lg:row-start-2 md:grid-cols-2 md:grid md:items-center md:gap-12 lg:grid-cols-none lg:col-start-2 lg:col-span-2 rounded-3xl p-8 shadow">
+          <div class="">
+            {%include 'landingPage/skills.html'%}
           </div>
         </div>
 
-        <a
-          href="{%url 'engineeringPage'%}"
-          class="rounded-3xl justify-between shadow items-center flex flex-col p-8 h-full min-h-32"
-          href="#"
-        >
-          <div class="w-full">
-            <p
-              class="text-xl font-normal tracking-tight font-title lg:text-8xl"
-            >
-              CNC<br />Section
-            </p>
-            <p
-              class="mt-4 text-sm text-zinc-500 dark:text-zinc-400 font-light lg:text-xl group-hover:text-purple-800 group-hover:scale-[1.075] transtion duration-500 group-hover:text-indigo-800"
-            >
-              Gain insights into the complex projects I've programmed, the
-              precision machining skills I've honed, and the advanced techniques
-              I employ.
-            </p>
-            <div
-              class="absolute bottom-0 right-0 p-5 group-hover:rotate-[45deg] group-hover:scale-[2] transition duration-500"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="50"
-                height="50"
-                fill="currentColor"
-                class="bi bi-arrow-up-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"
-                />
-              </svg>
-            </div>
-          </div>
-        </a>
+        {%include "projectsTiles/resumeLink.html"%}
+        {%include "projectsTiles/CNCLink.html"%}
 
-        <div
-          class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 shadow"
-        >
+        
+
+        <div class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 shadow">
           {%include 'landingPage/contact.html'%}
         </div>
 
-        <div
-          class="shadow rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between"
-        >
+        <div class="shadow rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between">
           {%include "landingPage/qoute.html"%}
         </div>
+
+       
+        
       </div>
     </section>
+
+
+   
+                            
     {%include "landingPage/footerStatic.html"%}
     <script src="{%static 'homepage.js'%}"></script>
     <script src="{%static 'themeChanger.js'%}"></script>
     <script src="{%static 'animations.js'%}"></script>
-    <script src="{%static 'introSection.js'%}"></script>
   </body>
 </html>
