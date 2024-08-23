@@ -1,0 +1,24 @@
+{% load static %}
+<div class="justify-center">
+  <div class="hero-content flex-col justify-center">
+      <div class="lg:w-1/2">
+        <img src="{% static 'code/ganttImage.png'%}" class="w-100 rounded-lg shadow-2xl transition duration-500 ease-in-out hover:scale-[1.05]" />
+      </div>
+
+      <div class="lg:w-1/2">
+        <h2 class="font-title relative z-[2] mx-auto text-[clamp(2rem,6vw,4.5rem)] font-black leading-none">
+          <span class="inline-grid">
+            <span class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text opacity-70 blur-3xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] [:root[dir=rtl]_&amp;]:leading-[1.35] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true">Gantt Chart</span> 
+            <span style="opacity:1" class="[&amp;::selection]:text-base-content relative col-start-1 row-start-1 leading-tight motion-reduce:!opacity-100 [&amp;::selection]:bg-blue-700/20 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">Gantt Chart</span>
+          </span>
+          Generation with Python
+        </h2>
+        <p class="py-6 text-base-content/70 font-title relative z-[2] py-4 font-light md:text-xl">An application built using Python and essential libraries like openpyxl, pandas, and requests that speeds up the data retrieval and project visualization.</p>
+        <a href="{% url 'gantchart'%}" class="btn btn-outline px-4">Check Out Details</a>
+      </div>
+  </div>
+</div>
+
+
+
+

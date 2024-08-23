@@ -115,4 +115,4 @@ class themeController {
   }
   
   
-  let thc = new themeController("fantasy","business")
+  let thc = new themeController("cupcake","business")
