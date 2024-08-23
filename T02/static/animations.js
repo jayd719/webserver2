@@ -11,13 +11,7 @@ let text =
 let x = 0;
 let outputObject1 = document.getElementById("outputObject1");
 
-outputObject1.classList.add(
-  "font-title",
-  "text-left",
-  "text-[clamp(1.85rem,6vw,4.2rem)]",
-  "font-black",
-  "leading-[1.1]"
-);
+outputObject1.className="mt-4 text-5xl text-zinc-500 dark:text-zinc-400 font-light my-10 pb-10"
 
 setTimeout(() => {
   myInterval = setInterval(() => {
@@ -59,23 +53,4 @@ setTimeout(() => {
   clearInterval(myInterval);
 }, 10000);
 
-function addInterSectionObserver() {
-  // Select the grid element and filter child nodes to include only elements
-  let tiles1 = Array.from(
-    document.querySelector(".grid.grid-cols-1").childNodes
-  ).filter((node) => node.nodeType === Node.ELEMENT_NODE);
 
-  // Create the Intersection Observer
-  const inter = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove("scale-0");
-      } else {
-        entry.target.classList.add("scale-0");
-      }
-    });
-  });
-
-  // Observe each tile
-  tiles1.forEach((tile) => inter.observe(tile));
-}

@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.urls import path,include
 
-from .views import helloworld
+from .views import helloworld,helloword_projects
 
 urlpatterns = [
-    path('',helloworld,name="version_2_home"),
+    path('',helloworld,name="v2_home"),
+    path('projects/',helloword_projects,name="v2_projects"),
 ]

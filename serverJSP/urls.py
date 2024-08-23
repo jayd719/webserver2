@@ -22,6 +22,6 @@ from homepage.views import HVAC
 urlpatterns = [
     path('admin12/', admin.site.urls),
     path("hvac_system/",HVAC,name="hvac"),
-    path('',include('T01.urls')),
-    path('version_2/',include('T02.urls'))
+    path('version_1/',include('T01.urls')),
+    path('',include('T02.urls'))
 ]

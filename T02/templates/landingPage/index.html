@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8" />
+    <title>JD</title>
+    <link rel="icon" href="https://jayd719.github.io/staticfiles/j.png" type="image/x-icon">
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
       rel="stylesheet"
@@ -24,6 +26,17 @@
             Hey, welcome to my website!
           </p>
           <p id="outputObject1"></p>
+          <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
+            <a type="button" target="_blank" class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000 hover:bg-purple-500 border hover:text-purple-100 group-hover:border-purple-500 group-hover:text-purple-900" href="/static/Resume-JashandeepSingh.pdf">
+              Download My Resume
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
+                <path d="M7 11l5 5l5 -5"></path>
+                <path d="M12 4l0 12"></path>
+              </svg>
+            </a>
+          </div>
         </div>
 
         {%include "projectsTiles/mainProjectsLink.html"%}
@@ -59,5 +72,7 @@
     <script src="{%static 'homepage.js'%}"></script>
     <script src="{%static 'themeChanger.js'%}"></script>
     <script src="{%static 'animations.js'%}"></script>
+    <script src="{%static 'footer.js'%}"></script>
+    <script src="{%static 'popper.js'%}"></script>
   </body>
 </html>
