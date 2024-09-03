@@ -11,7 +11,10 @@ let text =
 let x = 0;
 let outputObject1 = document.getElementById("outputObject1");
 
-outputObject1.className="mt-4 text-5xl text-zinc-500 dark:text-zinc-400 font-light my-10 pb-10"
+outputObject1.className =
+  "mt-4 text-5xl text-zinc-500 dark:text-zinc-400 font-light my-10 pb-10";
+
+
 
 setTimeout(() => {
   myInterval = setInterval(() => {
@@ -54,3 +57,14 @@ setTimeout(() => {
 }, 10000);
 
 
+// Create the Intersection Observer
+const cardsIntersection = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      moveJacks();
+    }
+  });
+});
+
+// Observe the element
+cardsIntersection.observe(document.getElementById('cards'));
