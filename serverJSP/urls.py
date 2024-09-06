@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin12/', admin.site.urls),
     path("hvac_system/",HVAC,name="hvac"),
     path('version_1/',include('T01.urls')),
-    path('',include('T02.urls'))
+    path('',include('T02.urls')),
+    path("manufacturing_engineering/",include("T03.urls"))
 ]

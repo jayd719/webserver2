@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'T01.apps.T01Config',
-    "T02"
+    "T02",
+    "T03"
 ]
 
 MIDDLEWARE = [
