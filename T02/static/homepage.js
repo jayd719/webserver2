@@ -95,18 +95,17 @@ function updateElement(element) {
   });
 }
 
-document.querySelector(".grid.grid-cols-1").childNodes.forEach((element) => {
-  
-  if (element.nodeName === "DIV" || element.nodeName === "A") {
+if (document.querySelector(".grid.grid-cols-1")) {
+  document.querySelector(".grid.grid-cols-1").childNodes.forEach((element) => {
+    if (element.nodeName === "DIV" || element.nodeName === "A") {
+      updateElement(element);
+    }
+  });
+}
+
+document.getElementById("menu").childNodes.forEach((element) => {
+  if (element.nodeName === "LI") {
     updateElement(element);
-  }
-});
-
-
-
-document.getElementById("menu").childNodes.forEach(element => {
-  if(element.nodeName==="LI"){
-    updateElement(element)
-    element.classList.remove("bg-base-100")
+    element.classList.remove("bg-base-100");
   }
 });

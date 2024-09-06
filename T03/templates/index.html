@@ -18,21 +18,18 @@
     <header id="header"></header>
     <div class="h-16"></div>
     <script src="{%static 'header.js'%}"></script>
-    {%include 'components/contact.html' %}
 
-    {%include 'cnc_introSection.html' %}
-    {%include 'key_projects.html' %}
-    {%include 'exp.html' %}
-    {%include 'machines.html' %}
-    
-    
 
-   
+{%block content%}
+{%endblock%}
+
                             
     {%include "landingPage/footerStatic.html"%}
-   
-
     <script src="{%static 'themeChanger.js'%}"></script>
     <script src="{%static 'footer.js'%}"></script>
+    <script src="{%static 'homepage.js'%}"></script>
+
+    {% include 'components/backbutton.html'%}
+ 
   </body>
 </html>

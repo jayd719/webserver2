@@ -1,61 +1,40 @@
+{%load static%}
 <section id="projects" class="w-full py-12 md:py-24 lg:py-32 bg-base-100">
     <div class="container px-4 md:px-6 mx-auto">
       <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
         Key Projects
       </h2>
       <div class="grid gap-6 lg:grid-cols-3">
-        <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+        <a href="{%url 'cnc-sim'%}">
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm pop">
           <div class="flex flex-col space-y-1.5 p-6" data-id="31">
             <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="32">
-              Nuclear Reactor Components
+              Machine Simulator
             </h3>
             <p class="text-sm text-muted-foreground" data-id="33">
-              Precision CNC machining for critical reactor parts
+              Simulator for Toolpath Verification on Matsuura H-Plus 630 and DMG Ecomill 50.
             </p>
           </div>
           <div class="p-6" data-id="34">
-            <img data-id="35" src="/placeholder.svg" alt="Nuclear Reactor Component" width="300" height="200" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
-            <p class="mt-2 text-sm text-gray-500 :text-gray-400" data-id="36">
-              Engineered and manufactured high-precision components for
-              nuclear reactors, ensuring optimal performance and safety.
-            </p>
+            <img data-id="35" src="{%static 'code/cnc5.png'%}" alt="Nuclear Reactor Component" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
           </div>
-        </div>
-        <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
+        </div></a>
+
+        <a href="{%url 'cnc-ss'%}">
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm pop">
           <div class="flex flex-col space-y-1.5 p-6" data-id="38">
-            <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="39">
-              Turbine Blade Optimization
+            <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+              Setup Sheets Generation
             </h3>
             <p class="text-sm text-muted-foreground" data-id="40">
-              Advanced CNC programming for efficiency
+              One-click setup and tooling sheet generator.
             </p>
           </div>
           <div class="p-6" data-id="41">
-            <img data-id="42" src="/placeholder.svg" alt="Turbine Blade" width="300" height="200" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
-            <p class="mt-2 text-sm text-gray-500 " data-id="43">
-              Developed innovative CNC programs to optimize turbine blade
-              production, increasing efficiency by 30%.
-            </p>
+            <img src="{%static 'code/image8.png'%}" alt="Turbine Blade" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
           </div>
-        </div>
-        <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
-          <div class="flex flex-col space-y-1.5 p-6" data-id="45">
-            <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="46">
-              Custom Tooling Solutions
-            </h3>
-            <p class="text-sm text-muted-foreground" data-id="47">
-              Specialized tools for nuclear manufacturing
-            </p>
-          </div>
-          <div class="p-6" data-id="48">
-            <img data-id="49" src="/placeholder.svg" alt="Custom Tooling" width="300" height="200" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
-            <p class="mt-2 text-sm text-gray-500 " data-id="50">
-              Designed and manufactured custom tooling solutions, reducing
-              production time and improving precision in nuclear component
-              fabrication.
-            </p>
-          </div>
-        </div>
+        </div></a>
+      
       </div>
     </div>
   </section>

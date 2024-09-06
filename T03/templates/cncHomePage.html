@@ -1,0 +1,36 @@
+{%extends 'index.html'%}
+{%block content%}
+{%include 'components/contact.html' %}
+{%include 'cnc_introSection.html' %}
+{%include 'key_projects.html' %}
+{%include 'skills.html' %}
+{%include 'exp.html' %}
+{%include 'machines.html' %}
+
+<script>
+  function addInterSectionObserver() {
+    // Select the grid element and filter child nodes to include only elements
+    let tiles1 = document.querySelectorAll(".pop");
+
+    // Create the Intersection Observer
+    const inter = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove(
+            "scale-0",
+            "duration-1000",
+            "delay-1000"
+          );
+        } else {
+          entry.target.classList.add("scale-0", "duration-1000", "delay-1000");
+        }
+      });
+    });
+
+    // Observe each tile
+    tiles1.forEach((tile) => inter.observe(tile));
+  }
+
+  addInterSectionObserver();
+</script>
+{%endblock%}

@@ -9,7 +9,7 @@
 
     <div class="space-y-6 container" id="machinescontainer">
       <div
-        class="rounded-lg border text-card-foreground shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-xl bg-white group p-5"
+        class="rounded-lg border text-card-foreground shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-xl bg-white group p-5 pop"
       >
         <div class="md:flex">
           <div class="md:w-1/3 relative h-64 md:h-auto">
@@ -58,11 +58,10 @@
 
   const machines = [
   {  name: "DMG CTX510", caption: "Turning Center",image:"https://jashandeep.co.uk/static/images/machines/DMGEcoTurn310.jpeg", des:"Horizontal Lathe with With Live Tooling" },
-  {  name: "Matsuura H-Plus 630", caption: "6",image:"https://jashandeep.co.uk/static/images/machines/MatsuuraHPlus630.jpeg", des:"Horizontal Machining Center With Renishaw OP90 Probe" },
-  {  name: "tjo", caption: "6",image:"d", des:"sasfsdf" },
-  {  name: "tjo", caption: "6",image:"d", des:"sasfsdf" },
-  {  name: "tjo", caption: "6",image:"d", des:"sasfsdf" },
-  {  name: "tjo", caption: "6",image:"d", des:"sasfsdf" },
+  {  name: "Matsuura H-Plus 630", caption: "Horizontal Machining Center",image:"https://jashandeep.co.uk/static/images/machines/MatsuuraHPlus630.jpeg", des:"Horizontal Machining Center With Renishaw OP90 Probe" },
+  {  name: "Fadal VMC-6030", caption: "Vertical Machining Center",image:"https://jashandeep.co.uk/static/images/machines/fadal.png", des:"Three Axis Vertical Machining Center" },
+  {  name: "Toshiba TSS-C 30/55", caption: "Vertical Turning Center",image:"https://jashandeep.co.uk/static/images/machines/tss-series.jpg", des:"Vertical Lathe With Live Tooling" },
+  {  name: "Shibura TUE 200s", caption: "Vertical Turning Center",image:"https://jashandeep.co.uk/static/images/machines/tue-200.jpeg", des:"Vertical Lathe With Live Tooling" },
   
 ];
 
@@ -74,5 +73,10 @@ machines.forEach(({name,caption,image,des}) => {
   newMachine.querySelector(".text-gray-700").textContent=des
   machinescontainer.appendChild(newMachine)
 });
+
+
+
+
+
 
 </script>
