@@ -37,7 +37,7 @@ page[size="A4"] {
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px; /* Optional: Adjust as needed */
+  gap: 5px; /* Optional: Adjust as needed */
 }
 .grid2 {
   display: grid;
