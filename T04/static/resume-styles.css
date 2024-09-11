@@ -15,7 +15,7 @@ ul {
   margin: 3px;
 }
 page[size="A4"] {
-  background: white;
+  background: rgb(255, 255, 255);
   width: 21cm;
 
   display: block;
