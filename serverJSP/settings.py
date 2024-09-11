@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
     'T01.apps.T01Config',
     "T02",
-    "T03"
+    "T03",
+    "T04"
 ]
 
 MIDDLEWARE = [
