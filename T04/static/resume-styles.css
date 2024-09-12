@@ -8,14 +8,18 @@ p,
 h3 {
   margin: 0;
 }
+hr {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 h3 {
+  color: rgb(43, 62, 99);
   font-size: large;
 }
 ul {
   margin: 3px;
 }
-li{
-
+li {
   margin-bottom: 1px;
 }
 page[size="A4"] {
@@ -36,6 +40,9 @@ page[size="A4"] {
     box-shadow: none;
     background-color: white;
     margin-left: 0.5%;
+  }
+  h3 {
+    color: black;
   }
 }
 .grid {
