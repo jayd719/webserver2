@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -86,3 +86,8 @@ def websiteEstimator(request):
 
 def updateCart(request):
     return HttpResponse(request.COOKIES['this'])
+
+
+
+def redirect_(request):
+    return redirect('/pages/aboutme')

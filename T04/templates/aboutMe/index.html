@@ -1,0 +1,41 @@
+{%load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>JD | Projects</title>
+    <link rel="icon" href="https://jayd719.github.io/staticfiles/j.png" type="image/x-icon">
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{%static 'homepage.css'%}" />
+  </head>
+  <body class="bg-base-300 oswald">
+    <header id="header"></header>
+    <div class="h-16"></div>
+    <script src="{%static 'header.js'%}"></script>
+    {%include 'components/contact.html' %}
+    <section class="p-4 mx-auto">
+      <div class="grid grid-cols-1 gap-5 list-none lg:grid-cols-3 xl:grid-cols-3 ">
+
+      </div>
+    </section>
+
+
+   
+                                
+    {% include 'components/backbutton.html'%}
+    <script src="{%static 'homepage.js'%}"></script>
+    <script src="{%static 'themeChanger.js'%}"></script>
+    <script src="{%static 'popper.js'%}"></script>
+    <script>addInterSectionObserver();</script>
+    {%include "landingPage/footerStatic.html"%}
+    <script src="{%static 'footer.js'%}"></script>
+    
+    <!-- <script src="{%static 'animations.js'%}"></script> -->
+  </body>
+</html>

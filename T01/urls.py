@@ -1,5 +1,7 @@
 from django.urls import path,include
+from django.shortcuts import redirect
 from .views import *
+
 
 
 urlpatterns = [
@@ -10,7 +12,7 @@ urlpatterns = [
     path('engineering/',engineeringPage,name='engineeringPage'),
     path('engineering/cnc_machine_simulation/',cncSimPage,name='cncSimPage'),
     path('gantchart/',gantchart,name='gantchart'),
-    path('aboutme/',aboutme,name='about-me'),
+    path('aboutme/',redirect_,name='about-me'),
     path('createCookies/',createCookies,name='createCookies'),
     path('visitors/',visitors,name='visitors'),
     path('req/',requirements,name='require'),

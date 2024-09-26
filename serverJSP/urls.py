@@ -25,5 +25,5 @@ urlpatterns = [
     path('version_1/',include('T01.urls')),
     path('',include('T02.urls')),
     path("manufacturing_engineering/",include("T03.urls")),
-    path("resume/",include("T04.urls"))
+    path("pages/",include("T04.urls"))
 ]
