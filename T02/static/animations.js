@@ -2,8 +2,8 @@ let TIMES = [300, 500, 700, 1000];
 let tiles = document.querySelector(".grid.grid-cols-1").childNodes;
 
 let firstContainer = tiles[1];
-firstContainer.classList.add("lg:translate-x-[100%]");
-HEADER.classList.add("translate-y-[-100%]");
+
+
 
 let text =
   "My name is JD, a junior-year computer science student. Explore my educational background, skills, and projects";
@@ -23,14 +23,7 @@ setTimeout(() => {
   }, 60);
 }, 1000);
 
-tiles.forEach((element) => {
-  if (
-    (element != firstContainer) &
-    (element.nodeName === "DIV" || element.nodeName === "A")
-  ) {
-    element.classList.add("scale-0");
-  }
-});
+
 
 setTimeout(() => {
   firstContainer.classList.remove("lg:translate-x-[100%]");
