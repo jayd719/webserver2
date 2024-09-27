@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
-
+body{
+  font-size: smaller;
+}
 .oswald {
   font-family: "Gruppo", sans-serif;
   font-weight: 400;
@@ -34,5 +36,5 @@ html {
 }
 
 a{
-  cursor: url("https://jayd719.github.io/staticfiles/a-icon.png"),e-resize;
+  cursor: url("https://i.imgur.com/8Jhi9oS.png"), pointer;
 }

@@ -8,7 +8,7 @@ let x = 0;
 let outputObject1 = document.getElementById("outputObject1");
 
 outputObject1.className =
-  "mt-4 text-5xl text-zinc-500 dark:text-zinc-400 font-light my-10 pb-10";
+  "mt-4 text-4xl text-zinc-500 dark:text-zinc-400 font-light";
 
 setTimeout(() => {
   myInterval = setInterval(() => {
