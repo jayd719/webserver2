@@ -68,7 +68,9 @@ function updateElement(element) {
     "group",
     "scale-[.99]",
     "hover:shadow-2xl",
-    `hover:shadow-${baseColor}-600`
+    `hover:shadow-${baseColor}-600`,
+    "transition",
+    "duration-800"
   );
 
   element.querySelectorAll("p").forEach((pTage) => {

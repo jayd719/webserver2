@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8" />
     <title>JD</title>
-    <link rel="icon" href="https://jayd719.github.io/staticfiles/j.png" type="image/x-icon">
+    <link
+      rel="icon"
+      href="https://jayd719.github.io/staticfiles/j.png"
+      type="image/x-icon"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
       rel="stylesheet"
@@ -16,22 +20,38 @@
   </head>
   <body class="bg-base-300 oswald">
     <header id="header"></header>
-    
-    <div class="h-16"></div>
-    
+
+    <div class="h-20"></div>
+
     <script src="{%static 'header.js'%}"></script>
     {%include 'components/contact.html' %}
     <section class="p-4 mx-auto">
-      <div class="grid grid-cols-1 gap-5 list-none lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-3 xl:grid-rows-4">
-        <div class="lg:row-span-2 shadow rounded-3xl px-8  duration-500">
+      <div id="sections"
+        class="grid grid-cols-1 gap-5 list-none lg:grid-cols-3 lg:grid-rows-3 xl:grid-cols-3 xl:grid-rows-4"
+      >
+        <div class="lg:row-span-2 shadow rounded-3xl px-8 duration-500">
           <p class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight">
             Hey, welcome to my website!
           </p>
           <p id="outputObject1"></p>
           <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
-            <a type="button" target="_blank" class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000 hover:bg-purple-500 border hover:text-purple-100 group-hover:border-purple-500 group-hover:text-purple-900" href="{%url 'resume'%}">
+            <a
+              type="button"
+              target="_blank"
+              class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000 hover:bg-purple-500 border hover:text-purple-100 group-hover:border-purple-500 group-hover:text-purple-900"
+              href="{%url 'resume'%}"
+            >
               Download My Resume
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-download w-4 h-4" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-download w-4 h-4"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path>
                 <path d="M7 11l5 5l5 -5"></path>
@@ -43,44 +63,42 @@
 
         {%include "projectsTiles/mainProjectsLink.html"%}
 
-        <div class="lg:row-span-2 flex flex-col justify-center lg:row-start-2 md:grid-cols-2 md:grid md:items-center md:gap-12 lg:grid-cols-none lg:col-start-2 lg:col-span-2 rounded-3xl p-8 shadow">
-          <div class="">
-            {%include 'landingPage/skills.html'%}
-          </div>
+        <div
+          class="lg:row-span-2 flex flex-col justify-center lg:row-start-2 md:grid-cols-2 md:grid md:items-center md:gap-12 lg:grid-cols-none lg:col-start-2 lg:col-span-2 rounded-3xl p-8 shadow"
+        >
+          <div class="">{%include 'landingPage/skills.html'%}</div>
         </div>
 
-        {%include "projectsTiles/resumeLink.html"%}
+        {%include "projectsTiles/resumeLink.html"%} 
         {%include "projectsTiles/CNCLink.html"%}
 
-        
-
-        <div class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 shadow">
+        <div
+          class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 shadow"
+        >
           {%include 'landingPage/contact.html'%}
         </div>
 
-        <div class="shadow rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between">
+        <div
+          class="shadow rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between"
+        >
           {%include "landingPage/qoute.html"%}
         </div>
-
-       
-        
+        {% include 'projects/projectsDiv.html'%}
       </div>
     </section>
 
-
-
     <!-- cards -->
-    
 
-   
-                            
     {%include "landingPage/footerStatic.html"%}
-   
+
     <script src="{%static 'homepage.js'%}"></script>
     <script src="{%static 'themeChanger.js'%}"></script>
 
     <script src="{%static 'animations.js'%}"></script>
     <script src="{%static 'footer.js'%}"></script>
     <script src="{%static 'popper.js'%}"></script>
+    <script>
+      addInterSectionObserver();
+    </script>
   </body>
 </html>

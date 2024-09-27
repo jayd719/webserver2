@@ -1,7 +1,7 @@
 function addInterSectionObserver() {
   // Select the grid element and filter child nodes to include only elements
   let tiles1 = Array.from(
-    document.querySelector(".grid.grid-cols-1").childNodes
+    document.getElementById("sections").childNodes
   ).filter((node) => node.nodeType === Node.ELEMENT_NODE);
 
   // Create the Intersection Observer
