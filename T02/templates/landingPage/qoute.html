@@ -5,16 +5,18 @@
           <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"></path>
         </svg>
         <blockquote>
-          <p class="text-2xl font-medium md:text-4xl font-bold">
-            "Never Fold, <br>Never Back Down"
+          <p class="text-2xl font-medium md:text-4xl font-bold" id="text-qoute">
+            The computer was born to solve problems that did not exist before.
           </p>
         </blockquote>
-        <figcaption class="flex items-center justify-center mt-6 space-x-3">
-          <img class="w-10 h-10 rounded-full" src="https://st1.bollywoodlife.com/wp-content/uploads/2023/05/MicrosoftTeams-image-2023-05-29T175858.128.jpg" alt="Sidhu Moose Wala">
-          <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+        <figcaption class="flex  items-center justify-center mt-6 space-x-3" id="images-section">
+          <img class="w-10 h-10 rounded-full" src="https://pbs.twimg.com/profile_images/1674815862879178752/nTGMV1Eo_400x400.jpg" alt="Sidhu Moose Wala">
+          <!-- <img class="w-10 h-10 rounded-full" src="https://st1.bollywoodlife.com/wp-content/uploads/2023/05/MicrosoftTeams-image-2023-05-29T175858.128.jpg" alt="Sidhu Moose Wala"> -->
+          <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700" >
            <a href="https://open.spotify.com/artist/4PULA4EFzYTrxYvOVlwpiQ?autoplay=true" target="_blank">
             <div class="pr-3 font-medium">
-              <p>Sidhu Moose Wala</p>
+              <p class="text-2xl">Bill Gates</p>
+              <p class="text-sm opacity-75">Microsoft founder</p>
             </div>
            </a>
           
@@ -24,3 +26,8 @@
     </div>
   </section>
   
+
+  <script>
+    document.getElementById("images-section").classList.add("group-hover:scale-[2]","duration-300","group-hover:translate-y-[75%]")
+    document.getElementById("text-qoute").classList.add("group-hover:scale-[1.1]","group-hover:font-bold")
+  </script>
