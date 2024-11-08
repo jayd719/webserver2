@@ -19,12 +19,10 @@
     <link rel="stylesheet" href="{%static 'homepage.css'%}" />
     <meta name="keywords" content="Jashandeep Singh, JD Singh, WLU, Waterloo, Software Developer, CNC Progammer, computer science" />
   </head>
-  <body class="bg-base-300 oswald">
-    <div class="z-[100]" id="cards"></div>
-    <div class="hidden">
-      <h1>Jashandeep Singh</h1>
-      <h1>I am passionate third year computer science student. With background in CNC programming, I have hands on experience of working in fast paced manufacturing environment. Currently, I'm pursuing a BSc in Computer Science, expanding my expertise in areas like algorithms, data analytics , and web development. I am passionate about leveraging data analytics and system designs to drive innovation. By combing data driven solutions I hope to unlock new opportunities for growth. My goal is to continue mastering advanced software development techniques while applying my skills in real-world projects that improve operational efficiency and enhance user experiences.</h1>
-    </div>
+  <body class="bg-base-300 oswald w-full overflow-x-hidden">
+    
+    <div class="z-[100] hidden lg:flex" id="cards"></div>
+    {%include 'landingPage/background.html'%}
     
 
     <header id="header"></header>
@@ -36,27 +34,27 @@
     {%include 'components/contact.html' %}
     <section class="p-4 mx-auto">
       <div id="sections" class="grid grid-cols-1 gap-5 list-none  xl:grid-cols-3 xl:grid-rows-4">
-        <div class="lg:row-span-2 shadow rounded-3xl duration-500 p-4 flex flex-col justify-stretch items-start">
-          <div class="mockup-phone border-primary mx-auto">
-            <div class="camera"></div>
-            <div class="display">
-              <div class="artboard artboard-demo phone-3 p-6 bg-base-100">
+        <div class="lg:row-span-2 shadow rounded-3xl duration-500 p-4 min-h-[80vh] grid  content-between">
+          <div class="m border-primary">
                 <p class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight">
                   Hey, welcome to my website!
                 </p>
                 <p id="outputObject1"></p>
-
-               
-              </div>
-            </div>
           </div>
-        
           
           <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
+            <h1 id="introTextOne" class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]">
+              <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20">Welcome To My Corner of The</span>
+              <span class="inline-grid"><span class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true" data-text="Digital World!"></span>
+                <span id="main-text" class="[&amp;::selection]:text-base-content relative col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [&amp;::selection]:bg-blue-700/20 [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">
+                  Digital World!</span></span>
+              <br>
+              <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20"></span>
+            </h1>
             <a
               type="button"
               target="_blank"
-              class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000 hover:bg-purple-500 border hover:text-purple-100 group-hover:border-purple-500 group-hover:text-purple-900"
+              class="contactLink flex justify-center rounded-3xl py-4 opacity-0 group-hover:opacity-100 transition duration-1000 hover:bg-purple-500 border hover:text-purple-100 group-hover:border-purple-500 group-hover:text-purple-900 mt-5"
               href="{%url 'resume'%}"
             >
               Download My Resume
@@ -87,19 +85,15 @@
         </div>
 
         
-        {%include "projectsTiles/CNCLink.html"%}
+        {%include "landingPage/qoute.html"%}
 
-        <div
-          class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 shadow"
-        >
+        <div class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2  shadow">
           {%include 'landingPage/contact.html'%}
         </div>
+        
+        
+        {%include "projectsTiles/CNCLink.html"%}
 
-        <div
-          class="shadow rounded-3xl p-8 lg:row-start-4 h-full flex flex-col justify-between"
-        >
-          {%include "landingPage/qoute.html"%}
-        </div>
         {% include 'projects/projectsDiv.html'%}
       </div>
     </section>

@@ -61,16 +61,17 @@ function updateElement(element) {
     `bg-${"base"}-100`,
     "hover:scale-[1.01]",
     `hover:bg-${baseColor}-200`,
-    "opacity-100",
+    "lg:opacity-80",
     "hover:opacity-100",
     "hover:scale-[1.02]",
     "hover:z-[200]",
     "group",
-    "scale-[.99]",
-    "hover:shadow-2xl",
+    "scale-[.97]",
+    "hover:shadow-xl",
     `hover:shadow-${baseColor}-600`,
     "transition",
-    "duration-800",
+    "duration-1000",
+    "backdrop-blur-md"
   );
 
   element.querySelectorAll("p").forEach((pTage) => {

@@ -56,8 +56,6 @@ function moveJacks() {
 
 if (document.documentElement.clientWidth > 800) {
   jacks(20);
-} else {
-  jacks(10);
 }
 
 window.addEventListener("scroll", () => {

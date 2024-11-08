@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&display=swap');
 
+
 body{
   font-size: smaller;
 }
@@ -11,7 +12,7 @@ body{
   font-style: normal;
 }
 
-.oswald1 {
+.oswald {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -24,6 +25,7 @@ body{
   font-weight: 400;
   font-style: normal;
 }
+
 
 
 
