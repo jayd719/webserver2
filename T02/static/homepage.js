@@ -70,7 +70,7 @@ function updateElement(element) {
     "hover:shadow-2xl",
     `hover:shadow-${baseColor}-600`,
     "transition",
-    "duration-800"
+    "duration-800",
   );
 
   element.querySelectorAll("p").forEach((pTage) => {
