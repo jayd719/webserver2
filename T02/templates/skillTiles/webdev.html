@@ -1,0 +1,27 @@
+{%load static%}
+<div class="px-10">
+    <div class="text-center">
+        <p class="text-5xl font-normal tracking-tight font-title text-center font-bold mb-10 lg:text-7xl">
+            Web Development Frameworks
+          </p>
+    </div>
+    <div class="grid grid-cols-4 lg:grid-cols-4 gap-10 py-5 lg:py-10 lg:my-10 justify-items-center mx-auto">
+        <img class="w-12 w1000" src="https://www.svgrepo.com/show/373554/django.svg" alt="">    
+        <img class="w-12 w1000" src="https://www.svgrepo.com/show/473611/flask.svg" alt=""> 
+        <img class="w-12 w1000" src="https://www.svgrepo.com/show/374118/tailwind.svg" alt="">
+        <img class="w-12 w1000" src="https://www.svgrepo.com/show/303293/bootstrap-4-logo.svg" alt=""> 
+    </div>
+</div>
+
+
+<script>
+    function getRandomNumber(upperLimit) {
+          return Math.floor(Math.random() * upperLimit);
+        }
+        let times = [150,200,200,500,700,100]
+    
+        document.querySelectorAll('.w-12.w1000').forEach(image => {
+          let time = 
+          image.className=`w-14 md:w-24 transition animateBottom duration-${times[getRandomNumber(times.length)]} delay-${times[getRandomNumber(times.length)]}`
+        });
+      </script>
