@@ -23,23 +23,18 @@ function menu() {
 }
 
 HEADER.className =
-  " w-full mx-auto fixed backdrop-blur-xl bg-white/30 z-[300] hover:bg-base-100 hover:shadow-xl hover:shadow-base-100 opacity-50 hover:opacity-100 transition duration-200";
+  "group w-full mx-auto fixed backdrop-blur-xl bg-white/30 z-[300] hover:bg-base-100 hover:shadow-xl hover:shadow-base-100 opacity-50 hover:opacity-100 transition duration-200";
 HEADER.innerHTML = `
-<div class="md:px-10 mx-auto p-2 w-full flex justify-between items-center">
+<div class="md:px-10 mx-auto px-2 w-full flex justify-between items-center">
     <div class="p-2">
-       <a href="/"><img class="scale-[1.25] hover:scale-[1.5] transition delay-3 " src="https://jayd719.github.io/staticfiles/j.png" alt="" style="width: 40px;"></a>
-        
+       <a href="/"><img class="scale-[1.0] hover:scale-[1.5] transition delay-3 " src="https://jayd719.github.io/staticfiles/j.png" alt="" style="width: 40px;"></a>
     </div>
-
-
     <div class="hidden md:flex">
         <div>
             ${menu()}
         </div> 
     <div>
 </div>
-
 `;
-
 
 

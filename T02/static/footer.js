@@ -11,7 +11,7 @@ FOOTER.childNodes[1].className =
 
 // logo continaer
 FOOTER.childNodes[1].childNodes[1].className =
-  "flex justify-center text-4xl lg:text-6xl  pt-10 mt-10 silkscreen-regular";
+  "flex justify-center text-3xl lg:text-6xl  pt-10 mt-10 silkscreen-regular";
 FOOTER.childNodes[1].childNodes[1].innerHTML =
   "<a href='https://jashandeep.co.uk'>jashandeep.co.uk</a>";
 // container for ULs

@@ -31,21 +31,22 @@
 
     
     <script src="{%static 'header.js'%}"></script>
+    
     {%include 'components/contact.html' %}
-    <section class="p-4 mx-auto">
-      <div id="sections" class="grid grid-cols-1 gap-5 list-none  xl:grid-cols-3 xl:grid-rows-4">
-        <div class="lg:row-span-2 shadow rounded-3xl duration-500 p-4 min-h-[80vh] grid  content-between">
+    <section class="p-1 md:p-4 mx-auto">
+      <div id="sections" class="grid grid-cols-1 gap-1 list-none lg:grid-cols-3">
+        <div class="lg:row-span-2 shadow p-4 min-h-[80vh] grid  content-between">
           <div class="m border-primary">
-                <p class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight">
-                  Hey, welcome to my website!
+                <p class="text-5xl mt-6 font-medium lg:text-4xl tracking-tight">
+                  Hey!
                 </p>
                 <p id="outputObject1"></p>
           </div>
           
           <div class="w-full mt-8 md:max-w-xs lg:max-w-none">
-            <h1 id="introTextOne" class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase] xl:w-[115%] xl:text-start [:root[dir=rtl]_&amp;]:leading-[1.35]">
+            <h1 id="introTextOne" class="font-title text-center text-[clamp(2rem,6vw,4.2rem)] font-black leading-[1.1] [word-break:auto-phrase]">
               <span class="[&amp;::selection]:text-base-content brightness-150 contrast-150 [&amp;::selection]:bg-blue-700/20">Welcome To My Corner of The</span>
-              <span class="inline-grid"><span class="pointer-events-none col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true" data-text="Digital World!"></span>
+              <span class="inline-grid"><span class="pointer-events-none  bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text blur-xl [-webkit-text-fill-color:transparent] [transform:translate3d(0,0,0)] before:content-[attr(data-text)] [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]" aria-hidden="true" data-text="Digital World!"></span>
                 <span id="main-text" class="[&amp;::selection]:text-base-content relative col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [&amp;::selection]:bg-blue-700/20 [@supports(color:oklch(0%_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">
                   Digital World!</span></span>
               <br>
@@ -80,14 +81,14 @@
         {%include "projectsTiles/mainProjectsLink.html"%}
         {%include "projectsTiles/resumeLink.html"%} 
 
-        <div class="xl:row-span-2 md:col-span-2 rounded-3xl p-8 shadow">
+        <div class="lg:row-span-2 lg:col-span-2  p-8 shadow">
           <div class="">{%include 'landingPage/skills.html'%}</div>
         </div>
 
         
         {%include "landingPage/qoute.html"%}
 
-        <div class="flex flex-col p-8 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2  shadow">
+        <div class="flex flex-col p-8 h-full justify-center items-center overflow-hidden relative lg:col-span-2  shadow">
           {%include 'landingPage/contact.html'%}
         </div>
         
@@ -109,6 +110,7 @@
     <script src="{%static 'footer.js'%}"></script>
     <script src="{%static 'popper.js'%}"></script>
     <script src="{%static 'jacks.js'%}"></script>
+    <script src="{%static 'logo.js'%}"></script>
     <script>
       addInterSectionObserver();
     </script>

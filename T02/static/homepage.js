@@ -63,15 +63,20 @@ function updateElement(element) {
     `hover:bg-${baseColor}-200`,
     "lg:opacity-80",
     "hover:opacity-100",
-    "hover:scale-[1.02]",
+    "hover:scale-[1.0]",
     "hover:z-[200]",
     "group",
-    "scale-[.97]",
+    "scale-[.95]",
     "hover:shadow-xl",
     `hover:shadow-${baseColor}-600`,
     "transition",
-    "duration-1000",
-    "backdrop-blur-md"
+    "duration-800",
+    "backdrop-blur-md",
+    "rounded-md",
+    "lg:rounded-2xl",
+    "py-8",
+    "px-5",
+    "md:px-8"
   );
 
   element.querySelectorAll("p").forEach((pTage) => {
@@ -110,5 +115,7 @@ document.getElementById("menu").childNodes.forEach((element) => {
   if (element.nodeName === "LI") {
     updateElement(element);
     element.classList.remove("bg-base-100");
+    element.classList.remove("py-8");
+    element.classList.remove("lg:rounded-2xl");
   }
 });
