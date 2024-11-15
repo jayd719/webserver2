@@ -25,14 +25,3 @@
 </div>
 
 
-<script>
-    function getRandomNumber(upperLimit) {
-          return Math.floor(Math.random() * upperLimit);
-        }
-        let times = [150,200,200,500,700,100]
-    
-        document.querySelectorAll('.w-12.w1000').forEach(image => {
-          let time = 
-          image.className=`w-14 md:w-24 transition animateBottom duration-${times[getRandomNumber(times.length)]} delay-${times[getRandomNumber(times.length)]}`
-        });
-      </script>
