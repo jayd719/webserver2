@@ -8,5 +8,7 @@ def helloworld(request):
 def helloword_projects(request):
     return render(request,'projects/index.html')
 
+def visiting_card(request):
+    return render(request,"landingPage/cardHTML.html")
 
 # Create your views here.

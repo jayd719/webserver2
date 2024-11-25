@@ -19,6 +19,6 @@ urlpatterns = [
     path('sorting-algorithms/',sorting,name = 'sorting'),
     path('test/',test,name='rest'),
     path('website-cost-estimator/',websiteEstimator,name="est"),
-    path("update-cart/",updateCart,)
+    path("update-cart/",updateCart,),
     
 ]

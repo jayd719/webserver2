@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.urls import path,include
 
-from .views import helloworld,helloword_projects
+from .views import helloworld,helloword_projects,visiting_card
 
 urlpatterns = [
     path('',helloworld,name="v2_home"),
     path('projects/',helloword_projects,name="v2_projects"),
+    path("card/",visiting_card)
 ]

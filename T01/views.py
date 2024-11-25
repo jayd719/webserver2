@@ -91,3 +91,4 @@ def updateCart(request):
 
 def redirect_(request):
     return redirect('/pages/aboutme')
+
