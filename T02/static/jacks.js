@@ -54,12 +54,12 @@ function moveJacks() {
   }
 }
 
-if (document.documentElement.clientWidth > 800) {
-  jacks(20);
-}
+// if (document.documentElement.clientWidth > 800) {
+//   jacks(20);
+// }
 
-window.addEventListener("scroll", () => {
-  if (window.screenY > 2) {
-    moveJacks();
-  }
-});
+// window.addEventListener("scroll", () => {
+//   if (window.screenY > 2) {
+//     moveJacks();
+//   }
+// });
