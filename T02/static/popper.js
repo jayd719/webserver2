@@ -8,9 +8,9 @@ function addInterSectionObserver() {
   const inter = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.remove("scale-0","duration-1000");
+        entry.target.classList.remove("scale-0");
       } else {
-        entry.target.classList.add("scale-0","duration-1000");
+        entry.target.classList.add("scale-0");
       }
     });
 

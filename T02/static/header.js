@@ -23,7 +23,7 @@ function menu() {
 }
 
 HEADER.className =
-  "w-full mx-auto fixed backdrop-blur-xl z-[300] hover:bg-base-100 hover:shadow-xl hover:shadow-base-100 transition duration-300";
+  "w-full mx-auto fixed backdrop-blur-xl z-[300] hover:bg-base-300 hover:shadow-xl hover:shadow-base-300 hover:shadow-3xl transition duration-300";
 HEADER.innerHTML = `
 <div class="md:px-10 mx-auto px-2 w-full flex justify-between items-center">
     <div class="p-2">

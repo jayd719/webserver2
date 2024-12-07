@@ -20,19 +20,14 @@
     <meta name="keywords" content="Jashandeep Singh, JD Singh, WLU, Waterloo, Software Developer, CNC Progammer, computer science" />
   </head>
   <body class="bg-base-300 oswald w-full overflow-x-hidden">
-    
-    <div class="z-[100] hidden lg:flex" id="cards"></div>
     {%include 'landingPage/background.html'%}
     
 
     <header id="header"></header>
-
-    <div class="h-20"></div>
-
-    
     <script src="{%static 'header.js'%}"></script>
-    
     {%include 'components/contact.html' %}
+    <div class="h-20"></div>
+    
     <section style="max-width: 1500px;" class="p-1 md:p-4 mx-auto">
       <div id="sections" class="grid grid-cols-1 gap-1 list-none lg:grid-cols-3">
        
@@ -80,7 +75,6 @@
     <script src="{%static 'animations.js'%}"></script>
     <script src="{%static 'footer.js'%}"></script>
     <script src="{%static 'popper.js'%}"></script>
-    <script src="{%static 'jacks.js'%}"></script>
     <script src="{%static 'logo.js'%}"></script>
     <script>
       addInterSectionObserver();
