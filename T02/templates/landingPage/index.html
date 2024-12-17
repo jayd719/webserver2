@@ -22,7 +22,7 @@
   <body class="bg-base-300 oswald w-full overflow-x-hidden">
     {%include 'landingPage/background.html'%}
     
-
+    <script src="{%static 'themeChanger.js'%}"></script>
     <header id="header"></header>
     <script src="{%static 'header.js'%}"></script>
     {%include 'components/contact.html' %}
@@ -34,8 +34,6 @@
         {%include 'landingPage/tileOne.html'%}
         {%include "projectsTiles/mainProjectsLink.html"%}
         {%include "projectsTiles/resumeLink.html"%} 
-
-       
         {%include "skillTiles/programmingLang.html"%}
         
         
@@ -60,7 +58,6 @@
           <div class="">{%include 'landingPage/skills.html'%}</div>
         </div>
 
-        {% include 'projects/projectsDiv.html'%}
        
       </div>
     </section>
@@ -69,8 +66,12 @@
 
     {%include "landingPage/footerStatic.html"%}
 
+    <script src="{%static 'projects.js'%}"></script>
+    <script>
+      renderProjects(false)
+    </script>
     <script src="{%static 'homepage.js'%}"></script>
-    <script src="{%static 'themeChanger.js'%}"></script>
+    
 
     <script src="{%static 'animations.js'%}"></script>
     <script src="{%static 'footer.js'%}"></script>
@@ -78,6 +79,7 @@
     <script src="{%static 'logo.js'%}"></script>
     <script>
       addInterSectionObserver();
+      
     </script>
   </body>
 </html>
