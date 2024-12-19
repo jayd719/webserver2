@@ -86,4 +86,4 @@ class ThemeController {
 }
 
 // Example usage
-const themeController = new ThemeController("nord", "forest");
+const themeController = new ThemeController("fantasy", "forest");
