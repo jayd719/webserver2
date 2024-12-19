@@ -11,15 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 global COMPANYNAME
 
-
-COMPANYNAME ='JD|Software Developer'
+COMPANYNAME = 'JD|Software Developer'
 
 from .functions import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -29,8 +27,7 @@ SECRET_KEY = 'django-insecure-(8y@7*r3u&5vm_d)fznqqb9&w*(g%v5ugnc)%sa_c6$z_&l=70
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['35.183.44.11','jashandeep.co.uk','127.0.0.1']
-
+ALLOWED_HOSTS = ['35.183.44.11', 'jashandeep.co.uk', '127.0.0.1']
 
 # Application definition
 
@@ -78,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'serverJSP.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -99,7 +95,6 @@ DATABASES = {
 #     }
 # }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -118,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -130,13 +124,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # STATIC_URL = 'https://jayd719.github.io/staticfiles/'
-STATIC_URL ='/static/'
-STATIC_ROOT = BASE_DIR/'staticfiles'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     BASE_DIR / "templates/static/",
@@ -147,8 +140,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 X_FRAME_OPTIONS = 'ALLOW-FROM http://jashandeep.co.uk/'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
@@ -156,4 +147,4 @@ SESSION_COOKIE_DOMAIN = '.jashandeep.co.uk.com'
 SESSION_COOKIE_NAME = 'jashandeep.co.uk'
 # SECURE_SSL_REDIRECT = True
 
-SESSION_COOKIE_AGE = 60*60*12*365
+SESSION_COOKIE_AGE = 60 * 60 * 12 * 365

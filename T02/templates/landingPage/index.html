@@ -1,85 +1,81 @@
 {%load static %}
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta charset="UTF-8" />
-    <title>JD</title>
-    <link
-      rel="icon"
-      href="https://jayd719.github.io/staticfiles/j.png"
-      type="image/x-icon"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{%static 'homepage.css'%}" />
-    <meta name="keywords" content="Jashandeep Singh, JD Singh, WLU, Waterloo, Software Developer, CNC Progammer, computer science" />
-  </head>
-  <body class="bg-base-300 oswald w-full overflow-x-hidden">
-    {%include 'landingPage/background.html'%}
-    
-    <script src="{%static 'themeChanger.js'%}"></script>
-    <header id="header"></header>
-    <script src="{%static 'header.js'%}"></script>
-    {%include 'components/contact.html' %}
-    <div class="h-20"></div>
-    
-    <section style="max-width: 1500px;" class="p-1 md:p-4 mx-auto">
-      <div id="sections" class="grid grid-cols-1 gap-1 list-none lg:grid-cols-3">
-       
-        {%include 'landingPage/tileOne.html'%}
-        {%include "projectsTiles/mainProjectsLink.html"%}
-        {%include "projectsTiles/resumeLink.html"%} 
-        {%include "skillTiles/programmingLang.html"%}
-        
-        
 
-        <div class="flex flex-col p-8 h-full justify-center items-center overflow-hidden relative lg:col-span-2  shadow">
-          {%include 'landingPage/contact.html'%}
-        </div>
-        {%include "landingPage/qoute.html"%}
-        
-        
-        
-        
-        {%include "skillTiles/webdev.html"%}
-        {%include "projectsTiles/CNCLink.html"%}
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta charset="UTF-8" />
+  <title>JD</title>
+  <link rel="icon" href="https://jayd719.github.io/staticfiles/j.png" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{%static 'homepage.css'%}" />
+  <meta name="keywords"
+    content="Jashandeep Singh, JD Singh, WLU, Waterloo, Software Developer, CNC Progammer, computer science" />
+</head>
 
-        {%include "skillTiles/dataAn.html"%}
-        {%include "skillTiles/pyLibs.html"%}
-        {%include "skillTiles/edu.html"%}
-        {%include "projectsTiles/gitHubStats.html"%}
-        {%include "projectsTiles/resumeLink.html"%} 
-        <div class="lg:row-span-2 lg:col-span-3  p-8 shadow">
-          <div class="">{%include 'landingPage/skills.html'%}</div>
-        </div>
+<body class="bg-base-300 oswald w-full overflow-x-hidden">
+  {%include 'landingPage/background.html'%}
 
-       
+  <script src="{%static 'themeChanger.js'%}"></script>
+  <header id="header"></header>
+  <script src="{%static 'header.js'%}"></script>
+  {%include 'components/contact.html' %}
+  <div class="h-20"></div>
+
+  <section style="max-width: 1500px;" class="p-1 md:p-4 mx-auto">
+    <div id="sections" class="grid grid-cols-1 gap-1 list-none lg:grid-cols-3">
+
+      {%include 'landingPage/tileOne.html'%}
+      {%include "projectsTiles/mainProjectsLink.html"%}
+      {%include "projectsTiles/resumeLink.html"%}
+      {%include "skillTiles/programmingLang.html"%}
+
+
+
+      <div class="flex flex-col p-8 h-full justify-center items-center overflow-hidden relative lg:col-span-2  shadow">
+        {%include 'landingPage/contact.html'%}
       </div>
-    </section>
+      {%include "landingPage/qoute.html"%}
 
-    <!-- cards -->
 
-    {%include "landingPage/footerStatic.html"%}
 
-    <script src="{%static 'projects.js'%}"></script>
-    <script>
-      renderProjects(false)
-    </script>
-    <script src="{%static 'homepage.js'%}"></script>
-    
 
-    <script src="{%static 'animations.js'%}"></script>
-    <script src="{%static 'footer.js'%}"></script>
-    <script src="{%static 'popper.js'%}"></script>
-    <script src="{%static 'logo.js'%}"></script>
-    <script>
-      addInterSectionObserver();
-      
-    </script>
-  </body>
+      {%include "skillTiles/webdev.html"%}
+      {%include "projectsTiles/CNCLink.html"%}
+
+      {%include "skillTiles/dataAn.html"%}
+      {%include "skillTiles/pyLibs.html"%}
+      {%include "skillTiles/edu.html"%}
+      {%include "projectsTiles/gitHubStats.html"%}
+      {%include "projectsTiles/resumeLink.html"%}
+      <div class="lg:row-span-2 lg:col-span-3  p-8 shadow">
+        <div class="">{%include 'landingPage/skills.html'%}</div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- cards -->
+
+  {%include "landingPage/footerStatic.html"%}
+
+  <script src="{%static 'projects.js'%}"></script>
+  <script>
+    renderProjects(false)
+  </script>
+  <script src="{%static 'homepage.js'%}"></script>
+
+
+  <script src="{%static 'animations.js'%}"></script>
+  <script src="{%static 'footer.js'%}"></script>
+  <script src="{%static 'popper.js'%}"></script>
+  <script src="{%static 'logo.js'%}"></script>
+  <script>
+    addInterSectionObserver();
+
+  </script>
+</body>
+
 </html>
