@@ -15,3 +15,7 @@ def about_me(request):
 
 def open_cv_project_1(request):
     return render(request, "ProjectReports/openCV1.html")
+
+
+def cp411_project(request):
+    return render(request, "ProjectReports/CP411.html")
