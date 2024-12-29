@@ -1,11 +1,11 @@
 {%load static%}
 <section id="projects" class="w-full py-12 md:py-24 lg:py-32 bg-base-100">
-    <div class="container px-4 md:px-6 mx-auto">
-      <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-        Key Projects
-      </h2>
-      <div class="grid gap-6 lg:grid-cols-3">
-        <a href="{%url 'cnc-sim'%}">
+  <div class="container px-4 md:px-6 mx-auto">
+    <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+      Key Projects
+    </h2>
+    <div class="grid gap-6 lg:grid-cols-3">
+      <a href="{%url 'cnc-sim'%}">
         <div class="rounded-lg border bg-card text-card-foreground shadow-sm pop">
           <div class="flex flex-col space-y-1.5 p-6" data-id="31">
             <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="32">
@@ -16,11 +16,13 @@
             </p>
           </div>
           <div class="p-6" data-id="34">
-            <img data-id="35" src="{%static 'code/cnc5.png'%}" alt="Nuclear Reactor Component" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
+            <img data-id="35" src="{%static 'code/cnc5.png'%}" alt="Nuclear Reactor Component"
+              class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
           </div>
-        </div></a>
+        </div>
+      </a>
 
-        <a href="{%url 'cnc-ss'%}">
+      <a href="{%url 'cnc-ss'%}">
         <div class="rounded-lg border bg-card text-card-foreground shadow-sm pop">
           <div class="flex flex-col space-y-1.5 p-6" data-id="38">
             <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
@@ -31,10 +33,12 @@
             </p>
           </div>
           <div class="p-6" data-id="41">
-            <img src="{%static 'code/image8.png'%}" alt="Turbine Blade" class="rounded-lg object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
+            <img src="{%static 'code/image8.png'%}" alt="Turbine Blade" class="rounded-lg object-cover"
+              style="aspect-ratio: 300 / 200; object-fit: cover">
           </div>
-        </div></a>
-      
-      </div>
+        </div>
+      </a>
+
     </div>
-  </section>
+  </div>
+</section>
