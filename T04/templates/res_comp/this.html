@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jashandeep Singh - Engineering Professional</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+        <div>
+            <p>© 2024 Jashandeep Singh. All rights reserved.</p>
+        </div>
+        <div>
+            <div class="grid grid-flow-col gap-4">
+                <a href="mailto:jsingh0779@gmail.com" class="text-xl"><i class="ri-mail-line"></i></a>
+                <a href="https://github.com" target="_blank" class="text-xl"><i class="ri-github-line"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="text-xl"><i class="ri-linkedin-line"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme toggle -->
+    <div class="fixed bottom-5 right-5">
+        <label class="swap swap-rotate">
+            <input type="checkbox" class="theme-controller" value="dark" />
+            <i class="ri-sun-line swap-on text-2xl"></i>
+            <i class="ri-moon-line swap-off text-2xl"></i>
+        </label>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeController = document.querySelector('.theme-controller');
+        themeController.checked = document.documentElement.getAttribute('data-theme') === 'dark';
+
+        themeController.addEventListener('change', (e) => {
+            document.documentElement.setAttribute('data-theme', e.target.checked ? 'dark' : 'light');
+        });
+    </script>
+</body>
+
+</html>

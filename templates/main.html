@@ -1,47 +1,43 @@
 {% load static %}
 <!doctype html>
 <html lang="en" data-theme="light">
-  <head>
-    <!-- <meta http-equiv="refresh" content="1"> -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    {% if title%}
-    <title>{{title}}</title>
-    {% else %}
-    <title>JD</title>
-    {% endif%}
-    <link rel="icon" href="{% static 'j.png'%}" type="image/x-icon"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'styles.css'%}">
 
-  </head>
+<head>
+  <!-- <meta http-equiv="refresh" content="1"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.122.0">
+  {% if title%}
+  <title>{{title}}</title>
+  {% else %}
+  <title>JD</title>
+  {% endif%}
+  <link rel="icon" href="{% static 'j.png'%}" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
 
 
 
 
-  <body class="w-full"  style="overflow-x: hidden;">
-    {% include 'components/header.html' %}
+<body class="w-full" style="overflow-x: hidden;">
+  {% include 'components/header.html' %}
 
-      <div id="mainContainer">
-        {% block content%}
-        {% endblock %}
-        <!-- <script src="{% static 'location.js' %}"></script> -->
+  <div id="mainContainer">
+    {% block content%}
+    {% endblock %}
+    <!-- <script src="{% static 'location.js' %}"></script> -->
 
-        {% include 'components/contact.html'%}
-        {% include 'components/themeController.html'%}
-        {% include 'components/footer.html'%}
+    {% include 'components/contact.html'%}
+    {% include 'components/themeController.html'%}
+    {% include 'components/footer.html'%}
 
-      </div>
+  </div>
 
-      
+
 
 
 
@@ -55,25 +51,24 @@
     const mainContainer = document.getElementById('mainContainer')
     const navbar = document.querySelector('.navbar')
     const tile = document.getElementById('hoverTile')
-  
-    navbar.addEventListener("mouseenter",()=>{
-      mainContainer.className='brightness-100  opacity-50 transition duration-500 blur '
-      tile.className='z-[100]'
+
+    navbar.addEventListener("mouseenter", () => {
+      mainContainer.className = 'brightness-100  opacity-50 transition duration-500 blur '
+      tile.className = 'z-[100]'
 
     })
-  
-    navbar.addEventListener("mouseleave",()=>{
-      mainContainer.className=""
-      tile.className='hidden z-[-100] duration-500'
+
+    navbar.addEventListener("mouseleave", () => {
+      mainContainer.className = ""
+      tile.className = 'hidden z-[-100] duration-500'
 
     })
   </script>
 
 
-  <script src="https://unpkg.com/htmx.org@1.9.12/dist/htmx.js" integrity="sha384-qbtR4rS9RrUMECUWDWM2+YGgN3U4V4ZncZ0BvUcg9FGct0jqXz3PUdVpU1p0yrXS" crossorigin="anonymous"></script>
-    </body>
+  <script src="https://unpkg.com/htmx.org@1.9.12/dist/htmx.js"
+    integrity="sha384-qbtR4rS9RrUMECUWDWM2+YGgN3U4V4ZncZ0BvUcg9FGct0jqXz3PUdVpU1p0yrXS"
+    crossorigin="anonymous"></script>
+</body>
 
 </html>
-
-
-

@@ -1,44 +1,40 @@
 {%load static%}
-<section id="projects" class="w-full py-12 md:py-24 lg:py-32">
-  <div class="container px-4 md:px-6 mx-auto">
-    <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-      Key Projects
-    </h2>
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
-      <a href="{%url 'cnc-sim'%}">
-        <div class="rounded-lg pop border bg-card text-card-foreground shadow-sm pop">
-          <div class="flex flex-col space-y-1.5 p-6" data-id="31">
-            <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight" data-id="32">
-              Machine Simulator
-            </h3>
-            <p class="text-sm text-muted-foreground" data-id="33">
-              Simulator for Toolpath Verification on Matsuura H-Plus 630 and DMG Ecomill 50.
-            </p>
-          </div>
-          <div class="p-6" data-id="34">
-            <img data-id="35" src="{%static 'code/cnc5.png'%}" alt="Nuclear Reactor Component"
-              class="rounded-lg pop object-cover" style="aspect-ratio: 300 / 200; object-fit: cover">
-          </div>
-        </div>
-      </a>
+<!-- Projects Section -->
+<div class="container mx-auto max-w-5xl px-4 py-16">
+  <h2 class="text-3xl font-bold mb-8">Projects & Achievements</h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h3 class="text-xl font-semibold">Lights-Out Machining for Matsuura H-Plus 630</h3>
+        <p class="mt-2">Successfully implemented lights-out machining, increased production capacity by 30%
+          through optimized machine utilization.</p>
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h3 class="text-xl font-semibold">Workflow Automation and Data Integration</h3>
+        <p class="mt-2">Designed and deployed a custom data-processing application that integrated CRM
+          outputs into dashboards, reports, and automated alerts.</p>
+      </div>
+    </div>
 
-      <a href="{%url 'cnc-ss'%}">
-        <div class="rounded-lg pop border bg-card text-card-foreground shadow-sm pop">
-          <div class="flex flex-col space-y-1.5 p-6" data-id="38">
-            <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-              Setup Sheets Generation
-            </h3>
-            <p class="text-sm text-muted-foreground" data-id="40">
-              One-click setup and tooling sheet generator.
-            </p>
-          </div>
-          <div class="p-6" data-id="41">
-            <img src="{%static 'code/image8.png'%}" alt="Turbine Blade" class="rounded-lg pop object-cover"
-              style="aspect-ratio: 300 / 200; object-fit: cover">
-          </div>
-        </div>
-      </a>
 
+
+
+
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h3 class="text-xl font-semibold">Machine Simulator</h3>
+        <p class="mt-2">Simulator for Toolpath Verification on Matsuura H-Plus 630 and DMG Ecomill 50.</p>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h3 class="text-xl font-semibold">Setup Sheets Generation</h3>
+        <p class="mt-2">One-click setup and tooling sheet generator.</p>
+      </div>
     </div>
   </div>
-</section>
+</div>

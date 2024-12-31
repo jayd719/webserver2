@@ -1,82 +1,84 @@
-<div class="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-base-100">
+<div class="container mx-auto max-w-5xl px-4 pb-16">
   <div class="container mx-auto px-4 py-8 min-h-screen" data-id="1">
-    <h2
-      class="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12"
-      id="machines"
-    >
-      CNC Machines I've Programmed
-    </h2>
+    <h2 class="text-3xl font-bold mb-8">CNC Machines I've Programmed</h2>
 
-    <div class="space-y-6 container" id="machinescontainer">
+    <div class="space-y-6" id="machinescontainer">
+      <!-- Template starts here -->
       <div
-        class="rounded-lg border text-card-foreground shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-xl bg-white group p-5 pop"
-      >
+        class="rounded-lg border text-card-foreground shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-xl bg-white group p-5 pop">
         <div class="md:flex">
           <div class="md:w-1/3 relative h-64 md:h-auto">
-            <img
-              data-id="7"
-              src="https://jashandeep.co.uk/static/images/machines/DMGEcomill.png"
-              alt="DMG EcoMill 50"
-              layout="fill"
-              objectfit="cover"
-              class="duration-300 hover:opacity-80 group-hover:scale-[.90]"
-              style="aspect-ratio: 400 / 300; object-fit: contain"
-            />
+            <img src="" alt="" class="duration-300 hover:opacity-80 group-hover:scale-[.90]"
+              style="aspect-ratio: 400 / 300; object-fit: contain" />
           </div>
           <div class="md:w-2/3 p-6 group-hover:scale-[1.04] duration-500">
             <div class="flex flex-col space-y-1.5 p-6">
-              <h3
-                class="whitespace-nowrap tracking-tight text-3xl font-bold text-gray-800"
-              >
-                DMG EcoMill 50
-              </h3>
+              <h3 class="whitespace-nowrap tracking-tight text-3xl font-bold text-gray-800"></h3>
             </div>
             <div class="p-6">
-              <p class="text-xl text-gray-600 font-medium mb-4" id="p1">
-                Milling Machine
-              </p>
-              <p class="text-gray-700" id="p2">
-                3+2, Positional 5 Axis Vertical Milling Machine with Renishaw
-                OP60 Probe, Seimens 840D Controller
-              </p>
+              <p class="text-xl text-gray-600 font-medium mb-4"></p>
+              <p class="text-gray-700"></p>
             </div>
           </div>
         </div>
       </div>
-
-
-   
-
+      <!-- Template ends here -->
     </div>
   </div>
 </div>
 
 <script>
-
-  let machinescontainer = document.getElementById("machinescontainer")
-  const template = machinescontainer.childNodes[1]
-
   const machines = [
-  {  name: "DMG CTX510", caption: "Turning Center",image:"https://jashandeep.co.uk/static/images/machines/DMGEcoTurn310.jpeg", des:"Horizontal Lathe with With Live Tooling" },
-  {  name: "Matsuura H-Plus 630", caption: "Horizontal Machining Center",image:"https://jashandeep.co.uk/static/images/machines/MatsuuraHPlus630.jpeg", des:"Horizontal Machining Center With Renishaw OP90 Probe" },
-  {  name: "Fadal VMC-6030", caption: "Vertical Machining Center",image:"https://jashandeep.co.uk/static/images/machines/fadal.png", des:"Three Axis Vertical Machining Center" },
-  {  name: "Toshiba TSS-C 30/55", caption: "Vertical Turning Center",image:"https://jashandeep.co.uk/static/images/machines/tss-series.jpg", des:"Vertical Lathe With Live Tooling" },
-  {  name: "Shibura TUE 200s", caption: "Vertical Turning Center",image:"https://jashandeep.co.uk/static/images/machines/tue-200.jpeg", des:"Vertical Lathe With Live Tooling" },
-  
-];
+    {
+      name: "DMG CTX510",
+      caption: "Turning Center",
+      image: "https://jashandeep.co.uk/static/images/machines/DMGEcoTurn310.jpeg",
+      description: "Horizontal Lathe with Live Tooling",
+    },
+    {
+      name: "Matsuura H-Plus 630",
+      caption: "Horizontal Machining Center",
+      image: "https://jashandeep.co.uk/static/images/machines/MatsuuraHPlus630.jpeg",
+      description: "Horizontal Machining Center With Renishaw OP90 Probe",
+    },
+    {
+      name: "Fadal VMC-6030",
+      caption: "Vertical Machining Center",
+      image: "https://jashandeep.co.uk/static/images/machines/fadal.png",
+      description: "Three Axis Vertical Machining Center",
+    },
+    {
+      name: "Toshiba TSS-C 30/55",
+      caption: "Vertical Turning Center",
+      image: "https://jashandeep.co.uk/static/images/machines/tss-series.jpg",
+      description: "Vertical Lathe With Live Tooling",
+    },
+    {
+      name: "Shibura TUE 200s",
+      caption: "Vertical Turning Center",
+      image: "https://jashandeep.co.uk/static/images/machines/tue-200.jpeg",
+      description: "Vertical Lathe With Live Tooling",
+    },
+  ];
 
-machines.forEach(({name,caption,image,des}) => {
-  let newMachine = template.cloneNode(true)
-  newMachine.querySelector("img").src = image
-  newMachine.querySelector("h3").textContent = name
-  newMachine.querySelector("#p1").textContent=caption
-  newMachine.querySelector(".text-gray-700").textContent=des
-  machinescontainer.appendChild(newMachine)
-});
+  const machinesContainer = document.getElementById("machinescontainer");
+  const template = machinesContainer.firstElementChild.cloneNode(true);
 
+  machinesContainer.innerHTML = ""; // Clear container before populating with new content
 
+  machines.forEach(({ name, caption, image, description }) => {
+    const newMachine = template.cloneNode(true);
+    const img = newMachine.querySelector("img");
+    const title = newMachine.querySelector("h3");
+    const captionEl = newMachine.querySelector(".text-xl");
+    const descriptionEl = newMachine.querySelector(".text-gray-700");
 
+    img.src = image;
+    img.alt = name;
+    title.textContent = name;
+    captionEl.textContent = caption;
+    descriptionEl.textContent = description;
 
-
-
+    machinesContainer.appendChild(newMachine);
+  });
 </script>

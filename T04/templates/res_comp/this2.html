@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jashandeep Singh - About Me</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            },
+            plugins: [require('@tailwindcss/typography')],
+        }
+    </script>
+    <style>
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-base-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="prose prose-lg max-w-none">
+            <h1 class="text-4xl font-bold mb-6">About Me</h1>
+
+            <div class="bg-base-200 p-6 rounded-lg shadow-lg mb-8">
+                <p class="text-xl">
+                    Hi, I'm <strong>Jashandeep Singh</strong>, a passionate and innovative engineering professional with
+                    over five years of experience at the exciting crossroads of manufacturing and software engineering.
+                    My journey has been defined by a love for learning, a commitment to solving complex problems, and a
+                    deep curiosity about how technology can transform traditional workflows into efficient, streamlined
+                    processes.
+                </p>
+            </div>
+
+            <p>
+                I specialize in CNC programming, CAD design, process optimization, and lights-out machining, skills that
+                have allowed me to deliver meaningful results throughout my career. My unique ability to combine
+                hands-on engineering expertise with advanced software knowledge has empowered me to bridge the gap
+                between two seemingly distinct fields: manufacturing and technology.
+            </p>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('journey')">
+                    <span>My Journey</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="journey" class="section-content mt-2">
+                    <p class="mb-4">
+                        I started my career immersed in the world of manufacturing, where I honed my technical skills
+                        and built a strong foundation in engineering principles. Working at Canadian Babbitt Bearings, I
+                        quickly developed a knack for process optimization and identifying opportunities for efficiency.
+                        As I gained experience, I became fascinated by the role of technology in improving manufacturing
+                        workflows and began exploring ways to integrate software into traditional engineering practices.
+                    </p>
+                    <p class="mb-4">
+                        One of the standout moments in my early career was designing custom CNC programs that
+                        standardized operations, reduced errors, and significantly improved efficiency. This achievement
+                        not only sharpened my technical expertise but also inspired me to look for innovative solutions
+                        beyond conventional approaches.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('bridging')">
+                    <span>Bridging Manufacturing and Technology</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="bridging" class="section-content mt-2">
+                    <p class="mb-4">
+                        Over time, I discovered that the intersection of manufacturing and technology was where my true
+                        passion lay. I began to explore how software solutions could drive efficiency in manufacturing
+                        processes, and this interest led to some of my most impactful projects.
+                    </p>
+                    <p class="mb-4">
+                        One of these projects was the development of a custom data-processing application for a CRM
+                        system. The application automated the generation of dashboards, reports, and alerts,
+                        significantly reducing manual data entry and analysis. By providing real-time insights, the tool
+                        empowered my team to make faster, data-driven decisions, ultimately improving operational
+                        efficiency. Seeing the transformative impact of this solution solidified my belief in the power
+                        of technology to revolutionize traditional workflows.
+                    </p>
+                    <p class="mb-4">
+                        Another highlight was implementing lights-out machining on the Matsuura H-Plus 630, an
+                        initiative that increased production capacity by an impressive 40%. By rethinking machine
+                        utilization and leveraging after-hours production, I helped unlock untapped potential in
+                        existing resources. This project exemplified my ability to combine strategic planning with
+                        technical execution to deliver tangible results.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('beliefs')">
+                    <span>What I Believe In</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="beliefs" class="section-content mt-2">
+                    <p class="mb-4">
+                        At the heart of everything I do is a belief in innovation, creativity, and continuous
+                        improvement. I see challenges not as roadblocks but as opportunities to think differently and
+                        push boundaries. Whether I'm designing software, programming a CNC machine, or optimizing a
+                        manufacturing process, my goal is always to deliver solutions that make a meaningful impact.
+                    </p>
+                    <p class="mb-4">
+                        I'm also deeply committed to collaboration. I believe that the best ideas come from working
+                        closely with others, sharing knowledge, and building on each other's strengths. Throughout my
+                        career, I've had the privilege of working alongside talented teams, and these experiences have
+                        taught me the value of clear communication and mutual respect in achieving shared goals.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('expertise')">
+                    <span>My Expertise</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="expertise" class="section-content mt-2">
+                    <p class="mb-4">
+                        Over the years, I've developed a diverse skill set that spans multiple disciplines. Some of my
+                        key areas of expertise include:
+                    </p>
+                    <ul class="list-disc pl-6 mb-4">
+                        <li><strong>CNC Programming and CAD Design:</strong> From creating custom programs to optimizing
+                            designs, I excel at using these tools to streamline production and improve accuracy.</li>
+                        <li><strong>Process Optimization:</strong> Identifying inefficiencies and developing strategies
+                            to address them is one of my core strengths.</li>
+                        <li><strong>Lights-Out Machining:</strong> I've successfully implemented automation strategies
+                            that maximize production during non-working hours.</li>
+                        <li><strong>Software Development and Data Analysis:</strong> I've designed applications and
+                            tools that leverage data to drive smarter decision-making and improve operational
+                            efficiency.</li>
+                        <li><strong>Machine Learning and Web Development:</strong> My technical foundation enables me to
+                            approach problems from a variety of angles, blending software expertise with practical
+                            engineering knowledge.</li>
+                    </ul>
+                    <p class="mb-4">
+                        This combination of skills allows me to approach problems holistically, identifying innovative
+                        ways to merge technology and manufacturing to achieve outstanding results.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('philosophy')">
+                    <span>My Philosophy</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="philosophy" class="section-content mt-2">
+                    <p class="mb-4">
+                        For me, engineering is more than just solving problems—it's about creating solutions that are
+                        elegant, efficient, and impactful. I thrive on curiosity, constantly looking for new ideas,
+                        tools, and approaches that can help me do things better. This mindset of continuous learning and
+                        improvement has been the driving force behind my career and will always be at the heart of what
+                        I do.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('future')">
+                    <span>Looking Ahead</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="future" class="section-content mt-2">
+                    <p class="mb-4">
+                        As I look to the future, I'm excited about the opportunities that lie ahead. The convergence of
+                        manufacturing and software engineering continues to evolve, and I'm eager to explore how
+                        emerging technologies like artificial intelligence, machine learning, and advanced automation
+                        can reshape the industry.
+                    </p>
+                    <p class="mb-4">
+                        I'm particularly passionate about creating solutions that not only improve processes but also
+                        empower teams. Whether it's through automating workflows, optimizing production, or designing
+                        intuitive software tools, my goal is to make a lasting impact in everything I do.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <button class="flex justify-between items-center w-full text-left font-bold text-2xl mb-2"
+                    onclick="toggleSection('outside')">
+                    <span>Outside of Work</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transform transition-transform duration-200"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="outside" class="section-content mt-2">
+                    <p class="mb-4">
+                        When I'm not immersed in engineering projects, I enjoy spending time exploring new technologies,
+                        reading about advancements in the industry, and working on personal coding projects that
+                        challenge me to think creatively. I'm also a firm believer in maintaining balance, and I find
+                        inspiration in hobbies like hiking, cooking, and spending quality time with family and friends.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <h3 class="text-2xl font-bold mb-4">Let's Connect</h3>
+                <p>
+                    Thank you for taking the time to learn more about me. If you share my passion for innovation,
+                    technology, and engineering, I'd love to connect! Whether you have a project you'd like to
+                    collaborate on, a role you think I'd be a great fit for, or simply want to chat about the latest
+                    trends in the industry, feel free to reach out.
+                </p>
+                <p class="font-bold">Together, we can create solutions that push boundaries and make a real difference.
+                </p>
+
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="#" class="btn btn-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const icon = button.querySelector('svg');
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+
+</html>
