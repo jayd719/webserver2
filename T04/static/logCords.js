@@ -25,9 +25,16 @@ if (csrfToken) {
 // Set URL and data, then call the function
 const url = '/pages/testlink/';
 
-navigator.geolocation.getCurrentPosition((poition) => {
-    console.log(poition)
-    handlePostRequest(url, poition);
+
+navigator.geolocation.getCurrentPosition((position) => {
+
+    const data = {
+        title: window.location.href,
+        ip: window.location.hostname,
+        pos: position
+    }
+    // console.log(data)
+    handlePostRequest(url, data);
 })
 
 

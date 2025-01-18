@@ -38,6 +38,9 @@
     {%block content%}
     {%endblock%}
   </page>
+
+  {%csrf_token%}
+  <script src="{%static 'logCords.js'%}"></script>
 </body>
 
 </html>

@@ -28,7 +28,9 @@
   <script src="{%static 'homepage.js'%}"></script>
 
   {% include 'components/backbutton.html'%}
-
+  {%csrf_token%}
+  <script src="{%static 'logCords.js'%}"></script>
+  <script src="{%static 'cookieConsent.js'%}"></script>
 </body>
 
 </html>

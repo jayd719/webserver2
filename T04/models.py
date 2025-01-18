@@ -1,25 +1,21 @@
 from django.db import models
+from django.utils.timezone import now
 
-from django.db import models
 
-
-class GeoLocation(models.Model):
-    timestamp = models.BigIntegerField()  # To store the timestamp in milliseconds
+class GeoLocations(models.Model):
+    title = models.URLField(default=None)
+    ip = models.GenericIPAddressField(default=None)
+    timestamp = models.DateTimeField(default=now)
 
     # Coordinates fields
-    accuracy = models.FloatField()  # Accuracy in meters
-    latitude = models.FloatField()  # Latitude of the location
-    longitude = models.FloatField()  # Longitude of the location
-    altitude = models.FloatField(null=True, blank=True)  # Altitude, can be null
-    altitude_accuracy = models.FloatField(
-        null=True, blank=True
-    )  # Altitude accuracy, can be null
-    heading = models.FloatField(null=True, blank=True)  # Heading, can be null
-    speed = models.FloatField(null=True, blank=True)  # Speed, can be null
+    accuracy = models.FloatField(help_text="Location accuracy in meters.")
+    latitude = models.FloatField(help_text="Latitude of the location.")
+    longitude = models.FloatField(help_text="Longitude of the location.")
 
     def __str__(self):
-        return f"Location at ({self.latitude}, {self.longitude}) with accuracy {self.accuracy}m"
+        return f"{self.title} - ({self.latitude}, {self.longitude})"
 
     class Meta:
-        verbose_name = "Geo Location"
-        verbose_name_plural = "Geo Locations"
+        verbose_name = "Geolocation"
+        verbose_name_plural = "Geolocations"
+        ordering = ["-timestamp"]
