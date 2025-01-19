@@ -3,7 +3,7 @@ document.body.classList.add("bg-base-100", "h-screen")
  * Creates an HTML table to display work order tracker data.
  * @param {Array} data - Array of work order objects.
  */
-const PROPERTIES = {
+const HEADERS = {
     id: "Work Order",
     customer: "Customer",
     due_date: "Due Date",
@@ -27,6 +27,26 @@ const PROPERTIES = {
     product_12: "Product 12",
 };
 
+// Function to create hover description
+function createHoverDescription(description) {
+    const descriptionDiv = document.createElement("div")
+    descriptionDiv.classList.add(
+        "bg-yellow-200",
+        "p-5",
+        "hidden",
+        "rounded-lg",
+        "text-sm",
+        "shadow-lg",
+        "absolute",
+        "group-hover:flex",
+        "z-[100]",
+        "left-[110%]",
+        "opactiy-100"
+    );
+    descriptionDiv.innerText = description
+    return descriptionDiv
+}
+
 
 
 // Function to initialize the table
@@ -49,12 +69,12 @@ function initTable() {
 
 
     // Add header cells dynamically
-    Object.entries(PROPERTIES).forEach(([key, headerText]) => {
+    Object.entries(HEADERS).forEach(([key, headerText]) => {
         const th = document.createElement("th");
-        th.className = "sticky top-0 z-10";
+        th.className = "sticky top-0 z-10 bg-blue-300 py-6 border text-center";
         th.innerText = headerText;
-        if (Object.keys(PROPERTIES).slice(0, 1).includes(key)) {
-            th.classList.add("sticky", "left-0", "z-20", "bg-white");
+        if (Object.keys(HEADERS).slice(0, 1).includes(key)) {
+            th.classList.add("sticky", "left-0", "z-20");
         }
         headerRow.appendChild(th);
     });
@@ -77,7 +97,7 @@ function initTable() {
 // Function to populate the table with data
 function createTrackerHTML(data) {
     // Initialize the table
-    const table = initTable();
+    const workOrderTracker = initTable();
 
     // Create table body
     const body = document.createElement("tbody");
@@ -85,17 +105,19 @@ function createTrackerHTML(data) {
     // Populate rows dynamically based on data
     data.forEach(order => {
         const row = document.createElement("tr");
-        row.classList.add("border", "opacity-50", "hover:opacity-100")
+        row.classList.add("border", "hover:bg-base-200")
 
 
         // Add cells dynamically for each property
-        Object.entries(PROPERTIES).forEach(([prop, value]) => {
+        Object.entries(HEADERS).forEach(([prop, value]) => {
             const cell = document.createElement("td");
             cell.className = "whitespace-nowrap border";
             cell.innerText = order[prop] || "N/A";
 
-            if (Object.keys(PROPERTIES).slice(0, 1).includes(prop)) {
-                cell.classList.add("sticky", "left-0", "bg-white");
+            if (Object.keys(HEADERS).slice(0, 1).includes(prop)) {
+                cell.classList.add("sticky", "left-0", "backdrop-blur-xl", "group", "cursor-help",);
+                // add hovering description 
+                cell.appendChild(createHoverDescription(order["customer"]))
             }
             row.appendChild(cell);
         });
@@ -104,7 +126,7 @@ function createTrackerHTML(data) {
     });
 
     // Append body to the table
-    table.appendChild(body);
+    workOrderTracker.appendChild(body);
 }
 
 
