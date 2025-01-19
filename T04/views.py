@@ -25,9 +25,7 @@ def cp411_project(request):
 
 
 def pres(request):
-    return redirect(
-        "https://docs.google.com/presentation/d/1aESC8HSqfXATkgoLYQXO24lREU6zhjDBWmhg3BD7Iqw/edit?usp=sharing"
-    )
+    return JsonResponse({"message": "hellowoo"})
 
 
 def log_cordinates(request):

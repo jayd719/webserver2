@@ -19,3 +19,6 @@ class GeoLocations(models.Model):
         verbose_name = "Geolocation"
         verbose_name_plural = "Geolocations"
         ordering = ["-timestamp"]
+
+
+# ##---------------------------------------------------------------------------------------------------------------------------------------------------------
