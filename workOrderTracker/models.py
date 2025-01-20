@@ -1,3 +1,14 @@
+"""-------------------------------------------------------
+Work Order Tracker: Models
+-------------------------------------------------------
+Author:  JD
+ID:      91786
+Uses:    Django
+Version:  1.0.8
+__updated__ = Mon Jan 20 2025
+-------------------------------------------------------
+"""
+
 from django.db import models
 from datetime import timedelta, date
 from django.db.models.query import QuerySet
@@ -10,16 +21,16 @@ STATUS_CHOICES = [
 ]
 PRIORITY_CHOICES = [("High", "High"), ("Medium", "Medium"), ("Low", "Low")]
 
+ROLES = [
+    ("Admin", "Admin"),
+    ("Manager", "Manager"),
+    ("Engineer", "Engineer"),
+    ("Machinist", "Machinist"),
+]
+
 
 # User Model
 class User(models.Model):
-    ROLES = [
-        ("Admin", "Admin"),
-        ("Manager", "Manager"),
-        ("Engineer", "Engineer"),
-        ("Machinist", "Machinist"),
-    ]
-
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     role = models.CharField(max_length=10, choices=ROLES)
@@ -34,10 +45,38 @@ class User(models.Model):
         return self.role == "Manager"
 
 
-# Work Order Model
 class WorkOrder(models.Model):
+    """
+    -------------------------------------------------------
+    Model representing a work order tracker.
+    Fields:
+        job_number - Unique identifier for the work order (CharField)
+        order_date - Date the work order was created (DateField)
+        due_date - Due date for the work order (DateField)
+        mark_completed_date - Date when the work order was marked completed (DateField)
+        quantity - Quantity of items for the work order (PositiveIntegerField)
+        status - Current status of the work order (CharField with choices)
+        assigned_to - User assigned to the work order (ForeignKey to User)
+        customer_name - Name of the customer (CharField)
+        description - Description of the work order (TextField)
+        notes_one - Additional notes for the work order (TextField)
+        notes_two - Additional notes for the work order (TextField)
+        estimated_hours - Estimated hours required for the work order (FloatField)
+        completed_hours - Actual hours completed for the work order (FloatField)
+        incoming_inspection - Indicates if the work order requires incoming inspection (BooleanField)
+        shipping_this_month - Indicates if the order is scheduled for shipping this month (BooleanField)
+        on_hold - Indicates if the work order is currently on hold (BooleanField)
+        is_rush - Indicates if the work order is marked as rush (BooleanField)
+        operations - Operations associated with the work order (JSONField)
+    Use: WorkOrder
+    -------------------------------------------------------
+    """
+
+    job_number = models.CharField(max_length=8, primary_key=True)
     order_date = models.DateField(auto_now_add=True)
     due_date = models.DateField()
+    mark_completed_date = models.DateField(null=True, blank=True)
+    quantity = models.PositiveIntegerField()
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0]
     )
@@ -46,40 +85,54 @@ class WorkOrder(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="assigned_to",
+        related_name="work_orders",
     )
-    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
-    customer = models.TextField()
-    product = models.TextField()
-    quantity = models.PositiveIntegerField()
-    sales_id = models.ForeignKey(
-        User,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="sales_id",
-    )
-    operations = 1
+    customer_name = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True, max_length=10000)
+    notes_one = models.TextField(blank=True, null=True, max_length=2000)
+    notes_two = models.TextField(blank=True, null=True, max_length=2000)
+    estimated_hours = models.FloatField()
+    completed_hours = models.FloatField()
+    incoming_inspection = models.BooleanField(default=False)
+    shipping_this_month = models.BooleanField(default=False)
+    on_hold = models.BooleanField(default=False)
+    is_rush = models.BooleanField(default=False)
+    operations = models.JSONField(default=dict, blank=True)
+
+    class Meta:
+        ordering = ["-order_date"]
+        verbose_name = "Work Order"
+        verbose_name_plural = "Work Orders"
 
     def __str__(self):
-        return f"Work Order {self.id} - {self.status}"
+        return f"WorkOrder #{self.job_number} - {self.customer_name}"
+
+    def mark_as_completed(self):
+        self.status = "Completed"
+        self.mark_completed_date = models.DateField(auto_now=True)
+        self.save()
+
+    def update_completed_hours(self, hours):
+        if hours < 0:
+            raise ValueError("Completed hours cannot be negative.")
+        self.completed_hours += hours
+        self.save()
+
+    def reset_notes(self):
+        self.notes_one = ""
+        self.notes_two = ""
+        self.save()
+
+    def calculate_progress(self):
+        if self.estimated_hours > 0:
+            return min((self.completed_hours / self.estimated_hours) * 100, 100)
+        return 0
+
+    def update_routing(self):
+        return
 
     def is_overdue(self):
-        return self.due_date < date.today() and self.status != "Completed"
-
-    def mark_completed(self):
-        self.status = "Completed"
-        self.save()
-
-    def days_remaining(self):
-        return (self.due_date - date.today()).days
-
-    def get_priority_display_name(self):
-        return dict(self.PRIORITY_CHOICES).get(self.priority, "Unknown")
-
-    def assign_to_user(self, user):
-        self.assigned_to = user
-        self.save()
+        return date.today() > self.due_date and self.status != "Completed"
 
     @classmethod
     def get_overdue_orders(cls):
@@ -95,17 +148,35 @@ class WorkOrder(models.Model):
         return WorkOrderOperation.objects.filter(work_order=self)
 
 
-# Work Order Operarion Model
 class WorkOrderOperation(models.Model):
-    """Check if the operation has exceeded its estimated hours."""
+    """
+    -------------------------------------------------------
+    Model representing an operation within a work order.
+    Fields:
+        step_number - Sequential step number for the operation (PositiveIntegerField)
+        work_order - Associated work order for the operation (ForeignKey to WorkOrder)
+        machine - Name of the machine used for the operation (CharField)
+        description - Description of the operation (TextField)
+        estimated_hours - Estimated time required for the operation (FloatField)
+        actual_hours - Actual time spent on the operation (FloatField)
+        status - Current status of the operation (CharField with choices)
+        priority - Priority level of the operation (CharField with choices)
+        custom_notes - Additional notes for the operation (TextField)
+    Use: WorkOrderOperation
+    -------------------------------------------------------
+    """
 
-    work_order = models.ForeignKey(WorkOrder, on_delete=models.CASCADE)
-    machine = models.TextField(max_length=100)
+    step_number = models.PositiveIntegerField()
+    work_order = models.ForeignKey(
+        WorkOrder, on_delete=models.CASCADE, related_name="operations"
+    )
+    machine = models.CharField(max_length=100)
     description = models.TextField(max_length=2000)
     estimated_hours = models.FloatField()
-    actual_hours = models.FloatField(null=True, blank=True)
+    actual_hours = models.FloatField(null=True, blank=True, default=0.0)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
+    custom_notes = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return (
