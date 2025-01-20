@@ -4,7 +4,7 @@ const LOGO = `<div class="flex items-center gap-2">
     src="https://www.svgrepo.com/show/294021/graphic-business-and-finance.svg"
     alt="Business and Finance Icon"
   />
-  <h1 class="text-2xl font-extrabold text-primary hover:text-primary-focus transition-colors duration-300">
+  <h1 class="text-2xl font-extrabold text-error hover:text-primary-focus transition-colors duration-300">
     WorkOrder Tracker
   </h1>
 </div>

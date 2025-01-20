@@ -60,13 +60,14 @@ function renderMenuButton(items) {
     button.role = "button";
     button.className = "btn btn-circle btn-primary border shadow-xl flex items-center justify-center p-2";
     button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-</svg>`
+                            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                        </svg>`
+
     // Create the dropdown menu
-    const dropdownCSS = `menu dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl`;
     const menu = document.createElement("ul");
     menu.tabIndex = 1;
-    menu.className = dropdownCSS;
+    menu.className = `menu dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl`
+
     Object.entries(items).forEach(([text, subMenu]) => {
         const listItem = document.createElement("li");
         menu.appendChild(listItem);
