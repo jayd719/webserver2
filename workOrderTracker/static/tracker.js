@@ -71,7 +71,7 @@ function initTable() {
     // Add header cells dynamically
     Object.entries(HEADERS).forEach(([key, headerText]) => {
         const th = document.createElement("th");
-        th.className = "sticky top-0 z-10 bg-blue-300 py-6 border text-center";
+        th.className = "sticky top-0 z-10 bg-base-300 py-6 border border-base-300 text-center";
         th.innerText = headerText;
         if (Object.keys(HEADERS).slice(0, 1).includes(key)) {
             th.classList.add("sticky", "left-0", "z-20");
@@ -105,13 +105,13 @@ function createTrackerHTML(data) {
     // Populate rows dynamically based on data
     data.forEach(order => {
         const row = document.createElement("tr");
-        row.classList.add("border", "hover:bg-base-200")
+        row.classList.add("border", "border-base-300", "hover:bg-base-200")
 
 
         // Add cells dynamically for each property
         Object.entries(HEADERS).forEach(([prop, value]) => {
             const cell = document.createElement("td");
-            cell.className = "whitespace-nowrap border";
+            cell.className = "whitespace-nowrap border border-base-300";
             cell.innerText = order[prop] || "N/A";
 
             if (Object.keys(HEADERS).slice(0, 1).includes(prop)) {
