@@ -28,10 +28,11 @@ const HEADERS = {
 };
 
 // Function to create hover description
-function createHoverDescription(description) {
+function createHoverNotes(description) {
     const descriptionDiv = document.createElement("div")
     descriptionDiv.classList.add(
         "bg-yellow-200",
+        "text-black",
         "p-5",
         "hidden",
         "rounded-lg",
@@ -117,7 +118,7 @@ function createTrackerHTML(data) {
             if (Object.keys(HEADERS).slice(0, 1).includes(prop)) {
                 cell.classList.add("sticky", "left-0", "backdrop-blur-xl", "group", "cursor-help",);
                 // add hovering description 
-                cell.appendChild(createHoverDescription(order["customer"]))
+                cell.appendChild(createHoverNotes(order["customer"]))
             }
             row.appendChild(cell);
         });
