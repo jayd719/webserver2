@@ -186,6 +186,31 @@ function createTooltip(description) {
 }
 
 /**
+ * Creates a tooltip element to display additional information.
+ * @param {string} description - The description text.
+ * @returns {HTMLDivElement} The tooltip element.
+ */
+function createTooltipOperation(description) {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add(
+        "bg-yellow-200",
+        "text-black",
+        "p-5",
+        "hidden",
+        "rounded-lg",
+        "text-sm",
+        "shadow-lg",
+        "absolute",
+        "group-hover:flex",
+        "z-[100]",
+        "transition",
+        "delay-1000"
+    );
+    tooltip.innerText = description;
+    return tooltip;
+}
+
+/**
  * Initializes the table structure and header.
  * @returns {HTMLTableElement} The created table element.
  */
@@ -277,6 +302,13 @@ function populateTable(data) {
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
         row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
+
+
+        order.operations.forEach(operation => {
+            const op = createTableCell(operation.machine, "group", "", createTooltipOperation(operation.description))
+            row.appendChild(op)
+
+        });
 
         tableBody.appendChild(row);
     });

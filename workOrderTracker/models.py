@@ -156,7 +156,7 @@ class WorkOrder(models.Model):
         return cls.objects.filter(priority="High")
 
     def operations(self):
-        return WorkOrderOperation.objects.filter(work_order=self)
+        return WorkOrderOperation.objects.filter(work_order=self.job_number)
 
 
 class WorkOrderOperation(models.Model):
