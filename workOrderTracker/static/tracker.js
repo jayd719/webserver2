@@ -193,7 +193,7 @@ function splitterRow(currMonth, due_date, tableBody) {
     const nextMonth = new Date(due_date).toLocaleString('default', { month: 'long' });
     if (currMonth !== nextMonth) {
         const row = document.createElement("tr");
-        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-accent", "text-white", "font-bold");
+        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold");
 
         i = 0
         Object.entries(HEADERS).forEach(() => {
