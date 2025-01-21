@@ -9,6 +9,8 @@ function testFunction(parm) {
 function toggleTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     document.cookie = `theme=${theme}; path=/; max-age=31536000`; // 1 year expiration
+    invertLogo(theme)
+
 }
 
 function createSubMenu(menuList, text) {

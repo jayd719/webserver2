@@ -25,6 +25,28 @@ const HEADERS = {
     is_rush: "Rush Order",
     operations: "Operations Count",
 };
+function createShippingCheckBox(default_value) {
+    const checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.checked = default_value
+    checkBox.className = "checkbox checkbox-success border-0 rounded-full";
+    return checkBox;
+}
+
+/**
+ * Creates a progress bar element for an order.
+ * @param {Object} order - The order object containing `estimated_hours` and `completed_hours`.
+ * @returns {HTMLProgressElement} The configured progress bar element.
+ */
+function createProgressBar(order) {
+    const progressBar = document.createElement("progress");
+    progressBar.classList.add("progress", "progress-success");
+    progressBar.value = order.estimated_hours > 0
+        ? Math.round(((order.completed_hours + 14) / order.estimated_hours) * 100)
+        : 0;
+    progressBar.max = 100;
+    return progressBar;
+}
 
 /**
  * Creates a tooltip-style description container.
@@ -153,7 +175,7 @@ function createDueIn(date) {
 function createTableCell(text, className = null, action = null, nestedElement = null) {
     const cell = document.createElement("td");
     cell.innerText = text;
-    cell.className = `${className || ""} whitespace-nowrap border`;
+    cell.className = `${className || ""} whitespace-nowrap border border-base-300`;
 
     if (nestedElement) {
         cell.appendChild(nestedElement);
@@ -179,6 +201,7 @@ function populateTable(data) {
     data.forEach((order) => {
         const row = document.createElement("tr");
         row.classList.add("border", "hover:bg-base-200");
+        row.id = order
 
         // Job Number with tooltip
         const tooltip = createTooltip(order.description);
@@ -197,9 +220,16 @@ function populateTable(data) {
         row.appendChild(dueInTD)
 
         // completed
-        row.appendChild(createTableCell(order.quantity, order.status, null, null));
+        const progressBar = createProgressBar(order)
+        row.appendChild(createTableCell(progressBar.value, "flex flex-col items-center space-y-2 border-0 pt-2", null, progressBar));
+
+
         // assigned to
-        row.appendChild(createTableCell(order.assigned_to, order.status, null, null));
+        row.appendChild(createTableCell(order.assigned_to__name, order.status, null, null));
+
+        // shipping CheckBox
+        const shippingCheckBox = createShippingCheckBox(order.shipping_this_month)
+        row.appendChild(createTableCell("", "p-2", null, shippingCheckBox));
 
 
 

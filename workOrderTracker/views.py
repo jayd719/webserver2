@@ -12,10 +12,17 @@ def tracker_view(request):
 
 
 def test_functions(request):
-    test = ""
-    for wo in models.WorkOrder.objects.all():
-        print(wo)
-
-    return JsonResponse(
-        {"data": list(models.WorkOrder.objects.all().order_by("due_date").values())}
+    """
+    Retrieve and return a list of all work orders ordered by due date.
+    Includes all fields of WorkOrder and the name of the assigned person.
+    """
+    work_orders = (
+        models.WorkOrder.objects.select_related("assigned_to")
+        .order_by("due_date")
+        .values(
+            *[field.name for field in models.WorkOrder._meta.fields],
+            "assigned_to__name"
+        )
     )
+
+    return JsonResponse({"data": list(work_orders)})

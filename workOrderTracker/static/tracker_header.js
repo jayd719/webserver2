@@ -1,6 +1,6 @@
 const LOGO = `<div class="flex items-center gap-2">
-  <img
-    class="w-32 invert"
+  <img id='logo-main'
+    class="w-32 liinvert"
     src="/static/tracker_assets/image.png"
     alt="Business and Finance Icon"
   />
@@ -57,7 +57,7 @@ const HEADER = `
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </button>
-        <div class="dropdown">
+        <div class="dropdown dropdown-left">
             <div tabIndex="0" role="button" class="btn btn-ghost btn-circle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-width" viewBox="0 0 16 16">
                     <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/>
@@ -65,7 +65,7 @@ const HEADER = `
             </div>
             <ul
                 tabIndex="0"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow">
+                class="menu menu-sm dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow">
                 <li><a>Homepage</a></li>
                 <li><a>Portfolio</a></li>
                 <li><a>About</a></li>

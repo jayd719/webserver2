@@ -7,11 +7,17 @@ function parseCookies() {
     }, {});
 }
 
+function invertLogo(theme) {
+    lightThemes = ["light", "emerald", "winter", "corporate"]
+    lightThemes.includes(theme) ? document.getElementById("logo-main").classList.add("invert") : document.getElementById("logo-main").classList.remove("invert")
+}
+
 // Retrieve the theme from cookies
 function getSavedTheme() {
     const cookies = parseCookies();
     if (cookies.theme) {
         document.documentElement.setAttribute("data-theme", cookies.theme);
+        invertLogo(cookies.theme)
     }
 }
 
@@ -19,7 +25,7 @@ function getSavedTheme() {
 
 
 // Render a loading spinner and remove it after a delay
-function showLoader(duration = 1500) {
+function showLoader(duration = 2000) {
     const loader = document.createElement("div");
     loader.className = "absolute top-0 left-0 w-full h-screen bg-base-100 flex items-center justify-center z-[200]";
     loader.innerHTML = `<span class="loading loading-bars loading-lg"></span>`;
