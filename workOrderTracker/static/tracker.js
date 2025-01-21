@@ -4,28 +4,26 @@ document.body.classList.add("bg-base-100", "h-screen")
  * @param {Array} data - Array of work order objects.
  */
 const HEADERS = {
-    id: "Work Order",
-    customer: "Customer",
+    job_number: "Job Number",
+    order_date: "Order Date",
     due_date: "Due Date",
+    mark_completed_date: "Completion Date",
+    quantity: "Quantity",
     status: "Status",
     assigned_to: "Assigned To",
-    priority: "Priority",
-    product: "Product",
-    quantity: "Quantity",
-    sales_id: "Sales ID",
-    product_1: "Product 1",
-    product_2: "Product 2",
-    product_3: "Product 3",
-    product_4: "Product 4",
-    product_5: "Product 5",
-    product_6: "Product 6",
-    product_7: "Product 7",
-    product_8: "Product 8",
-    product_9: "Product 9",
-    product_10: "Product 10",
-    product_11: "Product 11",
-    product_12: "Product 12",
+    customer_name: "Customer Name",
+    description: "Description",
+    notes_one: "Notes (1)",
+    notes_two: "Notes (2)",
+    estimated_hours: "Estimated Hours",
+    completed_hours: "Completed Hours",
+    incoming_inspection: "Incoming Inspection",
+    shipping_this_month: "Shipping This Month",
+    on_hold: "On Hold",
+    is_rush: "Rush Order",
+    operations: "Operations Count"
 };
+
 
 // Function to create hover description
 function createHoverNotes(description) {

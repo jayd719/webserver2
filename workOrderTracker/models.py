@@ -21,19 +21,19 @@ STATUS_CHOICES = [
 ]
 PRIORITY_CHOICES = [("High", "High"), ("Medium", "Medium"), ("Low", "Low")]
 
-ROLES = [
-    ("Admin", "Admin"),
-    ("Manager", "Manager"),
-    ("Engineer", "Engineer"),
-    ("Machinist", "Machinist"),
-]
 
-
-# User Model
 class User(models.Model):
+    ROLES = [
+        ("Admin", "Administrator"),
+        ("Manager", "Manager"),
+        ("Engineer", "Engineer"),
+        ("Machinist", "Machinist"),
+    ]
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
-    role = models.CharField(max_length=10, choices=ROLES)
+    role = models.CharField(max_length=20, choices=ROLES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -43,6 +43,17 @@ class User(models.Model):
 
     def is_manager(self):
         return self.role == "Manager"
+
+    def is_engineer(self):
+        return self.role == "Engineer"
+
+    def is_machinist(self):
+        return self.role == "Machinist"
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["email"], name="unique_user_email"),
+        ]
 
 
 class WorkOrder(models.Model):
@@ -78,7 +89,7 @@ class WorkOrder(models.Model):
     mark_completed_date = models.DateField(null=True, blank=True)
     quantity = models.PositiveIntegerField()
     status = models.CharField(
-        max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0]
+        max_length=50, choices=STATUS_CHOICES, default=STATUS_CHOICES[0]
     )
     assigned_to = models.ForeignKey(
         User,
@@ -91,13 +102,13 @@ class WorkOrder(models.Model):
     description = models.TextField(null=True, blank=True, max_length=10000)
     notes_one = models.TextField(blank=True, null=True, max_length=2000)
     notes_two = models.TextField(blank=True, null=True, max_length=2000)
-    estimated_hours = models.FloatField()
-    completed_hours = models.FloatField()
+    estimated_hours = models.FloatField(default=0.25)
+    completed_hours = models.FloatField(default=0)
     incoming_inspection = models.BooleanField(default=False)
     shipping_this_month = models.BooleanField(default=False)
     on_hold = models.BooleanField(default=False)
     is_rush = models.BooleanField(default=False)
-    operations = models.JSONField(default=dict, blank=True)
+    operations = models.IntegerField(default=1)
 
     class Meta:
         ordering = ["-order_date"]
@@ -174,7 +185,7 @@ class WorkOrderOperation(models.Model):
     description = models.TextField(max_length=2000)
     estimated_hours = models.FloatField()
     actual_hours = models.FloatField(null=True, blank=True, default=0.0)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
     custom_notes = models.TextField(blank=True, null=True)
 
