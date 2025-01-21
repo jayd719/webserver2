@@ -27,7 +27,7 @@ function createSubMenu(menuList, text) {
     // Create the submenu itself
     const subMenu = document.createElement("ul");
     subMenu.tabIndex = 0;
-    subMenu.className = "menu dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl hidden group-hover:flex";
+    subMenu.className = "flex-col dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl hidden group-hover:flex overflow-y-scroll max-h-[80vh]";
 
     // Populate the submenu with items
     Object.entries(menuList).forEach(([key, value]) => {
@@ -105,12 +105,28 @@ const items = {
         "Light": () => toggleTheme("light"),
         "Dark": () => toggleTheme("dark"),
         "Corporate": () => toggleTheme("corporate"),
-        "Luxury": () => toggleTheme("luxury"),
+        // "Luxury": () => toggleTheme("luxury"),
         "Business": () => toggleTheme("business"),
         "Emerald": () => toggleTheme("emerald"),
         "Night": () => toggleTheme("night"),
         "Coffee": () => toggleTheme("coffee"),
         "Winter": () => toggleTheme("winter"),
+        "Retro": () => toggleTheme("retro"),
+        "Synthwave": () => toggleTheme("synthwave"),
+        "Cyberpunk": () => toggleTheme("cyberpunk"),
+        "Valentine": () => toggleTheme("valentine"),
+        "Halloween": () => toggleTheme("halloween"),
+        "Garden": () => toggleTheme("garden"),
+        "Forest": () => toggleTheme("forest"),
+        "Aqua": () => toggleTheme("aqua"),
+        "Lofi": () => toggleTheme("lofi"),
+        "Pastel": () => toggleTheme("pastel"),
+        "Fantasy": () => toggleTheme("fantasy"),
+        "Wireframe": () => toggleTheme("wireframe"),
+        "Black": () => toggleTheme("black"),
+        "Dracula": () => toggleTheme("dracula"),
+        "Autumn": () => toggleTheme("autumn"),
+        "Bumblebee": () => toggleTheme("bumblebee"),
     }
 
 };

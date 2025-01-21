@@ -8,7 +8,22 @@ function parseCookies() {
 }
 
 function invertLogo(theme) {
-    lightThemes = ["light", "emerald", "winter", "corporate"]
+    const lightThemes = [
+        "light",
+        "corporate",
+        "emerald",
+        "winter",
+        "garden",
+        "pastel",
+        "fantasy",
+        "autumn",
+        "lofi",
+        "wireframe",
+        "cyberpunk",
+        "bumblebee",
+        "retro",
+        "valentine"
+    ];
     lightThemes.includes(theme) ? document.getElementById("logo-main").classList.add("invert") : document.getElementById("logo-main").classList.remove("invert")
 }
 

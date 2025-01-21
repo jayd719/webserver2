@@ -189,6 +189,26 @@ function createTableCell(text, className = null, action = null, nestedElement = 
     return cell;
 }
 
+function splitterRow(currMonth, due_date, tableBody) {
+    const nextMonth = new Date(due_date).toLocaleString('default', { month: 'long' });
+    if (currMonth !== nextMonth) {
+        const row = document.createElement("tr");
+        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-accent", "text-white", "font-bold");
+
+        i = 0
+        Object.entries(HEADERS).forEach(() => {
+            const td = document.createElement('td');
+            td.classList.add("p-0")
+            if (i % 3 === 0) {
+                td.innerText = nextMonth;
+            }
+            i++
+            row.appendChild(td);
+        });
+        tableBody.appendChild(row);
+    }
+    return nextMonth;
+}
 /**
  * Populates the table with work order data.
  * @param {Array} data - Array of work order objects.
@@ -197,8 +217,11 @@ function populateTable(data) {
     const table = initializeTable();
     const tableBody = document.createElement("tbody");
 
+    let currMonth = null
 
     data.forEach((order) => {
+        currMonth = splitterRow(currMonth, order.due_date, tableBody)
+
         const row = document.createElement("tr");
         row.classList.add("border", "hover:bg-base-200");
         row.id = order
