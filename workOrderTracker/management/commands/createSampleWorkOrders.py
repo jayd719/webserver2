@@ -9,7 +9,7 @@ users = list(User.objects.all())
 
 sample_work_orders = [
     {
-        "job_number": f"JOB{str(i).zfill(4)}",
+        "job_number": f"JOB{random.randint(10, 10000)}",
         "due_date": date.today() + timedelta(days=random.randint(1, 200)),
         "mark_completed_date": None if random.random() > 0.5 else date.today(),
         "quantity": random.randint(10, 100),

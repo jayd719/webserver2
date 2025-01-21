@@ -1,25 +1,26 @@
-document.body.classList.add("bg-base-100", "h-screen");
+document.body.classList.add("bg-base-100", 'overflow-hidden');
 
 /**
  * Constants for table headers.
  */
 const HEADERS = {
     job_number: "Job Number",
-    order_date: "Order Date",
-    due_date: "Due Date",
+    customer_name: "Customer Name",
+    quantity: "Qty",
+    due_date: "Due On",
     due_in: "Due In",
+    compeleted: "Comp %",
+    assigned_to: "Assigned To",
+    shipping_this_month: "STM",
+    notes_one: "Notes",
     mark_completed_date: "Completion Date",
-    quantity: "Quantity",
     status: "Status",
     assigned_to: "Assigned To",
-    customer_name: "Customer Name",
     description: "Description",
-    notes_one: "Notes (1)",
     notes_two: "Notes (2)",
     estimated_hours: "Estimated Hours",
     completed_hours: "Completed Hours",
     incoming_inspection: "Incoming Inspection",
-    shipping_this_month: "Shipping This Month",
     on_hold: "On Hold",
     is_rush: "Rush Order",
     operations: "Operations Count",
@@ -42,6 +43,7 @@ function createTooltip(description) {
         "shadow-lg",
         "absolute",
         "group-hover:flex",
+        "left-[110%]",
         "z-[100]",
     );
     tooltip.innerText = description;
@@ -57,10 +59,10 @@ function initializeTable() {
     container.className = "overflow-x-auto";
 
     const innerContainer = document.createElement("div");
-    innerContainer.className = "relative overflow-x-visible overflow-y-auto";
+    innerContainer.className = "relative overflow-x-visible overflow-y-auto h-[92vh]";
 
     const table = document.createElement("table");
-    table.className = "table";
+    table.className = "table table-xs mb-20 text-center";
 
     const header = document.createElement("thead");
     const headerRow = document.createElement("tr");
@@ -97,12 +99,48 @@ function createDatePicker(id, date) {
     datePicker.type = "date";
     datePicker.value = date;
     datePicker.id = id;
-    datePicker.className = "input text-sm bg-transparent";
+    datePicker.className = "input input-sm text-xs bg-transparent";
     datePicker.addEventListener("change", (event) => {
         console.log("Selected date:", event.target.value);
     });
     return datePicker;
 }
+
+
+/**
+ * Returns the CSS class for "Due In" based on the number of days remaining.
+ * @param {number} daysRemaining - The number of days remaining until the due date.
+ * @returns {string} The CSS class for styling the "Due In" element.
+ */
+function getDueInCSS(daysRemaining) {
+    const gradient = daysRemaining / 100
+    console.log(gradient)
+    let css = `text-center font-bold `;
+    // Conditional color classes
+    if (daysRemaining > 7) {
+        css += `text-green1-900 bg-[rgba(5,211,50,${gradient})]`;
+    } else if (daysRemaining > 0) {
+        css += `text-yellow1-600 bg-[rgba(250,245,0,${.1 + gradient})]`;
+    } else {
+        css += `text-red-6001 bg-[rgba(250,0,0,${gradient})]`;
+    }
+
+    return css;
+}
+/**
+ * Creates a "Due In" span element showing the days remaining until the due date.
+ * @param {string} id - The ID of the associated item.
+ * @param {string|Date} date - The due date in a valid date format or Date object.
+ * @returns {HTMLSpanElement} The "Due In" span element.
+ */
+function createDueIn(date) {
+    const dueDate = new Date(date)
+    const currentDate = new Date();
+    const timeDiff = dueDate - currentDate;
+    const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    return daysRemaining;
+}
+
 
 /**
  * Creates a table cell element with optional nested elements.
@@ -137,20 +175,34 @@ function populateTable(data) {
     const table = initializeTable();
     const tableBody = document.createElement("tbody");
 
+
     data.forEach((order) => {
         const row = document.createElement("tr");
         row.classList.add("border", "hover:bg-base-200");
 
         // Job Number with tooltip
         const tooltip = createTooltip(order.description);
-        row.appendChild(createTableCell(order.job_number, "highlight", null, tooltip));
-
+        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + order.status, null, tooltip));
         // Customer Name
-        row.appendChild(createTableCell(order.customer_name, "highlight"));
+        row.appendChild(createTableCell(order.customer_name, order.status, null, null));
 
+        row.appendChild(createTableCell(order.quantity, order.status, null, null));
         // Due Date with date picker
         const datePicker = createDatePicker(order.job_number, order.due_date);
         row.appendChild(createTableCell("", "p-0 m-0", null, datePicker));
+        // Due In
+        const due_in = createDueIn(order.due_date)
+        const dueInTD = createTableCell(due_in, getDueInCSS(due_in), null, null)
+        dueInTD.id = `due-in-${order.job_number}`
+        row.appendChild(dueInTD)
+
+        // completed
+        row.appendChild(createTableCell(order.quantity, order.status, null, null));
+        // assigned to
+        row.appendChild(createTableCell(order.assigned_to, order.status, null, null));
+
+
+
 
         tableBody.appendChild(row);
     });

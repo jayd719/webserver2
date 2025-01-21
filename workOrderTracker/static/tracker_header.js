@@ -1,12 +1,10 @@
 const LOGO = `<div class="flex items-center gap-2">
   <img
-    class="w-10 h-10 rounded-full border-2 border-base-300 shadow-md"
-    src="https://www.svgrepo.com/show/294021/graphic-business-and-finance.svg"
+    class="w-32 invert"
+    src="/static/tracker_assets/image.png"
     alt="Business and Finance Icon"
   />
-  <h1 class="text-2xl font-extrabold text-error hover:text-primary-focus transition-colors duration-300">
-    WorkOrder Tracker
-  </h1>
+  
 </div>
 `
 
@@ -39,23 +37,10 @@ const LOGO2 = `<div class="flex items-center space-x-6 p-6 bg-gradient-to-r from
 const HEADER = `
 <div class="navbar bg-base-100">
     <div class="navbar-start">
-        <div class="dropdown">
-            <div tabIndex="0" role="button" class="btn btn-ghost btn-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-width" viewBox="0 0 16 16">
-                    <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/>
-                </svg>
-            </div>
-            <ul
-                tabIndex="0"
-                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow">
-                <li><a>Homepage</a></li>
-                <li><a>Portfolio</a></li>
-                <li><a>About</a></li>
-            </ul>
-        </div>
+         ${LOGO}
     </div>
     <div class="navbar-center">
-        ${LOGO}
+       
     </div>
     <div class="navbar-end">
         <button class="btn btn-ghost btn-circle">
@@ -72,6 +57,20 @@ const HEADER = `
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
         </button>
+        <div class="dropdown">
+            <div tabIndex="0" role="button" class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-width" viewBox="0 0 16 16">
+                    <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5"/>
+                </svg>
+            </div>
+            <ul
+                tabIndex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-3 w-52 p-2 shadow">
+                <li><a>Homepage</a></li>
+                <li><a>Portfolio</a></li>
+                <li><a>About</a></li>
+            </ul>
+        </div>
         <button class="btn btn-ghost btn-circle">
             <div class="indicator">
                 <svg
