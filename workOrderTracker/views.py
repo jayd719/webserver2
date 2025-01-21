@@ -16,4 +16,6 @@ def test_functions(request):
     for wo in models.WorkOrder.objects.all():
         print(wo)
 
-    return JsonResponse({"data": list(models.WorkOrder.objects.all().values())})
+    return JsonResponse(
+        {"data": list(models.WorkOrder.objects.all().order_by("due_date").values())}
+    )

@@ -1,12 +1,13 @@
-document.body.classList.add("bg-base-100", "h-screen")
+document.body.classList.add("bg-base-100", "h-screen");
+
 /**
- * Creates an HTML table to display work order tracker data.
- * @param {Array} data - Array of work order objects.
+ * Constants for table headers.
  */
 const HEADERS = {
     job_number: "Job Number",
     order_date: "Order Date",
     due_date: "Due Date",
+    due_in: "Due In",
     mark_completed_date: "Completion Date",
     quantity: "Quantity",
     status: "Status",
@@ -21,14 +22,17 @@ const HEADERS = {
     shipping_this_month: "Shipping This Month",
     on_hold: "On Hold",
     is_rush: "Rush Order",
-    operations: "Operations Count"
+    operations: "Operations Count",
 };
 
-
-// Function to create hover description
-function createHoverNotes(description) {
-    const descriptionDiv = document.createElement("div")
-    descriptionDiv.classList.add(
+/**
+ * Creates a tooltip-style description container.
+ * @param {string} description - The description text.
+ * @returns {HTMLDivElement} The description element.
+ */
+function createTooltip(description) {
+    const tooltip = document.createElement("div");
+    tooltip.classList.add(
         "bg-yellow-200",
         "text-black",
         "p-5",
@@ -39,109 +43,138 @@ function createHoverNotes(description) {
         "absolute",
         "group-hover:flex",
         "z-[100]",
-        "left-[110%]",
-        "opactiy-100"
     );
-    descriptionDiv.innerText = description
-    return descriptionDiv
+    tooltip.innerText = description;
+    return tooltip;
 }
 
-
-
-// Function to initialize the table
-function initTable() {
-    // Create outer container
+/**
+ * Initializes and creates the table structure.
+ * @returns {HTMLTableElement} The initialized table element.
+ */
+function initializeTable() {
     const container = document.createElement("div");
     container.className = "overflow-x-auto";
 
-    // Create inner scrollable container
-    const containerInner = document.createElement("div");
-    containerInner.className = "relative overflow-x-auto overflow-y-auto max-h-96";
+    const innerContainer = document.createElement("div");
+    innerContainer.className = "relative overflow-x-visible overflow-y-auto";
 
-    // Create the table element
     const table = document.createElement("table");
     table.className = "table";
 
-    // Create table header
     const header = document.createElement("thead");
     const headerRow = document.createElement("tr");
 
-
-    // Add header cells dynamically
     Object.entries(HEADERS).forEach(([key, headerText]) => {
         const th = document.createElement("th");
         th.className = "sticky top-0 z-10 bg-base-300 py-6 border border-base-300 text-center";
         th.innerText = headerText;
-        if (Object.keys(HEADERS).slice(0, 1).includes(key)) {
+
+        if (key === "job_number") {
             th.classList.add("sticky", "left-0", "z-20");
         }
         headerRow.appendChild(th);
     });
 
     header.appendChild(headerRow);
-    table.appendChild(header); // Append header to the table
+    table.appendChild(header);
 
-    // Add table to the inner container
-    containerInner.appendChild(table);
-
-    // Add inner container to the outer container
-    container.appendChild(containerInner);
-
-    // Append the container to the document body
+    innerContainer.appendChild(table);
+    container.appendChild(innerContainer);
     document.body.appendChild(container);
 
     return table;
 }
 
-// Function to populate the table with data
-function createTrackerHTML(data) {
-    // Initialize the table
-    const workOrderTracker = initTable();
+/**
+ * Creates a date picker element.
+ * @param {string} id - The ID of the date picker.
+ * @param {string} date - The default date value.
+ * @returns {HTMLInputElement} The date picker element.
+ */
+function createDatePicker(id, date) {
+    const datePicker = document.createElement("input");
+    datePicker.type = "date";
+    datePicker.value = date;
+    datePicker.id = id;
+    datePicker.className = "input text-sm bg-transparent";
+    datePicker.addEventListener("change", (event) => {
+        console.log("Selected date:", event.target.value);
+    });
+    return datePicker;
+}
 
-    // Create table body
-    const body = document.createElement("tbody");
+/**
+ * Creates a table cell element with optional nested elements.
+ * @param {string} text - The text content of the cell.
+ * @param {string|null} className - The class name for the cell.
+ * @param {Function|null} action - Optional click action for the cell.
+ * @param {HTMLElement|null} nestedElement - Optional nested element.
+ * @returns {HTMLTableCellElement} The table cell element.
+ */
+function createTableCell(text, className = null, action = null, nestedElement = null) {
+    const cell = document.createElement("td");
+    cell.innerText = text;
+    cell.className = `${className || ""} whitespace-nowrap border`;
 
-    // Populate rows dynamically based on data
-    data.forEach(order => {
+    if (nestedElement) {
+        cell.appendChild(nestedElement);
+        cell.classList.add("group");
+    }
+
+    if (action) {
+        cell.addEventListener("click", action);
+    }
+
+    return cell;
+}
+
+/**
+ * Populates the table with work order data.
+ * @param {Array} data - Array of work order objects.
+ */
+function populateTable(data) {
+    const table = initializeTable();
+    const tableBody = document.createElement("tbody");
+
+    data.forEach((order) => {
         const row = document.createElement("tr");
-        row.classList.add("border", "border-base-300", "hover:bg-base-200")
+        row.classList.add("border", "hover:bg-base-200");
 
+        // Job Number with tooltip
+        const tooltip = createTooltip(order.description);
+        row.appendChild(createTableCell(order.job_number, "highlight", null, tooltip));
 
-        // Add cells dynamically for each property
-        Object.entries(HEADERS).forEach(([prop, value]) => {
-            const cell = document.createElement("td");
-            cell.className = "whitespace-nowrap border border-base-300";
-            cell.innerText = order[prop] || "N/A";
+        // Customer Name
+        row.appendChild(createTableCell(order.customer_name, "highlight"));
 
-            if (Object.keys(HEADERS).slice(0, 1).includes(prop)) {
-                cell.classList.add("sticky", "left-0", "backdrop-blur-xl", "group", "cursor-help",);
-                // add hovering description 
-                cell.appendChild(createHoverNotes(order["customer"]))
-            }
-            row.appendChild(cell);
-        });
+        // Due Date with date picker
+        const datePicker = createDatePicker(order.job_number, order.due_date);
+        row.appendChild(createTableCell("", "p-0 m-0", null, datePicker));
 
-        body.appendChild(row); // Append row to the body
+        tableBody.appendChild(row);
     });
 
-    // Append body to the table
-    workOrderTracker.appendChild(body);
+    table.appendChild(tableBody);
 }
 
-
-
-
-const url = '/work-order-tracker/testlink/'
 /**
- * Fetches work order tracker data and renders it as an HTML table.
+ * Fetches work order tracker data and populates the table.
  */
-async function createTracker() {
-    const respone = await fetch(url);
-    if (!respone.ok) {
-        console.log("Failed to Create Tracker")
+async function loadWorkOrderTracker() {
+    try {
+        const response = await fetch("/work-order-tracker/testlink/");
+        if (!response.ok) {
+            console.error("Failed to fetch tracker data");
+            return;
+        }
+
+        const { data } = await response.json();
+        populateTable(data);
+    } catch (error) {
+        console.error("Error fetching tracker data:", error);
     }
-    console.log(respone.status)
-    const data = await respone.json()
-    createTrackerHTML(data.data)
 }
-createTracker()
+
+// Initialize the tracker
+loadWorkOrderTracker();

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker with DaisyUI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            },
+            plugins: [daisyui],
+            daisyui: {
+                themes: ["light", "dark"], // You can switch themes
+            },
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui"></script>
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="form-control w-full max-w-xs">
+            <input type="date" id="datePicker" class="input input-bordered w-full max-w-xs">
+        </div>
+    </div>
+
+    <script>
+        const datePicker = document.getElementById("datePicker");
+
+    </script>
+</body>
+
+</html>

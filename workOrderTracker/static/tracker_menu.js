@@ -53,7 +53,7 @@ function createSubMenu(menuList, text) {
 function renderMenuButton(items) {
     // Create the dropdown container
     const dropdown = document.createElement("div");
-    dropdown.className = "dropdown dropdown-left dropdown-end absolute bottom-0 right-0 m-5";
+    dropdown.className = "dropdown dropdown-left dropdown-end absolute bottom-0 right-0 m-5 z-[200]";
     // Create the button trigger
     const button = document.createElement("div");
     button.tabIndex = 0;
