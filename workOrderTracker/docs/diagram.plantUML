@@ -1,0 +1,54 @@
+@startuml diagram
+!define RECTANGLE_COMPONENT rectangle
+
+' Top-level system
+package "Work Order Tracker System" {
+    RECTANGLE_COMPONENT "Frontend Application" as frontend
+    RECTANGLE_COMPONENT  "Backend API"   as backend
+
+    frontend -[hidden]-> backend
+}
+
+' Frontend components
+package "Frontend Components" {
+    RECTANGLE_COMPONENT  "UI Renderer"   as ui_renderer
+    RECTANGLE_COMPONENT  "Event Handlers"   as event_handlers
+    RECTANGLE_COMPONENT  "Table Manager"   as table_manager
+    RECTANGLE_COMPONENT  "Tooltip Manager"   as tooltip_manager
+    RECTANGLE_COMPONENT  "Form Elements"   as form_elements
+    RECTANGLE_COMPONENT  "Data Fetcher"   as data_fetcher
+
+    frontend --> ui_renderer
+    frontend --> event_handlers
+    frontend --> table_manager
+    frontend --> tooltip_manager
+    frontend --> form_elements
+    frontend --> data_fetcher
+
+    ' Interaction flows
+    event_handlers -> table_manager : Handles user actions\n  e.g., row clicks, sorting  
+    table_manager -> ui_renderer : Updates table content
+    table_manager -> tooltip_manager : Shows tooltips for descriptions
+    data_fetcher --> backend : Fetches data from the API
+    data_fetcher -> table_manager : Supplies fetched data
+    form_elements -> ui_renderer : Updates input fields
+    event_handlers -> form_elements : Listens to input changes
+}
+
+' Backend components
+package "Backend API Components" {
+    RECTANGLE_COMPONENT  "API Router"   as api_router
+    RECTANGLE_COMPONENT  "Data Controller"   as data_controller
+    RECTANGLE_COMPONENT  "Business Logic Layer"   as business_logic
+    RECTANGLE_COMPONENT  "Database"   as database
+
+    backend --> api_router
+    api_router --> data_controller : Routes requests
+    data_controller --> business_logic : Delegates logic
+    business_logic --> database : CRUD operations
+}
+
+' Detailed flows
+api_router -> backend : Handles requests\n  GET, POST, etc.  
+data_controller -> ui_renderer : Sends processed data
+table_manager -> api_router : Requests filtered data

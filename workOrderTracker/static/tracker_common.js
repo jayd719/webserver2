@@ -30,10 +30,12 @@ function invertLogo(theme) {
 // Retrieve the theme from cookies
 function getSavedTheme() {
     const cookies = parseCookies();
+    theme = "emerald"
     if (cookies.theme) {
-        document.documentElement.setAttribute("data-theme", cookies.theme);
-        invertLogo(cookies.theme)
+        theme = cookies.theme
     }
+    document.documentElement.setAttribute("data-theme", theme);
+    invertLogo(theme)
 }
 
 

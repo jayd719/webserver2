@@ -4,8 +4,6 @@ function testFunction(parm) {
 }
 
 
-
-
 function toggleTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     document.cookie = `theme=${theme}; path=/; max-age=31536000`; // 1 year expiration
@@ -82,6 +80,33 @@ function renderMenuButton(items) {
     document.body.appendChild(dropdown);
 }
 
+const themes = {
+    "Sunrise Glow": () => toggleTheme("light"),
+    "Moonlit Nights": () => toggleTheme("dark"),
+    "Boardroom Elegance": () => toggleTheme("corporate"),
+    "Silver Lining": () => toggleTheme("business"),
+    "Verdant Oasis": () => toggleTheme("emerald"),
+    "Starry Sky": () => toggleTheme("night"),
+    "Bliss": () => toggleTheme("coffee"),
+    "Frosted Winter": () => toggleTheme("winter"),
+    "Retro Wave": () => toggleTheme("retro"),
+    "Electric Dreams": () => toggleTheme("synthwave"),
+    "Cyber Horizon": () => toggleTheme("cyberpunk"),
+    "Passion Bloom": () => toggleTheme("valentine"),
+    "Haunted Whispers": () => toggleTheme("halloween"),
+    "Verdant Escape": () => toggleTheme("garden"),
+    "Woodland Retreat": () => toggleTheme("forest"),
+    "Tranquil": () => toggleTheme("aqua"),
+    "Lo-Fi Chill": () => toggleTheme("lofi"),
+    "Soft": () => toggleTheme("pastel"),
+    "Enchanted": () => toggleTheme("fantasy"),
+    "Blueprin": () => toggleTheme("wireframe"),
+    "Mystique": () => toggleTheme("black"),
+    "Twilight": () => toggleTheme("dracula"),
+    "Breeze": () => toggleTheme("autumn"),
+    "Golden Hive": () => toggleTheme("bumblebee"),
+};
+
 const items = {
     "Change Theme1":
     {
@@ -101,33 +126,7 @@ const items = {
         "Profile": () => testFunction("Dark2 Mode"),
         "Logout": () => testFunction("Dark3 Mode"),
     },
-    "Change Theme": {
-        "Light": () => toggleTheme("light"),
-        "Dark": () => toggleTheme("dark"),
-        "Corporate": () => toggleTheme("corporate"),
-        // "Luxury": () => toggleTheme("luxury"),
-        "Business": () => toggleTheme("business"),
-        "Emerald": () => toggleTheme("emerald"),
-        "Night": () => toggleTheme("night"),
-        "Coffee": () => toggleTheme("coffee"),
-        "Winter": () => toggleTheme("winter"),
-        "Retro": () => toggleTheme("retro"),
-        "Synthwave": () => toggleTheme("synthwave"),
-        "Cyberpunk": () => toggleTheme("cyberpunk"),
-        "Valentine": () => toggleTheme("valentine"),
-        "Halloween": () => toggleTheme("halloween"),
-        "Garden": () => toggleTheme("garden"),
-        "Forest": () => toggleTheme("forest"),
-        "Aqua": () => toggleTheme("aqua"),
-        "Lofi": () => toggleTheme("lofi"),
-        "Pastel": () => toggleTheme("pastel"),
-        "Fantasy": () => toggleTheme("fantasy"),
-        "Wireframe": () => toggleTheme("wireframe"),
-        "Black": () => toggleTheme("black"),
-        "Dracula": () => toggleTheme("dracula"),
-        "Autumn": () => toggleTheme("autumn"),
-        "Bumblebee": () => toggleTheme("bumblebee"),
-    }
+    "Change Theme": themes,
 
 };
 
