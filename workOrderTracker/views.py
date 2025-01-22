@@ -17,10 +17,16 @@ def tracker_main_view(request):
     Retrieve and return a list of all work orders ordered by due date.
     Includes all fields of WorkOrder, the name of the assigned person, and associated operations.
     """
+    # Query work orders with related data
+    work_orders = (
+        models.WorkOrder.objects.select_related("assigned_to")
+        .prefetch_related("operations")
+        .order_by("due_date")
+    )
 
-    # Build the result list with operations included
+    # Build the result list
     result = []
-    for work_order in models.WorkOrder.objects.all().order_by("due_date"):
+    for work_order in work_orders:
         work_order_dict = {
             "job_number": work_order.job_number,
             "order_date": work_order.order_date,
@@ -41,25 +47,8 @@ def tracker_main_view(request):
             "shipping_this_month": work_order.shipping_this_month,
             "on_hold": work_order.on_hold,
             "is_rush": work_order.is_rush,
+            "operations": list(work_order.operations.values()),
         }
-
-        # Add operations from the prefetched attribute
-        work_order_dict["operations"] = [
-            {
-                "step_number": operation.step_number,
-                "machine": operation.machine,
-                "description": f"""{operation.description}\n\nEst.Hours: {operation.estimated_hours}\nActual Hours: {operation.actual_hours}\n\nStatus:{operation.status}""",
-                "estimated_hours": operation.estimated_hours,
-                "actual_hours": operation.actual_hours,
-                "status": operation.status,
-                "priority": operation.priority,
-                "custom_notes": operation.custom_notes,
-            }
-            for operation in models.WorkOrderOperation.objects.filter(
-                work_order=work_order.job_number
-            )
-        ]
-
         result.append(work_order_dict)
 
     return JsonResponse({"data": result})

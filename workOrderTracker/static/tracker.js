@@ -53,7 +53,7 @@ function insertMonthSeparator(currMonth, dueDate, tableBody) {
     const nextMonth = new Date(dueDate).toLocaleString("default", { month: "long" });
     if (currMonth !== nextMonth) {
         const row = document.createElement("tr");
-        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold");
+        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold", "brightness-75");
         Object.values(HEADERS).forEach((_, index) => {
             const td = document.createElement("td");
             td.classList.add("p-0");
@@ -272,14 +272,11 @@ function populateTable(data) {
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
         row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
-
-
+        // add operations
         order.operations.forEach(operation => {
             const op = createTableCell(operation.machine, "group", "", createTooltipOperation(operation.description))
             row.appendChild(op)
-
         });
-
         tableBody.appendChild(row);
     });
 

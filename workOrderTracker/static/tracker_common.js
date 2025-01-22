@@ -42,7 +42,7 @@ function getSavedTheme() {
 
 
 // Render a loading spinner and remove it after a delay
-function showLoader(duration = 5000) {
+function showLoader(duration = 3500) {
     const loader = document.createElement("div");
     loader.className = "absolute top-0 left-0 w-full h-screen bg-base-100 flex items-center justify-center z-[200]";
     loader.innerHTML = `<span class="loading loading-bars loading-lg"></span>`;
