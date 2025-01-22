@@ -174,7 +174,7 @@ function createTooltip(description) {
         "p-5",
         "hidden",
         "rounded-lg",
-        "text-sm",
+        "text-xs",
         "shadow-lg",
         "absolute",
         "group-hover:flex",
@@ -191,20 +191,21 @@ function createTooltip(description) {
  * @returns {HTMLDivElement} The tooltip element.
  */
 function createTooltipOperation(description) {
-    const tooltip = document.createElement("div");
+    const tooltip = document.createElement("pre");
     tooltip.classList.add(
         "bg-yellow-200",
         "text-black",
         "p-5",
         "hidden",
         "rounded-lg",
-        "text-sm",
+        "text-xs",
         "shadow-lg",
         "absolute",
         "group-hover:flex",
         "z-[100]",
         "transition",
-        "delay-1000"
+        "delay-1000",
+        "text-left"
     );
     tooltip.innerText = description;
     return tooltip;
@@ -297,7 +298,7 @@ function populateTable(data) {
         row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining)));
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
-        row.appendChild(createTableCell(order.assigned_to__name));
+        row.appendChild(createTableCell(order.assigned_to));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));

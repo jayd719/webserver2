@@ -20,7 +20,6 @@ def test_functions(request):
     # Build the result list with operations included
     result = []
     for work_order in models.WorkOrder.objects.all().order_by("due_date"):
-        # Convert the work order to a dictionary including all its fields
         work_order_dict = {
             "job_number": work_order.job_number,
             "order_date": work_order.order_date,
@@ -48,7 +47,7 @@ def test_functions(request):
             {
                 "step_number": operation.step_number,
                 "machine": operation.machine,
-                "description": operation.description,
+                "description": f"""{operation.description}\n\nEst.Hours: {operation.estimated_hours}\nActual Hours: {operation.actual_hours}\n\nStatus:{operation.status}""",
                 "estimated_hours": operation.estimated_hours,
                 "actual_hours": operation.actual_hours,
                 "status": operation.status,
