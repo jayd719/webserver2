@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from . import models
+import json
 
 
 def homepage(request):
@@ -11,7 +12,7 @@ def tracker_view(request):
     return render(request, "tracker.html")
 
 
-def test_functions(request):
+def tracker_main_view(request):
     """
     Retrieve and return a list of all work orders ordered by due date.
     Includes all fields of WorkOrder, the name of the assigned person, and associated operations.
@@ -62,3 +63,15 @@ def test_functions(request):
         result.append(work_order_dict)
 
     return JsonResponse({"data": result})
+
+
+def tracker_updateDate(request, job_number):
+    if request.method == "POST":
+        try:
+            date = json.loads(request.body)["newDate"]
+            models.WorkOrder.objects.get(job_number=job_number).update_date(date)
+            return JsonResponse({"message": "Data Processed"}, status=200)
+        except:
+            return JsonResponse({"error": "Invalid JSON Data"}, status=400)
+
+    return JsonResponse({"error": "only POST Request Allowed"}, status=405)

@@ -36,41 +36,10 @@ function createDatePicker(id, date) {
     datePicker.id = id;
     datePicker.className = "input input-sm text-xs bg-transparent";
     datePicker.addEventListener("change", (event) => {
-        console.log("Selected date:", event.target.value);
+        updateDate(event)
+
     });
     return datePicker;
-}
-
-/**
- * Determines the CSS class for "Due In" based on remaining days.
- * @param {number} daysRemaining - Days until the due date.
- * @returns {string} The CSS class for styling the element.
- */
-function getDueInCSS(daysRemaining) {
-    const gradient = daysRemaining / 100;
-    let css = "text-center font-bold ";
-
-    if (daysRemaining > 7) {
-        css += `text-green-900 bg-[rgba(5,211,50,${gradient})]`;
-    } else if (daysRemaining > 0) {
-        css += `text-yellow-600 bg-[rgba(250,245,0,${0.1 + gradient})]`;
-    } else {
-        css += `text-red-600 bg-[rgba(250,0,0,${gradient})]`;
-    }
-
-    return css;
-}
-
-/**
- * Calculates the days remaining until a specified date.
- * @param {string|Date} date - The due date.
- * @returns {number} Days remaining until the due date.
- */
-function calculateDaysRemaining(date) {
-    const dueDate = new Date(date);
-    const currentDate = new Date();
-    const timeDiff = dueDate - currentDate;
-    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 }
 
 /**
@@ -295,7 +264,7 @@ function populateTable(data) {
         row.appendChild(createTableCell("", "p-0", null, createDatePicker(order.job_number, order.due_date)));
 
         const daysRemaining = calculateDaysRemaining(order.due_date);
-        row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining)));
+        row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining), null, null));
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.assigned_to));

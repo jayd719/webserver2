@@ -10,8 +10,9 @@ __updated__ = Mon Jan 20 2025
 """
 
 from django.db import models
-from datetime import timedelta, date
+from datetime import timedelta, date, datetime
 from django.db.models.query import QuerySet
+
 
 STATUS_CHOICES = [
     ("Pending", "Pending"),
@@ -117,6 +118,11 @@ class WorkOrder(models.Model):
 
     def __str__(self):
         return f"WorkOrder #{self.job_number} - {self.customer_name}"
+
+    def update_date(self, new_date: str):
+        self.due_date = datetime.strptime(new_date, "%Y-%m-%d")
+        self.save()
+        return None
 
     def mark_as_completed(self):
         self.status = "Completed"

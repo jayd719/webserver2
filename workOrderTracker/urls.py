@@ -4,5 +4,16 @@ from . import views
 urlpatterns = [
     path("", views.homepage, name="tracker-home"),
     path("tracker/", views.tracker_view, name="tracker-dashboard"),
-    path("testlink/", views.test_functions, name="test"),
+    # test
+    path("testlink/", views.tracker_main_view, name="test"),
+]
+
+# actions
+urlpatterns += [
+    # update Date
+    path(
+        "tracker/update_date/<str:job_number>",
+        views.tracker_updateDate,
+        name="update-date",
+    ),
 ]
