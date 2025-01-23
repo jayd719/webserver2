@@ -29,15 +29,14 @@ const HEADERS = {
  * @param {string} date - The default date value.
  * @returns {HTMLInputElement} The date picker element.
  */
-function createDatePicker(id, date) {
+function createDatePicker(order) {
     const datePicker = document.createElement("input");
     datePicker.type = "date";
-    datePicker.value = date;
-    datePicker.id = id;
+    datePicker.value = order.due_date;
+    datePicker.id = order.job_number;
     datePicker.className = "input input-sm text-xs bg-transparent";
     datePicker.addEventListener("change", (event) => {
         updateDate(event)
-
     });
     return datePicker;
 }
@@ -78,6 +77,7 @@ function createInputBox(defaultValue) {
     inputBox.type = "text";
     inputBox.className = "input input-xs w-72 rounded-0 bg-transparent text-center";
     inputBox.defaultValue = defaultValue;
+
     return inputBox;
 }
 
@@ -87,11 +87,16 @@ function createInputBox(defaultValue) {
  * @param {string} style - Style class for the checkbox.
  * @returns {HTMLInputElement} The created checkbox element.
  */
-function createCheckBox(defaultValue, style) {
+function createCheckBox(defaultValue, style, id) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.checked = defaultValue;
     checkBox.className = `checkbox checkbox-${style} border-0 rounded-full checkbox-xs`;
+    checkBox.id = id
+    checkBox.ariaLabel = style
+    checkBox.addEventListener('change', (event) => {
+        updateBools(event)
+    })
     return checkBox;
 }
 
@@ -261,16 +266,16 @@ function populateTable(data) {
         row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10", null, createTooltip(order.description)));
         row.appendChild(createTableCell(order.customer_name));
         row.appendChild(createTableCell(order.quantity));
-        row.appendChild(createTableCell("", "p-0", null, createDatePicker(order.job_number, order.due_date)));
+        row.appendChild(createTableCell("", "p-0", null, createDatePicker(order)));
 
         const daysRemaining = calculateDaysRemaining(order.due_date);
         row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining), null, null));
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.assigned_to));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success")));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success", order.job_number)));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning", order.job_number)));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error", order.job_number)));
         row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
         // add operations
         order.operations.forEach(operation => {

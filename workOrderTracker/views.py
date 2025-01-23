@@ -54,13 +54,25 @@ def tracker_main_view(request):
     return JsonResponse({"data": result})
 
 
-def tracker_updateDate(request, job_number):
+def tracker_update_fields(request, job_number):
     if request.method == "POST":
         try:
-            date = json.loads(request.body)["newDate"]
-            models.WorkOrder.objects.get(job_number=job_number).update_date(date)
+            field = json.loads(request.body)["field"]
+            value = json.loads(request.body)["value"]
+
+            model = models.WorkOrder.objects.get(job_number=job_number)
+
+            switch = {
+                "warning": lambda: model.update_incoming_inspection(value),
+                "success": lambda: model.update_shipping_this_month(value),
+                "error": lambda: model.update_is_rush(value),
+                "due-date": lambda: model.update_date(value),
+            }
+
+            # Get and call the appropriate function
+            switch.get(field, lambda: print("Unknown field!"))()
+
             return JsonResponse({"message": "Data Processed"}, status=200)
         except:
             return JsonResponse({"error": "Invalid JSON Data"}, status=400)
-
     return JsonResponse({"error": "only POST Request Allowed"}, status=405)

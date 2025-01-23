@@ -12,8 +12,8 @@ urlpatterns = [
 urlpatterns += [
     # update Date
     path(
-        "tracker/update_date/<str:job_number>",
-        views.tracker_updateDate,
-        name="update-date",
+        "tracker/update_tracker_field/<str:job_number>",
+        views.tracker_update_fields,
+        name="update-tracker-field",
     ),
 ]

@@ -124,6 +124,22 @@ class WorkOrder(models.Model):
         self.save()
         return None
 
+    def update_incoming_inspection(self, value):
+        self.incoming_inspection = bool(value)
+        self.save()
+
+    def update_is_rush(self, value):
+        self.is_rush = bool(value)
+        self.save()
+
+    def update_shipping_this_month(self, value):
+        self.shipping_this_month = bool(value)
+        self.save()
+
+    def update_notes(self, notes):
+        self.notes_one = notes
+        self.save()
+
     def mark_as_completed(self):
         self.status = "Completed"
         self.mark_completed_date = models.DateField(auto_now=True)

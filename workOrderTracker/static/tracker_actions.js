@@ -1,5 +1,8 @@
+
 // Sends a POST request with JSON data and CSRF token
 function handlePostRequest(url, data) {
+    const UPDATE_END_POINT = 'update_tracker_field'
+    url = `${UPDATE_END_POINT}/${url}`
     fetch(url, {
         method: "POST",
         headers: {
@@ -29,9 +32,8 @@ function getDueInCSS(daysRemaining) {
     } else if (daysRemaining > 0) {
         css += `bg-[rgba(250,245,0,${0.25 + gradient})]`;
     } else {
-        css += `bg-[rgba(250,0,0,${gradient})]`;
+        css += `bg-[rgba(250,0,0,${0.3 + gradient})]`;
     }
-
     return css;
 }
 
@@ -50,17 +52,15 @@ function calculateDaysRemaining(date) {
 
 
 async function updateDate(event) {
-    // update UI
     const daysRemainingElm = document.getElementById(event.target.id).querySelector('.due-date')
     const daysRemaining = calculateDaysRemaining(event.target.value)
     daysRemainingElm.textContent = daysRemaining
     daysRemainingElm.className = getDueInCSS(daysRemaining)
+    const payload = { 'field': "due-date", 'value': event.target.value }
+    handlePostRequest(event.target.id, payload)
+}
 
-    // write to database
-    const payload = { 'newDate': event.target.value }
-
-    handlePostRequest(`update_date/${event.target.id}`, payload)
-
-
-
+async function updateBools(event) {
+    const payload = { 'field': event.target.ariaLabel, 'value': event.target.checked }
+    handlePostRequest(event.target.id, payload)
 }
