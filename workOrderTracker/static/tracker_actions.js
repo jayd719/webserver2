@@ -1,6 +1,21 @@
 
-// Sends a POST request with JSON data and CSRF token
-function handlePostRequest(url, data) {
+/**
+ * Retrieves the job number from the event target.
+ * 
+ * @param {Event} event - The triggered event.
+ * @returns {string} The job number extracted from the event target's parent element.
+ */
+function getJobNumber(event) {
+    return event.target.parentElement.parentElement.id
+}
+
+/**
+ * Sends a POST request to a specified endpoint with JSON data and a CSRF token.
+ * 
+ * @param {string} url - The endpoint URL to send the POST request to.
+ * @param {Object} data - The data to send in the request body.
+ */
+async function handlePostRequest(url, data) {
     const UPDATE_END_POINT = 'update_tracker_field'
     url = `${UPDATE_END_POINT}/${url}`
     fetch(url, {
@@ -17,11 +32,11 @@ function handlePostRequest(url, data) {
     });
 }
 
-
 /**
- * Determines the CSS class for "Due In" based on remaining days.
+ * Determines the CSS class for "Due In" based on the remaining days.
+ * 
  * @param {number} daysRemaining - Days until the due date.
- * @returns {string} The CSS class for styling the element.
+ * @returns {string} The appropriate CSS class for the element.
  */
 function getDueInCSS(daysRemaining) {
     const gradient = Math.abs(daysRemaining / 50);
@@ -38,9 +53,10 @@ function getDueInCSS(daysRemaining) {
 }
 
 /**
- * Calculates the days remaining until a specified date.
- * @param {string|Date} date - The due date.
- * @returns {number} Days remaining until the due date.
+ * Calculates the days remaining until a specified due date.
+ * 
+ * @param {string|Date} date - The due date (can be a date string or a Date object).
+ * @returns {number} The number of days remaining until the due date.
  */
 function calculateDaysRemaining(date) {
     const dueDate = new Date(date);
@@ -49,18 +65,37 @@ function calculateDaysRemaining(date) {
     return Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 }
 
-
-
-async function updateDate(event) {
+/**
+ * Updates the due date, recalculates days remaining, and updates the UI.
+ * 
+ * @param {Event} event - The triggered event.
+ */
+function updateDate(event) {
     const daysRemainingElm = document.getElementById(event.target.id).querySelector('.due-date')
     const daysRemaining = calculateDaysRemaining(event.target.value)
     daysRemainingElm.textContent = daysRemaining
     daysRemainingElm.className = getDueInCSS(daysRemaining)
     const payload = { 'field': "due-date", 'value': event.target.value }
-    handlePostRequest(event.target.id, payload)
+    handlePostRequest(getJobNumber(event), payload)
 }
 
-async function updateBools(event) {
+/**
+ * Updates a boolean field based on a toggle event.
+ * 
+ * @param {Event} event - The triggered event.
+ */
+function updateBools(event) {
     const payload = { 'field': event.target.ariaLabel, 'value': event.target.checked }
-    handlePostRequest(event.target.id, payload)
+    handlePostRequest(getJobNumber(event), payload)
+}
+
+/**
+ * Updates notes based on the event target's value.
+ * 
+ * @param {Event} event - The triggered event.
+ */
+function updateNotes(event) {
+    const payload = { 'field': "notes1", 'value': event.target.value }
+    handlePostRequest(getJobNumber(event), payload)
+
 }

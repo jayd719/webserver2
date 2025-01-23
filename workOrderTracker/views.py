@@ -57,20 +57,28 @@ def tracker_main_view(request):
 def tracker_update_fields(request, job_number):
     if request.method == "POST":
         try:
-            field = json.loads(request.body)["field"]
-            value = json.loads(request.body)["value"]
+            data = json.loads(request.body)
+            field = data.get("field")
+            value = data.get("value")
 
-            model = models.WorkOrder.objects.get(job_number=job_number)
+            try:
+                model = models.WorkOrder.objects.get(job_number=job_number)
+            except models.WorkOrder.DoesNotExist:
+                return JsonResponse(
+                    {"error": f"Work order {job_number} not found."}, status=404
+                )
 
-            switch = {
+            field_actions = {
                 "warning": lambda: model.update_incoming_inspection(value),
                 "success": lambda: model.update_shipping_this_month(value),
                 "error": lambda: model.update_is_rush(value),
                 "due-date": lambda: model.update_date(value),
+                "notes1": lambda: model.update_notes(value),
             }
 
-            # Get and call the appropriate function
-            switch.get(field, lambda: print("Unknown field!"))()
+            field_actions.get(
+                field, lambda: JsonResponse({"error": "Invalid JSON Data"}, status=400)
+            )()
 
             return JsonResponse({"message": "Data Processed"}, status=200)
         except:

@@ -24,6 +24,27 @@ const HEADERS = {
 };
 
 /**
+ * Formats an operation object into a readable string description.
+ * 
+ * @param {Object} operation - The operation object containing details of the operation.
+ * @param {number} operation.step_number - The step number of the operation in a process.
+ * @param {string} operation.machine - The machine or equipment involved in the operation.
+ * @param {string} operation.description - A brief description of the operation.
+ * @param {number} operation.estimated_hours - The estimated time required for the operation.
+ * @param {number} operation.actual_hours - The actual time taken for the operation.
+ * 
+ * @returns {string} A formatted string containing the operation details.
+ */
+function operationDescription(operation) {
+    return `Step Number:${operation.step_number} - ${operation.machine}    
+${operation.description}
+    
+Estimated Hours: ${operation.estimated_hours}
+Actual Hours: ${operation.actual_hours}
+    `;
+}
+
+/**
  * Creates a date picker element.
  * @param {string} id - The ID of the date picker.
  * @param {string} date - The default date value.
@@ -78,6 +99,9 @@ function createInputBox(defaultValue) {
     inputBox.className = "input input-xs w-72 rounded-0 bg-transparent text-center";
     inputBox.defaultValue = defaultValue;
 
+    inputBox.addEventListener("change", (event) => {
+        updateNotes(event)
+    })
     return inputBox;
 }
 
@@ -87,12 +111,11 @@ function createInputBox(defaultValue) {
  * @param {string} style - Style class for the checkbox.
  * @returns {HTMLInputElement} The created checkbox element.
  */
-function createCheckBox(defaultValue, style, id) {
+function createCheckBox(defaultValue, style) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.checked = defaultValue;
     checkBox.className = `checkbox checkbox-${style} border-0 rounded-full checkbox-xs`;
-    checkBox.id = id
     checkBox.ariaLabel = style
     checkBox.addEventListener('change', (event) => {
         updateBools(event)
@@ -133,7 +156,6 @@ function createProgressBar(order) {
 
     return container;
 }
-
 
 /**
  * Creates a tooltip element to display additional information.
@@ -273,13 +295,13 @@ function populateTable(data) {
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.assigned_to));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success", order.job_number)));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning", order.job_number)));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error", order.job_number)));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success")));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
         row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
         // add operations
         order.operations.forEach(operation => {
-            const op = createTableCell(operation.machine, "group", "", createTooltipOperation(operation.description))
+            const op = createTableCell(operation.machine, "group", null, createTooltipOperation(operationDescription(operation)))
             row.appendChild(op)
         });
         tableBody.appendChild(row);
@@ -298,7 +320,6 @@ async function loadWorkOrderTracker() {
             console.error("Failed to fetch tracker data");
             return;
         }
-
         const { data } = await response.json();
         populateTable(data);
     } catch (error) {
