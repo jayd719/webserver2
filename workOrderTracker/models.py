@@ -15,20 +15,27 @@ from django.db.models.query import QuerySet
 
 
 STATUS_CHOICES = [
-    ("Pending", "Pending"),
-    ("In Progress", "In Progress"),
-    ("Completed", "Completed"),
-    ("Canceled", "Canceled"),
+    ("NEW", "New"),
+    ("PENDING", "Pending"),
+    ("IN_PROGRESS", "In Progress"),
+    ("COMPLETED", "Completed"),
+    ("CANCELED", "Canceled"),
 ]
-PRIORITY_CHOICES = [("High", "High"), ("Medium", "Medium"), ("Low", "Low")]
+
+PRIORITY_CHOICES = [
+    ("STD", "Standard"),
+    ("HIGH", "High"),
+    ("MEDIUM", "Medium"),
+    ("LOW", "Low"),
+]
 
 
 class User(models.Model):
     ROLES = [
-        ("Admin", "Administrator"),
-        ("Manager", "Manager"),
-        ("Engineer", "Engineer"),
-        ("Machinist", "Machinist"),
+        ("ADMIN", "Admin"),
+        ("MANAGER", "Manager"),
+        ("ENGINEER", "Engineer"),
+        ("MACHINIST", "Machinist"),
     ]
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
@@ -89,16 +96,29 @@ class WorkOrder(models.Model):
     due_date = models.DateField()
     mark_completed_date = models.DateField(null=True, blank=True)
     quantity = models.PositiveIntegerField()
+
     status = models.CharField(
-        max_length=50, choices=STATUS_CHOICES, default=STATUS_CHOICES[0]
+        max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0]
     )
-    assigned_to = models.ForeignKey(
+    priority = models.CharField(
+        max_length=10, choices=PRIORITY_CHOICES, default=PRIORITY_CHOICES[0][0]
+    )
+
+    sales_id = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name="work_orders",
     )
+    assigned_to = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="assigned_orders",
+    )
+
     customer_name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True, max_length=10000)
     notes_one = models.TextField(blank=True, null=True, max_length=2000)
@@ -134,6 +154,10 @@ class WorkOrder(models.Model):
 
     def update_shipping_this_month(self, value):
         self.shipping_this_month = bool(value)
+        self.save()
+
+    def update_on_hold(self, value):
+        self.on_hold = bool(value)
         self.save()
 
     def update_notes(self, notes):
@@ -207,8 +231,12 @@ class WorkOrderOperation(models.Model):
     description = models.TextField(max_length=2000)
     estimated_hours = models.FloatField()
     actual_hours = models.FloatField(null=True, blank=True, default=0.0)
-    status = models.CharField(max_length=50, choices=STATUS_CHOICES)
-    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
+    status = models.CharField(
+        max_length=50, choices=STATUS_CHOICES, default=STATUS_CHOICES[1][0]
+    )
+    priority = models.CharField(
+        max_length=10, choices=PRIORITY_CHOICES, default=PRIORITY_CHOICES[0][0]
+    )
     custom_notes = models.TextField(blank=True, null=True)
 
     def __str__(self) -> str:

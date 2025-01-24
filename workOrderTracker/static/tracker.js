@@ -2,47 +2,34 @@
  * Constants for table headers.
  */
 const HEADERS = {
-    job_number: "Job Number",
-    customer_name: "Customer Name",
-    quantity: "Qty",
-    due_date: "Due On",
-    due_in: "Due In",
-    completed: "Comp %",
-    assigned_to: "SA",
-    shipping_this_month: "STM",
-    incoming_inspection: "INPS",
-    is_rush: "Rush",
-    notes_one: "Notes",
-    mark_completed_date: "Completion Date",
-    status: "Status",
-    description: "Description",
-    notes_two: "Notes (2)",
-    estimated_hours: "Estimated Hours",
-    completed_hours: "Completed Hours",
-    on_hold: "On Hold",
-    operations: "Operations Count",
+    job_number: ["Job Number", "H"],
+    customer_name: ["Customer Name", "Customer Info"],
+    quantity: ["Qty", "Numbers"],
+    due_date: ["Due On", "Dates"],
+    due_in: ["Due In", "Dates"],
+    completed: ["Comp %", "Progress"],
+    assigned_to: ["SA", "Assigned"],
+    shipping_this_month: ["STM", "Shipping"],
+    incoming_inspection: ["INPS", "Inspection"],
+    is_rush: ["Rush", "Priority"],
+    notes_one: ["Notes", "Notes Section"],
+    on_hold: ["On Hold", "Status"],
+    ...Object.fromEntries(
+        Array.from({ length: 30 }, (_, i) => [`operation${i + 1}`, [`OP ${i + 1}`, "Operation"]])
+    ),
 };
 
 /**
- * Formats an operation object into a readable string description.
- * 
- * @param {Object} operation - The operation object containing details of the operation.
- * @param {number} operation.step_number - The step number of the operation in a process.
- * @param {string} operation.machine - The machine or equipment involved in the operation.
- * @param {string} operation.description - A brief description of the operation.
- * @param {number} operation.estimated_hours - The estimated time required for the operation.
- * @param {number} operation.actual_hours - The actual time taken for the operation.
- * 
- * @returns {string} A formatted string containing the operation details.
+ * Constants for table headers.
  */
-function operationDescription(operation) {
-    return `Step Number:${operation.step_number} - ${operation.machine}    
-${operation.description}
-    
-Estimated Hours: ${operation.estimated_hours}
-Actual Hours: ${operation.actual_hours}
-    `;
-}
+const STATUS = {
+    NEW: " ",
+    PENDING: " bg-base-200",
+    IN_PROGRESS: "bg-success",
+    COMPLETED: "Completed",
+    CANCELED: "Canceled",
+};
+
 
 /**
  * Creates a date picker element.
@@ -158,27 +145,25 @@ function createProgressBar(order) {
 }
 
 /**
- * Creates a tooltip element to display additional information.
- * @param {string} description - The description text.
- * @returns {HTMLDivElement} The tooltip element.
+ * Formats an operation object into a readable string description.
+ * 
+ * @param {Object} operation - The operation object containing details of the operation.
+ * @param {number} operation.step_number - The step number of the operation in a process.
+ * @param {string} operation.machine - The machine or equipment involved in the operation.
+ * @param {string} operation.description - A brief description of the operation.
+ * @param {number} operation.estimated_hours - The estimated time required for the operation.
+ * @param {number} operation.actual_hours - The actual time taken for the operation.
+ * 
+ * @returns {string} A formatted string containing the operation details.
  */
-function createTooltip(description) {
-    const tooltip = document.createElement("div");
-    tooltip.classList.add(
-        "bg-yellow-200",
-        "text-black",
-        "p-5",
-        "hidden",
-        "rounded-lg",
-        "text-xs",
-        "shadow-lg",
-        "absolute",
-        "group-hover:flex",
-        "left-[110%]",
-        "z-[100]"
-    );
-    tooltip.innerText = description;
-    return tooltip;
+function operationDescription(operation) {
+    return `Step Number:${operation.step_number} - ${operation.machine}  
+
+${operation.description}
+    
+Estimated Hours: ${operation.estimated_hours}
+Actual Hours: ${operation.actual_hours}
+    `;
 }
 
 /**
@@ -186,9 +171,10 @@ function createTooltip(description) {
  * @param {string} description - The description text.
  * @returns {HTMLDivElement} The tooltip element.
  */
-function createTooltipOperation(description) {
-    const tooltip = document.createElement("pre");
+function createTooltip(description, postion = "-") {
+    const tooltip = document.createElement("div");
     tooltip.classList.add(
+        postion,
         "bg-yellow-200",
         "text-black",
         "p-5",
@@ -198,14 +184,15 @@ function createTooltipOperation(description) {
         "shadow-lg",
         "absolute",
         "group-hover:flex",
+        "text-left",
         "z-[100]",
-        "transition",
-        "delay-1000",
-        "text-left"
+        "w-96",
+        "whitespace-pre-wrap"
     );
     tooltip.innerText = description;
     return tooltip;
 }
+
 
 /**
  * Initializes the table structure and header.
@@ -224,11 +211,10 @@ function initializeTable() {
     const header = document.createElement("thead");
     const headerRow = document.createElement("tr");
 
-    Object.entries(HEADERS).forEach(([key, headerText]) => {
+    Object.entries(HEADERS).forEach(([key, headerValue]) => {
         const th = document.createElement("th");
-        th.className = "sticky top-0 z-10 bg-base-200 py-10 border border-base-300 text-center";
-        th.innerText = headerText;
-
+        th.className = "sticky top-0 z-10 bg-base-200 py-10 border border-base-300 text-center " + headerValue[1];
+        th.innerText = headerValue[0];
         if (key === "job_number") {
             th.classList.add("sticky", "left-0", "z-20");
         }
@@ -281,35 +267,34 @@ function populateTable(data) {
         currMonth = insertMonthSeparator(currMonth, order.due_date, tableBody);
 
         const row = document.createElement("tr");
-        row.classList.add("border", "hover:bg-base-200");
+        row.classList.add("border", "hover:bg-base-300", "transition", "duration-300");
         row.id = order.job_number;
 
         // Add table cells
-        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10", null, createTooltip(order.description)));
-        row.appendChild(createTableCell(order.customer_name));
-        row.appendChild(createTableCell(order.quantity));
+        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + STATUS[order.status], null, createTooltip(order.description, "left-[110%]")));
+        row.appendChild(createTableCell(order.customer_name, STATUS[order.status]));
+        row.appendChild(createTableCell(order.quantity, STATUS[order.status]));
         row.appendChild(createTableCell("", "p-0", null, createDatePicker(order)));
 
         const daysRemaining = calculateDaysRemaining(order.due_date);
         row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining), null, null));
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
-        row.appendChild(createTableCell(order.assigned_to));
+        row.appendChild(createTableCell(order.sales_id));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
         row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
         row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
         // add operations
+        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.on_hold, "info")));
         order.operations.forEach(operation => {
-            const op = createTableCell(operation.machine, "group", null, createTooltipOperation(operationDescription(operation)))
+            const op = createTableCell(operation.machine, "group" + STATUS[operation.status], null, createTooltip(operationDescription(operation), "translate-y-5"))
             row.appendChild(op)
         });
         tableBody.appendChild(row);
     });
-
     table.appendChild(tableBody);
 }
-
 /**
  * Fetches work order data and populates the table.
  */

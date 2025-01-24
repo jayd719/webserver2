@@ -34,6 +34,7 @@ def tracker_main_view(request):
             "mark_completed_date": work_order.mark_completed_date,
             "quantity": work_order.quantity,
             "status": work_order.status,
+            "sales_id": (work_order.sales_id.name if work_order.sales_id else None),
             "assigned_to": (
                 work_order.assigned_to.name if work_order.assigned_to else None
             ),
@@ -72,6 +73,7 @@ def tracker_update_fields(request, job_number):
                 "warning": lambda: model.update_incoming_inspection(value),
                 "success": lambda: model.update_shipping_this_month(value),
                 "error": lambda: model.update_is_rush(value),
+                "info": lambda: model.update_on_hold(value),
                 "due-date": lambda: model.update_date(value),
                 "notes1": lambda: model.update_notes(value),
             }
