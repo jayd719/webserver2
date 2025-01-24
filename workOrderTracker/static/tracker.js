@@ -30,6 +30,40 @@ const STATUS = {
     CANCELED: "Canceled",
 };
 
+function handleOperation(event) {
+    console.log(event.target.childNodes[0])
+}
+
+function createEmpDropDownList(menuOptions, currValue) {
+    const dropDownMenu = document.createElement('select'); // Use 'select' for dropdown
+    dropDownMenu.classList.add(
+        "input",
+        "input-sm",
+        'text-xs', "p-0", "m-0", "bg-transparent", "text-center", "w-24", "hover:cursor-pointer",
+    );
+
+    // Populate the dropdown with the provided menu options
+    menuOptions.forEach(option => {
+        const menuOption = document.createElement('option');
+        menuOption.value = option;
+        menuOption.textContent = option;
+
+        // Set the selected attribute if the option matches currValue
+        if (option === currValue) {
+            menuOption.selected = true;
+        }
+
+        dropDownMenu.appendChild(menuOption);
+    });
+
+    dropDownMenu.addEventListener("change", (event) => {
+        const payload = { 'field': "assigned_to", "value": event.target.value }
+        handlePostRequest(getJobNumber(event), payload)
+        console.log(event.target.value)
+    })
+
+    return dropDownMenu;
+}
 
 /**
  * Creates a date picker element.
@@ -63,7 +97,7 @@ function insertMonthSeparator(currMonth, dueDate, tableBody) {
         row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold", "brightness-75");
         Object.values(HEADERS).forEach((_, index) => {
             const td = document.createElement("td");
-            td.classList.add("p-0");
+            td.classList.add(null);
             if (index % 3 === 0) {
                 td.innerText = nextMonth;
             }
@@ -175,6 +209,9 @@ function createTooltip(description, postion = "-") {
     const tooltip = document.createElement("div");
     tooltip.classList.add(
         postion,
+        "transition",
+        "duration-1000",
+        "ease-in-out",
         "bg-yellow-200",
         "text-black",
         "p-5",
@@ -184,10 +221,13 @@ function createTooltip(description, postion = "-") {
         "shadow-lg",
         "absolute",
         "group-hover:flex",
+        "opacity-0",
+        "group-hover:opacity-100",
         "text-left",
         "z-[100]",
         "w-96",
-        "whitespace-pre-wrap"
+        "whitespace-pre-wrap",
+
     );
     tooltip.innerText = description;
     return tooltip;
@@ -247,22 +287,26 @@ function createTableCell(text, className = null, action = null, nestedElement = 
         cell.appendChild(nestedElement);
         cell.classList.add("group");
     }
+
     if (action) {
-        cell.addEventListener("click", action);
+        cell.addEventListener("click", (event) => {
+            action(event)
+        });
     }
     return cell;
 }
+
 
 /**
  * Populates the table with work order data.
  * @param {Array} data - Array of work order objects.
  */
-function populateTable(data) {
+function populateTable(data, users) {
+    console.log(data)
     const table = initializeTable();
     const tableBody = document.createElement("tbody");
 
     let currMonth = null;
-
     data.forEach((order) => {
         currMonth = insertMonthSeparator(currMonth, order.due_date, tableBody);
 
@@ -272,23 +316,27 @@ function populateTable(data) {
 
         // Add table cells
         row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + STATUS[order.status], null, createTooltip(order.description, "left-[110%]")));
-        row.appendChild(createTableCell(order.customer_name, STATUS[order.status]));
+        row.appendChild(createTableCell(order.customer_name, "group " + STATUS[order.status], null, createTooltip(order.description, "translate-x-10")));
         row.appendChild(createTableCell(order.quantity, STATUS[order.status]));
-        row.appendChild(createTableCell("", "p-0", null, createDatePicker(order)));
+        row.appendChild(createTableCell("", null, null, createDatePicker(order)));
 
         const daysRemaining = calculateDaysRemaining(order.due_date);
         row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining), null, null));
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.sales_id));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.shipping_this_month, "success")));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.incoming_inspection, "warning")));
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.is_rush, "error")));
-        row.appendChild(createTableCell("", "p-0", null, createInputBox(order.notes_one)));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.shipping_this_month, "success")));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.incoming_inspection, "warning")));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.is_rush, "error")));
+        row.appendChild(createTableCell("", null, null, createInputBox(order.notes_one)));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.on_hold, "info")));
+        // assigned to
+        row.appendChild(createTableCell("", null, null, createEmpDropDownList(users, order.assigned_to)))
+
         // add operations
-        row.appendChild(createTableCell("", "p-0", null, createCheckBox(order.on_hold, "info")));
         order.operations.forEach(operation => {
-            const op = createTableCell(operation.machine, "group" + STATUS[operation.status], null, createTooltip(operationDescription(operation), "translate-y-5"))
+            const op = createTableCell(operation.machine, "group" + STATUS[operation.status], handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
+            op.classList.add("hover:cursor-pointer")
             row.appendChild(op)
         });
         tableBody.appendChild(row);
@@ -300,17 +348,20 @@ function populateTable(data) {
  */
 async function loadWorkOrderTracker() {
     try {
-        const response = await fetch("/work-order-tracker/testlink/");
+        const response = await fetch("/work-order-tracker/tracker-main/");
         if (!response.ok) {
             console.error("Failed to fetch tracker data");
             return;
         }
-        const { data } = await response.json();
-        populateTable(data);
+        const { data, users } = await response.json();
+        populateTable(data, users);
     } catch (error) {
         console.error("Error fetching tracker data:", error);
     }
 }
-document.body.classList.add("bg-base-100", "overflow-hidden");
-// Initialize the tracker
+
+
+
+
+
 loadWorkOrderTracker();

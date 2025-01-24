@@ -12,6 +12,16 @@ def tracker_view(request):
     return render(request, "tracker.html")
 
 
+def tracker_user_list(request):
+    try:
+        data = models.User.list_for()
+        print(data)
+        return JsonResponse({"users": data}, status=200)
+    except Exception as e:
+        # Handle unexpected errors and return a meaningful response
+        return JsonResponse({"error": str(e)}, status=500)
+
+
 def tracker_main_view(request):
     """
     Retrieve and return a list of all work orders ordered by due date.
@@ -52,7 +62,7 @@ def tracker_main_view(request):
         }
         result.append(work_order_dict)
 
-    return JsonResponse({"data": result})
+    return JsonResponse({"data": result, "users": models.User.list_for()})
 
 
 def tracker_update_fields(request, job_number):
@@ -76,6 +86,7 @@ def tracker_update_fields(request, job_number):
                 "info": lambda: model.update_on_hold(value),
                 "due-date": lambda: model.update_date(value),
                 "notes1": lambda: model.update_notes(value),
+                "assigned_to": lambda: model.update_assigned_to(value),
             }
 
             field_actions.get(

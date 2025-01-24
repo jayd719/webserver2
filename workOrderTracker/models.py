@@ -58,6 +58,10 @@ class User(models.Model):
     def is_machinist(self):
         return self.role == "Machinist"
 
+    @classmethod
+    def list_for(cls):
+        return list(cls.objects.values_list("name", flat=True))
+
     class Meta:
         constraints = [
             models.UniqueConstraint(fields=["email"], name="unique_user_email"),
@@ -162,6 +166,10 @@ class WorkOrder(models.Model):
 
     def update_notes(self, notes):
         self.notes_one = notes
+        self.save()
+
+    def update_assigned_to(self, newEmp):
+        self.assigned_to = User.objects.get(name=newEmp)
         self.save()
 
     def mark_as_completed(self):
