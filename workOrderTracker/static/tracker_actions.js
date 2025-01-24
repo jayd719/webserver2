@@ -1,4 +1,6 @@
-
+document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+});
 /**
  * Retrieves the job number from the event target.
  * 
@@ -97,5 +99,55 @@ function updateBools(event) {
 function updateNotes(event) {
     const payload = { 'field': "notes1", 'value': event.target.value }
     handlePostRequest(getJobNumber(event), payload)
+}
 
+
+/**
+ * Handles mouse button operations based on the button clicked.
+ * @param {MouseEvent} event - The mouse event object containing details of the click.
+ * 
+ * Behavior:
+ * - If the left mouse button (button 0) is clicked, an alert is shown with the message "Left Button".
+ * - If the right mouse button (button 2) is clicked, an alert is shown with the message "Right Button".
+ * - For any other button click, a warning is logged to the console indicating it is unhandled.
+ */
+function handleOperation(event) {
+    switch (event.button) {
+        case 0:
+            markOperationComplete(event)
+            break;
+        case 2:
+            alert("Right Button");
+            break;
+        default:
+            console.warn("Unhandled button click");
+    }
+}
+
+/**
+ * Handles mouse button actions specifically for processing orders.
+ * @param {MouseEvent} event - The mouse event object containing details of the click.
+ * 
+ * Behavior:
+ * - If the left mouse button (button 0) is clicked, an alert is shown with the message "Left Button".
+ * - If the right mouse button (button 2) is clicked, an alert is shown with the message "Right Button".
+ * - For any other button click, a warning is logged to the console indicating it is unhandled.
+ */
+function handleOrder(event) {
+    switch (event.button) {
+        case 0:
+            alert("Left Button");
+            break;
+        case 2:
+            alert("Right Button");
+            break;
+        default:
+            console.warn("Unhandled button click");
+    }
+}
+
+
+function markOperationComplete(event) {
+    const job_number = event.target.parentElement.id
+    const step_number = event.target.ariaLabel
 }

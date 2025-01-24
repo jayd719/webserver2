@@ -2,18 +2,19 @@
  * Constants for table headers.
  */
 const HEADERS = {
-    job_number: ["Job Number", "H"],
+    job_number: ["Order Number", "H"],
     customer_name: ["Customer Name", "Customer Info"],
     quantity: ["Qty", "Numbers"],
     due_date: ["Due On", "Dates"],
     due_in: ["Due In", "Dates"],
     completed: ["Comp %", "Progress"],
-    assigned_to: ["SA", "Assigned"],
+    sales_id: ["SA", "Assigned"],
     shipping_this_month: ["STM", "Shipping"],
     incoming_inspection: ["INPS", "Inspection"],
     is_rush: ["Rush", "Priority"],
     notes_one: ["Notes", "Notes Section"],
     on_hold: ["On Hold", "Status"],
+    assigned_to: ["SA", "Assigned"],
     ...Object.fromEntries(
         Array.from({ length: 30 }, (_, i) => [`operation${i + 1}`, [`OP ${i + 1}`, "Operation"]])
     ),
@@ -30,9 +31,11 @@ const STATUS = {
     CANCELED: "Canceled",
 };
 
-function handleOperation(event) {
-    console.log(event.target.childNodes[0])
+
+function CreateOperationControlPanel() {
+    const operationPanel = document.createElement("div")
 }
+
 
 function createEmpDropDownList(menuOptions, currValue) {
     const dropDownMenu = document.createElement('select'); // Use 'select' for dropdown
@@ -47,21 +50,15 @@ function createEmpDropDownList(menuOptions, currValue) {
         const menuOption = document.createElement('option');
         menuOption.value = option;
         menuOption.textContent = option;
-
-        // Set the selected attribute if the option matches currValue
         if (option === currValue) {
             menuOption.selected = true;
         }
-
         dropDownMenu.appendChild(menuOption);
     });
-
     dropDownMenu.addEventListener("change", (event) => {
         const payload = { 'field': "assigned_to", "value": event.target.value }
         handlePostRequest(getJobNumber(event), payload)
-        console.log(event.target.value)
     })
-
     return dropDownMenu;
 }
 
@@ -250,7 +247,6 @@ function initializeTable() {
 
     const header = document.createElement("thead");
     const headerRow = document.createElement("tr");
-
     Object.entries(HEADERS).forEach(([key, headerValue]) => {
         const th = document.createElement("th");
         th.className = "sticky top-0 z-10 bg-base-200 py-10 border border-base-300 text-center " + headerValue[1];
@@ -289,7 +285,7 @@ function createTableCell(text, className = null, action = null, nestedElement = 
     }
 
     if (action) {
-        cell.addEventListener("click", (event) => {
+        cell.addEventListener("mousedown", (event) => {
             action(event)
         });
     }
@@ -315,7 +311,7 @@ function populateTable(data, users) {
         row.id = order.job_number;
 
         // Add table cells
-        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + STATUS[order.status], null, createTooltip(order.description, "left-[110%]")));
+        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + STATUS[order.status], handleOrder, createTooltip(order.description, "left-[110%]")));
         row.appendChild(createTableCell(order.customer_name, "group " + STATUS[order.status], null, createTooltip(order.description, "translate-x-10")));
         row.appendChild(createTableCell(order.quantity, STATUS[order.status]));
         row.appendChild(createTableCell("", null, null, createDatePicker(order)));
@@ -336,6 +332,7 @@ function populateTable(data, users) {
         // add operations
         order.operations.forEach(operation => {
             const op = createTableCell(operation.machine, "group" + STATUS[operation.status], handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
+            op.ariaLabel = operation.step_number
             op.classList.add("hover:cursor-pointer")
             row.appendChild(op)
         });
@@ -359,9 +356,4 @@ async function loadWorkOrderTracker() {
         console.error("Error fetching tracker data:", error);
     }
 }
-
-
-
-
-
 loadWorkOrderTracker();
