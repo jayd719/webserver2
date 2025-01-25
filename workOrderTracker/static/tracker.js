@@ -30,7 +30,7 @@ const STATUS = {
     NEW: " ",
     PENDING: "base-200",
     IN_PROGRESS: "warning",
-    COMPLETED: "success text-success",
+    COMPLETED: "success text-success border-0",
     CANCELED: "Canceled",
 };
 
