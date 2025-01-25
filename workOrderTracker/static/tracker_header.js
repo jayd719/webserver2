@@ -1,7 +1,7 @@
 const LOGO = `<div class="flex items-center gap-2">
   <img id='logo-main'
-    class="w-32 liinvert"
-    src="/static/tracker_assets/image.png"
+    class="w-20 liinvert"
+    src="https://github.com/jayd719/webserver2/blob/main/workOrderTracker/static/tracker_assets/image.png?raw=true"
     alt="Business and Finance Icon"
   />
   

@@ -1,3 +1,5 @@
+
+
 document.addEventListener('contextmenu', event => {
     event.preventDefault();
 });
@@ -17,8 +19,7 @@ function getJobNumber(event) {
  * @param {string} url - The endpoint URL to send the POST request to.
  * @param {Object} data - The data to send in the request body.
  */
-async function handlePostRequest(url, data) {
-    const UPDATE_END_POINT = 'update_tracker_field'
+async function handlePostRequest(url, data, UPDATE_END_POINT = 'update_tracker_field') {
     url = `${UPDATE_END_POINT}/${url}`
     fetch(url, {
         method: "POST",
@@ -101,6 +102,13 @@ function updateNotes(event) {
     handlePostRequest(getJobNumber(event), payload)
 }
 
+
+
+function updateOperationStatus(event) {
+    const job_number = event.target.parentElement.parentElement.parentElement.parentElement.id
+    const payload = { "opNumber": event.target.parentElement.parentElement.parentElement.ariaLabel, 'value': event.target.ariaLabel }
+    handlePostRequest(job_number, payload, "update_operation_field")
+}
 
 /**
  * Handles mouse button operations based on the button clicked.

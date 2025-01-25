@@ -1,3 +1,6 @@
+const CHECK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg>`
+const CSS_ALL = 'whitespace-nowrap border border-base-300'
+const CSS_OPS = 'group hover:cursor-pointer ' + CSS_ALL
 /**
  * Constants for table headers.
  */
@@ -25,17 +28,51 @@ const HEADERS = {
  */
 const STATUS = {
     NEW: " ",
-    PENDING: " bg-base-200",
-    IN_PROGRESS: "bg-success",
-    COMPLETED: "Completed",
+    PENDING: "base-200",
+    IN_PROGRESS: "warning",
+    COMPLETED: "success text-success",
     CANCELED: "Canceled",
 };
 
+function updateOperationCSS(event) {
 
+}
+/**
+ * Creates a control panel with buttons for different operation statuses.
+ * Each button is associated with a tooltip that displays the operation's status.
+ * @returns {HTMLDivElement} The operation control panel element.
+ */
 function CreateOperationControlPanel() {
     const operationPanel = document.createElement("div")
-}
+    operationPanel.classList.add("hidden", "group-hover:flex", "gap-3", "absolute", "translate-y-[-40px]", "translate-x-[20px]")
 
+    const actions = {
+        PENDING: "Mark As Pending",
+        IN_PROGRESS: "Mark In Progress",
+        COMPLETED: "Mark As Completed",
+
+    };
+    let i = 1;
+    Object.entries(actions).forEach(([action, text]) => {
+        const toolTip = document.createElement("div")
+        toolTip.className = "tooltip"
+        toolTip.setAttribute("data-tip", text);
+
+        const button = document.createElement('btn')
+        button.className = `btn btn-xs btn-${STATUS[action]} opacity-20 hover:opacity-100`
+        button.innerText = `✓`
+        button.ariaLabel = i++;
+
+        button.addEventListener("click", (event) => {
+            event.target.parentElement.parentElement.parentElement.className = `${CSS_OPS} bg-${STATUS[action]}`
+            updateOperationStatus(event)
+        })
+        toolTip.appendChild(button)
+        operationPanel.appendChild(toolTip)
+    });
+
+    return operationPanel
+}
 
 function createEmpDropDownList(menuOptions, currValue) {
     const dropDownMenu = document.createElement('select'); // Use 'select' for dropdown
@@ -129,14 +166,14 @@ function createInputBox(defaultValue) {
  * @param {string} style - Style class for the checkbox.
  * @returns {HTMLInputElement} The created checkbox element.
  */
-function createCheckBox(defaultValue, style) {
+function createCheckBox(defaultValue, style, action) {
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBox.checked = defaultValue;
     checkBox.className = `checkbox checkbox-${style} border-0 rounded-full checkbox-xs`;
     checkBox.ariaLabel = style
     checkBox.addEventListener('change', (event) => {
-        updateBools(event)
+        action(event)
     })
     return checkBox;
 }
@@ -278,7 +315,7 @@ function initializeTable() {
 function createTableCell(text, className = null, action = null, nestedElement = null) {
     const cell = document.createElement("td");
     cell.innerText = text;
-    cell.className = `${className || ""} whitespace-nowrap border border-base-300`;
+    cell.className = `${className || ""} ${CSS_ALL}`;
     if (nestedElement) {
         cell.appendChild(nestedElement);
         cell.classList.add("group");
@@ -321,19 +358,20 @@ function populateTable(data, users) {
 
         row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.sales_id));
-        row.appendChild(createTableCell("", null, null, createCheckBox(order.shipping_this_month, "success")));
-        row.appendChild(createTableCell("", null, null, createCheckBox(order.incoming_inspection, "warning")));
-        row.appendChild(createTableCell("", null, null, createCheckBox(order.is_rush, "error")));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.shipping_this_month, "success", updateBools)));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.incoming_inspection, "warning", updateBools)));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.is_rush, "error", updateBools)));
         row.appendChild(createTableCell("", null, null, createInputBox(order.notes_one)));
-        row.appendChild(createTableCell("", null, null, createCheckBox(order.on_hold, "info")));
+        row.appendChild(createTableCell("", null, null, createCheckBox(order.on_hold, "info", updateBools)));
         // assigned to
         row.appendChild(createTableCell("", null, null, createEmpDropDownList(users, order.assigned_to)))
 
         // add operations
         order.operations.forEach(operation => {
-            const op = createTableCell(operation.machine, "group" + STATUS[operation.status], handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
+            const op = createTableCell(operation.machine, `${CSS_OPS} bg-${STATUS[operation.status]}`, handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
             op.ariaLabel = operation.step_number
-            op.classList.add("hover:cursor-pointer")
+            // operation Control Panel
+            op.append(CreateOperationControlPanel())
             row.appendChild(op)
         });
         tableBody.appendChild(row);

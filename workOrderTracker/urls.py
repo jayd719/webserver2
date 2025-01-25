@@ -17,4 +17,9 @@ urlpatterns += [
         views.tracker_update_fields,
         name="update-tracker-field",
     ),
+    path(
+        "tracker/update_operation_field/<str:job_number>",
+        views.tracker_update_operation,
+        name="update-tracker-operation",
+    ),
 ]

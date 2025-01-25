@@ -256,9 +256,9 @@ class WorkOrderOperation(models.Model):
         """Check if the operation has exceeded its estimated hours."""
         return bool(self.actual_hours and self.actual_hours > self.estimated_hours)
 
-    def mark_completed(self) -> None:
+    def update_status(self,status) -> None:
         """Mark the operation as 'Completed' and save the status."""
-        self.status = "Completed"
+        self.status = status
         self.save()
 
     def calculate_remaining_hours(self) -> float:

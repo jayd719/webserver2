@@ -97,3 +97,17 @@ def tracker_update_fields(request, job_number):
         except:
             return JsonResponse({"error": "Invalid JSON Data"}, status=400)
     return JsonResponse({"error": "only POST Request Allowed"}, status=405)
+
+
+def tracker_update_operation(request,job_number):
+    if request.method=="POST":
+        try:
+            data = json.loads(request.body)
+            operation = int(data.get("opNumber"))
+            value = models.STATUS_CHOICES[int(data.get("value"))][0]
+            models.WorkOrderOperation.objects.filter(work_order=job_number,step_number=operation).update(status=value)
+
+            return JsonResponse({"message": "Data Processed"}, status=200)
+        except:
+            return JsonResponse({"error": "Invalid JSON Data"}, status=400)
+    return JsonResponse({"error": "only POST Request Allowed"}, status=405)
