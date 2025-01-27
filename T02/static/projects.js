@@ -1,6 +1,13 @@
 // Array of projects
 const projects = [
     {
+        title: "WorkFlow Tracker",
+        description: " A tool for managing work orders, tracking progress, and ensuring seamless task organization and visibility.",
+        link: "/work-order-tracker/tracker/",
+        Tools: ["Python", "Django", "JavaScript", "MySQL"],
+        githubLink: "/pages/resume/1",
+    },
+    {
         title: "Image Processing Toolkit",
         description: "Created a toolkit using OpenCV to simplify image processing tasks and visualize transformations in real-time on a live webpage.",
         link: "/pages/image-processing-toolkit/",
