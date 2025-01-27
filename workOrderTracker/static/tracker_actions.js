@@ -42,18 +42,25 @@ async function handlePostRequest(url, data, UPDATE_END_POINT = 'update_tracker_f
  * @returns {string} The appropriate CSS class for the element.
  */
 function getDueInCSS(daysRemaining) {
-    const gradient = Math.abs(daysRemaining / 50);
-    let css = "due-date text-center font-bold ";
+    // Ensure gradient is clamped between 0% and 100%
+    const gradient = Math.min(Math.abs(daysRemaining) / 100, .99)
+    // Base CSS class
+    let css = "due-date ";
 
-    if (daysRemaining > 7) {
-        css += `bg-[rgba(5,211,50,${gradient})]`;
-    } else if (daysRemaining > 0) {
-        css += `bg-[rgba(250,245,0,${0.25 + gradient})]`;
+    // Determine the background color and brightness class based on remaining days
+    if (daysRemaining > 0) {
+        let red = 256
+        let green = 235
+        css += `bg-[rgb(${red * (1 - gradient)},${green},0)]`;
     } else {
-        css += `bg-[rgba(250,0,0,${0.3 + gradient})]`;
+        let red = Math.max(235 - (200 * gradient), 150)
+        console.log(red)
+        css += `bg-[rgb(${red},${20},20)] text-white`;
     }
+
     return css;
 }
+
 
 /**
  * Calculates the days remaining until a specified due date.

@@ -45,7 +45,7 @@ function getSavedTheme() {
 function showLoader(duration = 3500) {
     const loader = document.createElement("div");
     loader.className = "absolute top-0 left-0 w-full h-screen bg-base-100 flex items-center justify-center z-[200]";
-    loader.innerHTML = `<span class="loading loading-bars loading-lg"></span>`;
+    loader.innerHTML = `<progress class="progress w-96"></progress>`;
 
     document.body.appendChild(loader);
 

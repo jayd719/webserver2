@@ -1,8 +1,9 @@
 
 const CHECK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg>`
-const CSS_ALL = 'whitespace-nowrap border border-base-300'
+const CSS_ALL = 'whitespace-nowrap border bg-base-100'
 const CSS_OPS = 'group hover:cursor-pointer ' + CSS_ALL
-const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 py-8 text-center "
+const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 py-8 text-center text-primary "
+const FIXED = 6
 /**
  * Constants for table headers.
  */
@@ -127,7 +128,7 @@ function insertMonthSeparator(currMonth, dueDate, tableBody) {
         row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold", "brightness-80");
         Object.values(HEADERS).forEach((_, index) => {
             const td = document.createElement("td");
-            td.classList.add(null);
+            td.classList.add("z-1");
             if (index % 3 === 0 && index != 9) {
                 td.innerText = nextMonth;
             }
@@ -289,14 +290,12 @@ function initializeTable() {
 
     const header = document.createElement("thead");
     const headerRow = document.createElement("tr");
-    Object.entries(HEADERS).forEach(([key, headerValue]) => {
+
+    Object.entries(HEADERS).forEach(([key, headerValue], index) => {
         const th = document.createElement("th");
         th.className = HEADERS_CSS + headerValue[1];
         th.innerText = headerValue[0];
-        if (key === "job_number") {
-            th.classList.add("sticky", "left-0", "z-20");
-        }
-        headerRow.appendChild(th);
+        headerRow.appendChild(th)
     });
 
     header.appendChild(headerRow);
@@ -348,12 +347,13 @@ function populateTable(data, users) {
         currMonth = insertMonthSeparator(currMonth, order.due_date, tableBody);
 
         const row = document.createElement("tr");
-        row.classList.add("border", "hover:bg-base-300", "transition", "duration-300", "data-row");
+        row.classList.add("border", "data-row");
         row.id = order.job_number;
 
+
         // Add table cells
-        row.appendChild(createTableCell(order.job_number, "sticky left-0 z-10" + STATUS[order.status], handleOrder, createTooltip(order.description, "left-[110%]")));
-        row.appendChild(createTableCell(order.customer_name, "group " + STATUS[order.status], null, createTooltip(order.description, "translate-x-10")));
+        row.appendChild(createTableCell(order.job_number, "group " + STATUS[order.status], handleOrder, createTooltip(order.description, "translate-x-[120px]")));
+        row.appendChild(createTableCell(order.customer_name, "group " + STATUS[order.status], null, null));
         row.appendChild(createTableCell(order.quantity, STATUS[order.status]));
         row.appendChild(createTableCell("", null, null, createDatePicker(order)));
 
@@ -383,6 +383,8 @@ function populateTable(data, users) {
             if (operation.status === "COMPLETED") {
                 hours[1] += operation.estimated_hours;
             }
+
+
         });
         updateProgressBar(row, hours)
         tableBody.appendChild(row);
@@ -442,3 +444,49 @@ controller.init("/work-order-tracker/tracker-main");
 
 
 
+function updateFixedCols() {
+    const table = document.querySelector("table"); // Replace with your table selector
+
+    if (table) {
+        const headers = table.querySelectorAll("thead th"); // Select all header cells
+        const rows = table.querySelectorAll("tbody tr"); // Select all rows in the body
+
+        let cumulativeWidths = []; // To store cumulative widths for sticky columns
+
+        // Process headers to calculate column widths
+        headers.forEach((header, index) => {
+            const rect = header.getBoundingClientRect();
+            const width = rect.width;
+            cumulativeWidths[index] = (cumulativeWidths[index - 1] || 0) + width;
+
+            // Apply sticky styles to header cells for the first 5 columns
+            if (index < FIXED) {
+                header.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                header.classList.add("sticky", "z-[20]");
+            }
+        });
+
+        // Process table body rows for sticky cells
+        rows.forEach((row) => {
+            const cells = row.querySelectorAll("td"); // Select all cells in the row
+            cells.forEach((cell, index) => {
+
+                if (index == 0) {
+                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                    cell.classList.add("sticky", "z-[10]");
+                }
+                if (index < FIXED && index > 0) {
+                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                    cell.classList.add("sticky", "z-[5]");
+                }
+            });
+        });
+
+
+
+    }
+}
+
+setTimeout(() => {
+    updateFixedCols()
+}, 4000);
