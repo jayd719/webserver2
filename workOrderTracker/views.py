@@ -35,7 +35,7 @@ def tracker_main_view(request):
     )
 
     # Build the result list
-    result = []
+    result = {}
     for work_order in work_orders:
         work_order_dict = {
             "job_number": work_order.job_number,
@@ -60,7 +60,7 @@ def tracker_main_view(request):
             "is_rush": work_order.is_rush,
             "operations": list(work_order.operations.values()),
         }
-        result.append(work_order_dict)
+        result.update({work_order.job_number: work_order_dict})
 
     return JsonResponse({"data": result, "users": models.User.list_for()})
 
@@ -99,13 +99,15 @@ def tracker_update_fields(request, job_number):
     return JsonResponse({"error": "only POST Request Allowed"}, status=405)
 
 
-def tracker_update_operation(request,job_number):
-    if request.method=="POST":
+def tracker_update_operation(request, job_number):
+    if request.method == "POST":
         try:
             data = json.loads(request.body)
             operation = int(data.get("opNumber"))
-            value = models.STATUS_CHOICES[int(data.get("value"))][0]
-            models.WorkOrderOperation.objects.filter(work_order=job_number,step_number=operation).update(status=value)
+            value = data.get("value")
+            models.WorkOrderOperation.objects.filter(
+                work_order=job_number, step_number=operation
+            ).update(status=value)
 
             return JsonResponse({"message": "Data Processed"}, status=200)
         except:

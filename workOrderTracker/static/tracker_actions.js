@@ -104,9 +104,8 @@ function updateNotes(event) {
 
 
 
-function updateOperationStatus(event) {
-    const job_number = event.target.parentElement.parentElement.parentElement.parentElement.id
-    const payload = { "opNumber": event.target.parentElement.parentElement.parentElement.ariaLabel, 'value': event.target.ariaLabel }
+function updateOperationStatus(job_number, operationNumber, status) {
+    const payload = { "opNumber": operationNumber, 'value': status }
     handlePostRequest(job_number, payload, "update_operation_field")
 }
 

@@ -2,7 +2,7 @@
 const CHECK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg>`
 const CSS_ALL = 'whitespace-nowrap border border-base-300'
 const CSS_OPS = 'group hover:cursor-pointer ' + CSS_ALL
-const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 py-8 text-center "
+const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 p-10 text-center "
 /**
  * Constants for table headers.
  */
@@ -60,9 +60,8 @@ function CreateOperationControlPanel() {
         button.className = `btn btn-xs btn-${STATUS[action]} opacity-20 hover:opacity-100`
         button.innerText = `✓`
         button.addEventListener("click", (event) => {
-            const op = event.target.parentElement.parentElement.parentElement
-            op.className = `${CSS_OPS} bg-${STATUS[action]}`
-            controller.updateOperationStatus(op, action)
+            event.target.parentElement.parentElement.parentElement.className = `${CSS_OPS} bg-${STATUS[action]}`
+            updateOperationStatus(event)
         })
         toolTip.appendChild(button)
         operationPanel.appendChild(toolTip)
@@ -124,11 +123,11 @@ function insertMonthSeparator(currMonth, dueDate, tableBody) {
     const nextMonth = new Date(dueDate).toLocaleString("default", { month: "long" });
     if (currMonth !== nextMonth) {
         const row = document.createElement("tr");
-        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold", "brightness-80");
+        row.classList.add("border-b-4", "border-t-4", "bg-primary", "text-[4px]", "border-secondary", "text-white", "font-bold", "brightness-75");
         Object.values(HEADERS).forEach((_, index) => {
             const td = document.createElement("td");
             td.classList.add(null);
-            if (index % 3 === 0 && index != 9) {
+            if (index % 3 === 0) {
                 td.innerText = nextMonth;
             }
             row.appendChild(td);
@@ -176,9 +175,10 @@ function createCheckBox(defaultValue, style, action) {
 
 /**
  * Creates a progress bar element with an overlay label for tracking completion.
+ * @param {Object} order - The order object with `estimated_hours` and `completed_hours`.
  * @returns {HTMLElement} A container element with the progress bar and its label.
  */
-function createProgressBar() {
+function createProgressBar(order) {
     // Create a container for the progress bar and label
     const container = document.createElement("div");
     container.classList.add("progress-container");
@@ -187,7 +187,9 @@ function createProgressBar() {
     // Create the progress bar element
     const progressBar = document.createElement("progress");
     progressBar.classList.add("progress", "progress-success", "w-32", "h-2");
-    progressBar.value = 0
+    progressBar.value = order.estimated_hours > 0
+        ? Math.round(((order.completed_hours + 14) / order.estimated_hours) * 100)
+        : 0;
     progressBar.max = 100;
 
     // Create the label element
@@ -203,18 +205,6 @@ function createProgressBar() {
     container.appendChild(progressLabel);
 
     return container;
-}
-/**
- * Updates Progress Bar.
- * @param {Object} order - The order object with `estimated_hours` and `completed_hours`.
- * @returns {HTMLElement} A container element with the progress bar and its label.
- */
-function updateProgressBar(row, hours) {
-    const progressBar = row.querySelector("progress")
-    const completed = hours[1] / hours[0];
-    progressBar.value = `${(completed * 100).toFixed(0)}`;
-    progressBar.nextElementSibling.innerText = `${(completed * 100).toFixed(0)}%`;
-
 }
 
 /**
@@ -342,13 +332,14 @@ function createTableCell(text, className = null, action = null, nestedElement = 
 function populateTable(data, users) {
     const table = initializeTable();
     const tableBody = document.createElement("tbody");
-    let currMonth = null;
 
-    Object.entries(data).forEach(([number, order]) => {
+
+    let currMonth = null;
+    data.forEach((order) => {
         currMonth = insertMonthSeparator(currMonth, order.due_date, tableBody);
 
         const row = document.createElement("tr");
-        row.classList.add("border", "hover:bg-base-300", "transition", "duration-300", "data-row");
+        row.classList.add("border", "hover:bg-base-300", "transition", "duration-300");
         row.id = order.job_number;
 
         // Add table cells
@@ -360,7 +351,7 @@ function populateTable(data, users) {
         const daysRemaining = calculateDaysRemaining(order.due_date);
         row.appendChild(createTableCell(daysRemaining, getDueInCSS(daysRemaining), null, null));
 
-        row.appendChild(createTableCell("", null, null, createProgressBar()));
+        row.appendChild(createTableCell("", null, null, createProgressBar(order)));
         row.appendChild(createTableCell(order.sales_id));
         row.appendChild(createTableCell("", null, null, createCheckBox(order.shipping_this_month, "success", updateBools)));
         row.appendChild(createTableCell("", null, null, createCheckBox(order.incoming_inspection, "warning", updateBools)));
@@ -371,20 +362,13 @@ function populateTable(data, users) {
         row.appendChild(createTableCell("", null, null, createEmpDropDownList(users, order.assigned_to)))
 
         // add operations
-        const hours = [0, 0]
         order.operations.forEach(operation => {
-            const op = createTableCell(operation.machine, `data-op ${CSS_OPS} bg-${STATUS[operation.status]}`, handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
+            const op = createTableCell(operation.machine, `${CSS_OPS} bg-${STATUS[operation.status]}`, handleOperation, createTooltip(operationDescription(operation), "translate-y-5"))
             op.ariaLabel = operation.step_number
-            op.setAttribute('number', operation.step_number)
+            // operation Control Panel
             op.append(CreateOperationControlPanel())
             row.appendChild(op)
-
-            hours[0] += operation.estimated_hours;
-            if (operation.status === "COMPLETED") {
-                hours[1] += operation.estimated_hours;
-            }
         });
-        updateProgressBar(row, hours)
         tableBody.appendChild(row);
     });
     table.appendChild(tableBody);
@@ -416,29 +400,13 @@ class WorkOrderController {
         }
     }
 
-    updateOperationStatus(operationElement, newStatus) {
-        const row = operationElement.parentElement;
-        const workOrder = this.workOrders[row.id];
-        const totalHours = [0, 0];
-        workOrder.operations.forEach(operation => {
-            if (operation.step_number == operationElement.getAttribute("number")) {
-                operation.status = newStatus;
-            }
-            totalHours[0] += operation.estimated_hours;
-            if (operation.status === "COMPLETED") {
-                totalHours[1] += operation.estimated_hours;
-
-            }
-        });
-        updateProgressBar(row, totalHours);
-        updateOperationStatus(row.id, operationElement.getAttribute("number"), newStatus)
+    updateCompleted(orderNumber) {
+        console.log("sddsd")
+        console.log(orderNumber)
     }
-
-
 }
 
 const controller = new WorkOrderController();
 controller.init("/work-order-tracker/tracker-main");
-
 
 
