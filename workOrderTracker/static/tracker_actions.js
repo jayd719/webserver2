@@ -84,7 +84,7 @@ function updateDate(event) {
     const daysRemainingElm = document.getElementById(event.target.id).querySelector('.due-date')
     const daysRemaining = calculateDaysRemaining(event.target.value)
     daysRemainingElm.textContent = daysRemaining
-    daysRemainingElm.className = getDueInCSS(daysRemaining)
+    daysRemainingElm.className = getDueInCSS(daysRemaining) + " " + daysRemainingElm.className
     const payload = { 'field': "due-date", 'value': event.target.value }
     handlePostRequest(getJobNumber(event), payload)
 }

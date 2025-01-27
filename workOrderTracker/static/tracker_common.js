@@ -42,9 +42,9 @@ function getSavedTheme() {
 
 
 // Render a loading spinner and remove it after a delay
-function showLoader(duration = 3500) {
+function showLoader(duration = 4000) {
     const loader = document.createElement("div");
-    loader.className = "absolute top-0 left-0 w-full h-screen bg-base-100 flex items-center justify-center z-[200]";
+    loader.className = "absolute top-15 left-0 w-full h-screen bg-base-100 flex items-center justify-center z-[200]";
     loader.innerHTML = `<progress class="progress w-96"></progress>`;
 
     document.body.appendChild(loader);

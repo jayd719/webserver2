@@ -25,7 +25,7 @@ function createSubMenu(menuList, text) {
     // Create the submenu itself
     const subMenu = document.createElement("ul");
     subMenu.tabIndex = 0;
-    subMenu.className = "flex-col dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl hidden group-hover:flex overflow-y-scroll max-h-[80vh]";
+    subMenu.className = "flex-col dropdown-content bg-base-300 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl hidden group-hover:flex overflow-y-scroll max-h-[80vh]";
 
     // Populate the submenu with items
     Object.entries(menuList).forEach(([key, value]) => {
@@ -66,7 +66,7 @@ function renderMenuButton(items) {
     // Create the dropdown menu
     const menu = document.createElement("ul");
     menu.tabIndex = 1;
-    menu.className = `menu dropdown-content bg-base-200 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl`
+    menu.className = `menu dropdown-content bg-base-300 rounded-box z-[100] mt-3 w-52 p-2 shadow-xl`
 
     Object.entries(items).forEach(([text, subMenu]) => {
         const listItem = document.createElement("li");

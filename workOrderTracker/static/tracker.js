@@ -1,9 +1,15 @@
+// SVG Icon Constants
+const CHECK_ICON = `
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+</svg>`;
 
-const CHECK_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/></svg>`
-const CSS_ALL = 'whitespace-nowrap border bg-base-100'
-const CSS_OPS = 'group hover:cursor-pointer ' + CSS_ALL
-const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 py-8 text-center text-primary "
-const FIXED = 6
+// CSS Classes
+const CSS_ALL = 'whitespace-nowrap border bg-base-100';
+const CSS_OPS = `group hover:cursor-pointer ${CSS_ALL}`;
+const HEADERS_CSS = "sticky top-0 z-10 bg-base-200 py-8 text-center text-primary";
+const FIXED = 6;
+
 /**
  * Constants for table headers.
  */
@@ -261,8 +267,6 @@ function createTooltip(description, postion = "-") {
         "shadow-lg",
         "absolute",
         "group-hover:flex",
-        "opacity-0",
-        "group-hover:opacity-100",
         "text-left",
         "z-[100]",
         "w-96",
@@ -333,6 +337,42 @@ function createTableCell(text, className = null, action = null, nestedElement = 
     return cell;
 }
 
+/**
+ * Updates the table to make specific columns sticky, ensuring proper alignment
+ * between headers and their corresponding cells. This is useful for tables with
+ * horizontally scrollable content where the first few columns need to stay fixed.
+ */
+function updateFixedCols() {
+    const table = document.querySelector("table");
+    if (table) {
+        const headers = table.querySelectorAll("thead th");
+        const rows = table.querySelectorAll("tbody .data-row");
+        let cumulativeWidths = [];
+        headers.forEach((header, index) => {
+            const rect = header.getBoundingClientRect();
+            const width = rect.width;
+            cumulativeWidths[index] = (cumulativeWidths[index - 1] || 0) + width;
+            if (index < FIXED) {
+                header.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                header.classList.add("sticky", "z-[40]");
+            }
+        });
+        rows.forEach((row) => {
+            const cells = row.querySelectorAll("td");
+            cells.forEach((cell, index) => {
+                if (index == 0) {
+                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                    cell.classList.add("sticky", "z-[20]");
+                }
+                if (index < FIXED && index > 0) {
+                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
+                    cell.classList.add("sticky", "z-[5]");
+                }
+            });
+        });
+    }
+}
+
 
 /**
  * Populates the table with work order data.
@@ -390,8 +430,13 @@ function populateTable(data, users) {
         tableBody.appendChild(row);
     });
     table.appendChild(tableBody);
+
+    setTimeout(() => {
+        updateFixedCols()
+    }, 4000);
     return tableBody
 }
+
 
 
 // Class responsible for managing the data of work orders and users
@@ -444,49 +489,5 @@ controller.init("/work-order-tracker/tracker-main");
 
 
 
-function updateFixedCols() {
-    const table = document.querySelector("table"); // Replace with your table selector
-
-    if (table) {
-        const headers = table.querySelectorAll("thead th"); // Select all header cells
-        const rows = table.querySelectorAll("tbody tr"); // Select all rows in the body
-
-        let cumulativeWidths = []; // To store cumulative widths for sticky columns
-
-        // Process headers to calculate column widths
-        headers.forEach((header, index) => {
-            const rect = header.getBoundingClientRect();
-            const width = rect.width;
-            cumulativeWidths[index] = (cumulativeWidths[index - 1] || 0) + width;
-
-            // Apply sticky styles to header cells for the first 5 columns
-            if (index < FIXED) {
-                header.style.left = `${cumulativeWidths[index - 1] || 0}px`;
-                header.classList.add("sticky", "z-[20]");
-            }
-        });
-
-        // Process table body rows for sticky cells
-        rows.forEach((row) => {
-            const cells = row.querySelectorAll("td"); // Select all cells in the row
-            cells.forEach((cell, index) => {
-
-                if (index == 0) {
-                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
-                    cell.classList.add("sticky", "z-[10]");
-                }
-                if (index < FIXED && index > 0) {
-                    cell.style.left = `${cumulativeWidths[index - 1] || 0}px`;
-                    cell.classList.add("sticky", "z-[5]");
-                }
-            });
-        });
 
 
-
-    }
-}
-
-setTimeout(() => {
-    updateFixedCols()
-}, 4000);
