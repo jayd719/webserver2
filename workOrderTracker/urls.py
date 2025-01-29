@@ -7,6 +7,7 @@ urlpatterns = [
     # test
     path("tracker-main/", views.tracker_main_view, name="tracker-main"),
     path("get_users_list/", views.tracker_user_list, name="tracker-userlist"),
+    path("tracker-cached/", views.tracker_cached_json, name="tracker-version-2"),
 ]
 
 # actions

@@ -2,6 +2,11 @@ from django.shortcuts import render, HttpResponse
 from django.http import JsonResponse
 from . import models
 import json
+import pandas as pd
+
+WORK_ORDERS = models.WorkOrder.objects.all()
+OPERATIONS = models.WorkOrderOperation.objects.all()
+USERS = models.User.list_for()
 
 
 def homepage(request):
@@ -28,15 +33,15 @@ def tracker_main_view(request):
     Includes all fields of WorkOrder, the name of the assigned person, and associated operations.
     """
     # Query work orders with related data
-    work_orders = (
-        models.WorkOrder.objects.select_related("assigned_to")
-        .prefetch_related("operations")
-        .order_by("due_date")
-    )
+    # work_orders = (
+    #     models.WorkOrder.objects.select_related("assigned_to")
+    #     .prefetch_related("operations")
+    #     .order_by("due_date")
+    # )
 
     # Build the result list
     result = {}
-    for work_order in work_orders:
+    for work_order in WORK_ORDERS:
         work_order_dict = {
             "job_number": work_order.job_number,
             "order_date": work_order.order_date,
@@ -113,3 +118,11 @@ def tracker_update_operation(request, job_number):
         except:
             return JsonResponse({"error": "Invalid JSON Data"}, status=400)
     return JsonResponse({"error": "only POST Request Allowed"}, status=405)
+
+
+def tracker_cached_json(request):
+    result = {}
+    for work_order in WORK_ORDERS:
+        print(work_order)
+
+    return JsonResponse({"data": result, "users": USERS})
