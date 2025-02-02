@@ -76,11 +76,6 @@
                 src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*C1AAnbD-OJFemKra.png" alt="">
         </div>
         <p>The testing was performed using K-Fold Cross Validation, where the dataset
-            (
-            X
-            ,
-            y
-            )
             (X,y) was divided into 10 equal parts (folds). The model was trained on 9 of these parts and tested on the
             remaining
             part. This process was repeated 10 times, ensuring that each part of the data served as a test set once.
@@ -88,11 +83,9 @@
             To determine the optimal hyperparameter, different values of K (ranging from 1 to 30) were tested for the
             K-Nearest
             Neighbors (KNN) model. For each value of
-            K
             K, the model’s accuracy was computed across all folds, and the average accuracy was recorded.
 
             The best value of
-            K
             K was identified as the one that yielded the highest average accuracy. The results were stored in two lists:
             one
             containing the tested
@@ -146,10 +139,16 @@
         <p>The K-NN algorithm is effective for classification. Choosing the right <code>k</code> is key to its
             performance.
         </p>
+
+
+        <section id="gitlink"></section>
+
     </main>
+    <script src="{%static 'createGitCard.js'%}"></script>
     <script src="https://jayd719.github.io/assets/reports/index.js"></script>
     <script>
         document.getElementById("index").childNodes[0].remove()
+        createGithubButton("https://github.com/jayd719/ubiquitous-couscous/tree/main/Assignment1");
     </script>
 </body>
 
