@@ -28,6 +28,10 @@ def pres(request):
     return JsonResponse({"message": "hellowoo"})
 
 
+def knn(request):
+    return render(request, "ProjectReports/KNN.html")
+
+
 def log_cordinates(request):
     """
     Handles the logging of geolocation data sent via a POST request.

@@ -1,6 +1,13 @@
 // Array of projects
 const projects = [
     {
+        title: "k-Nearest Neighbors Classifier:",
+        description: "Developed a k-NN classifier from scratch using Euclidean and Manhattan distances, cross-validation, and hyperparameter tuning to find the best k for accurate predictions",
+        link: "/pages/knn-1",
+        Tools: ["Numpy", "Scikit Learn", "Matplotlib", "KNN"],
+        githubLink: "/pages/resume/1",
+    },
+    {
         title: "WorkFlow Tracker",
         description: " A tool for managing work orders, tracking progress, and ensuring seamless task organization and visibility.",
         link: "/work-order-tracker/tracker/",
