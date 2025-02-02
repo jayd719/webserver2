@@ -4,7 +4,7 @@ from . import models
 import json
 import pandas as pd
 
-WORK_ORDERS = models.WorkOrder.objects.all()
+WORK_ORDERS = models.WorkOrder.objects.all().order_by("due_date")
 OPERATIONS = models.WorkOrderOperation.objects.all()
 USERS = models.User.list_for()
 
