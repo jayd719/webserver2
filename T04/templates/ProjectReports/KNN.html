@@ -12,7 +12,10 @@
 <body>
 
     <main>
-        <h1>K-Nearest Neighbors (K-NN) Algorithm: Implementation and Analysis</h1>
+        <div style="text-align: center;">
+            <h1 style="font-size: xx-large;">K-Nearest Neighbors (K-NN) Algorithm</h1>
+            <h1>Implementation and Analysis</h1>
+        </div>
 
 
         <div id="index"></div>
@@ -104,7 +107,7 @@
             dataset. This dataset includes only images of the digits 5 and 6. The test aimed to evaluate how well KNN
             can classify
             these two digits</p>
-        <img width="100%" class="w-86" src="{%static 'plot-one.png'%}" alt="">
+        <img width="100%" src="{%static 'plot-one.png'%}" alt="">
         <p>The accuracy of K-NN depends on the choice of <code>k</code>:</p>
         <ul>
             <li><strong>Small k Values:</strong> The model performs poorly at <code>k = 1</code> and <code>k = 2</code>
@@ -129,8 +132,14 @@
             <li><strong>Diabetes Dataset:</strong> Predicting diabetes progression.</li>
             <li><strong>California Housing Dataset:</strong> Regression task for housing prices.</li>
         </ul>
-        <h4>Iris Dataset</h4>
-        <img width="100%" class="w-86" src="{%static 'IRIS.png'%}" alt="">
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+            <img width="100%" src="{%static 'IRIS.png'%}" alt="">
+            <img width="100%" src="{%static 'DIGITS.png'%}" alt="">
+            <img width="100%" src="{%static 'BREAST CANCER.png'%}" alt="">
+            <img width="100%" src="{%static 'WINE.png'%}" alt="">
+        </div>
+
 
 
         <h2>Conclusion</h2>
@@ -139,8 +148,6 @@
         </p>
     </main>
     <script src="https://jayd719.github.io/assets/reports/index.js"></script>
-
-
     <script>
         document.getElementById("index").childNodes[0].remove()
     </script>
