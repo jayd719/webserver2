@@ -1,4 +1,5 @@
 {%extends 'ProjectReports/reportTemplate.html'%}
+{%load static%}
 {%block content%}
 
 <main class="container mx-auto px-4 py-8">
@@ -177,14 +178,16 @@ def process_results(src="src", output_dir="out", output_file="results.html"):</c
         <p class="mt-4">visualize results with original images for easy debugging</p>
         <img src="https://github.com/jayd719/openCV/raw/develop/plugins/results2.png" alt="">
     </section>
-
-
-    <section id="gitlink"></section>
-
+    <div style="display: grid; gap: 20px; margin-top: 5%; justify-content: center; margin-bottom: 5%;">
+        <section id="gitlink"></section>
+        <section id="portfoliolink"></section>
+    </div>
+    <script src="{%static 'createGitCard.js'%}"></script>
     <script>
         createGithubButton("https://github.com/jayd719/openCV/tree/template1");
     </script>
 </main>
+
 
 
 {%endblock%}

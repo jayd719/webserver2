@@ -11,50 +11,206 @@ function createGithubButton(githubLink) {
     button.href = githubLink;
     button.target = '_blank';
     button.rel = 'noopener noreferrer';
-    button.textContent = 'Checkout Code On GitHub';
 
-    // Apply styles via JavaScript
-    button.style.display = 'inline-flex';
-    button.style.alignItems = 'center';
-    button.style.justifyContent = 'center';
-    button.style.padding = '10px 16px';
-    button.style.backgroundColor = '#24292e';
-    button.style.color = 'white';
-    button.style.fontSize = '16px';
-    button.style.fontWeight = 'bold';
-    button.style.textDecoration = 'none';
-    button.style.borderRadius = '5px';
-    button.style.transition = 'background-color 0.3s ease';
-    button.style.border = 'none';
-    button.style.cursor = 'pointer';
-    button.style.gap = '8px';
+    // Apply styles to match the given "cta" button
+    Object.assign(button.style, {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '11px 33px',
+        textDecoration: 'none',
+        fontSize: '20px',
+        color: 'white',
+        background: '#6225e6',
+        transition: '0.4s',
+        boxShadow: '6px 6px 0 black',
+        transform: 'skewX(-15deg)',
+        border: 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        fontWeight: 'bold',
+        width: "400px",
+        marginRight: "auto"
+    });
 
-    // Create SVG icon
-    const githubIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    githubIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-    githubIcon.setAttribute("width", "16");
-    githubIcon.setAttribute("height", "16");
-    githubIcon.setAttribute("fill", "currentColor");
-    githubIcon.setAttribute("viewBox", "0 0 16 16");
-    githubIcon.innerHTML = `
-        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-    `;
-
-    // Apply icon styles
-    githubIcon.style.width = '50px';
-    githubIcon.style.height = '50px';
-    githubIcon.style.border = '0'
-    githubIcon.style.paddingTop = '10px'
-
-    // Append icon and text to button
-    button.prepend(githubIcon);
+    // Add focus outline removal
+    button.onfocus = () => button.style.outline = 'none';
 
     // Add hover effect
-    button.onmouseenter = () => button.style.backgroundColor = '#333';
-    button.onmouseleave = () => button.style.backgroundColor = '#24292e';
+    button.onmouseenter = () => {
+        button.style.transition = '0.2s';
+        button.style.boxShadow = '10px 10px 0 #fbc638';
+    };
+    button.onmouseleave = () => {
+        button.style.transition = '0.4s';
+        button.style.boxShadow = '6px 6px 0 black';
+    };
 
-    // Append the button to the container
+    // Create span for text (to apply skew effect)
+    const spanText = document.createElement('span');
+    spanText.textContent = 'Checkout Code On GitHub';
+    spanText.style.transform = 'skewX(15deg)';
+
+    // Create moving arrow container
+    const arrowContainer = document.createElement('span');
+    arrowContainer.className = 'second';
+    arrowContainer.style.width = '20px';
+    arrowContainer.style.marginLeft = '30px';
+    arrowContainer.style.position = 'relative';
+    arrowContainer.style.top = '12%';
+    arrowContainer.style.transition = '0.2s';
+
+    // Create the SVG arrow
+    const arrowSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    arrowSVG.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    arrowSVG.setAttribute("width", "20");
+    arrowSVG.setAttribute("height", "20");
+    arrowSVG.setAttribute("viewBox", "0 0 24 24");
+    arrowSVG.setAttribute("fill", "white");
+    arrowSVG.innerHTML = `
+        <path class="one" d="M9 18l6-6-6-6"></path>
+        <path class="two" d="M15 18l6-6-6-6"></path>
+    `;
+
+    // Apply arrow path animation
+    arrowSVG.querySelector('.one').style.transition = '0.14s';
+    arrowSVG.querySelector('.one').style.transform = 'translateX(-60%)';
+
+    arrowSVG.querySelector('.two').style.transition = '0.2s';
+    arrowSVG.querySelector('.two').style.transform = 'translateX(-30%)';
+
+    // Append SVG arrow to arrow container
+    arrowContainer.appendChild(arrowSVG);
+
+    // On hover, move arrow to the right
+    button.onmouseenter = () => {
+        button.style.boxShadow = '10px 10px 0 #fbc638';
+        arrowContainer.style.marginRight = '45px';
+
+        arrowSVG.querySelector('.one').style.transform = 'translateX(0%)';
+        arrowSVG.querySelector('.two').style.transform = 'translateX(0%)';
+    };
+
+    button.onmouseleave = () => {
+        button.style.boxShadow = '6px 6px 0 black';
+        arrowContainer.style.marginRight = '0px';
+
+        arrowSVG.querySelector('.one').style.transform = 'translateX(-60%)';
+        arrowSVG.querySelector('.two').style.transform = 'translateX(-30%)';
+    };
+
+    // Append elements to button
+    button.appendChild(spanText);
+    button.appendChild(arrowContainer);
+
+    // Append button to the container
     container.appendChild(button);
-    container.style.textAlign = "center"
-    container.style.padding = "5%"
+    createPortfolioButton("/")
+}
+
+
+function createPortfolioButton(portfolioLink) {
+    // Ensure a valid container exists
+    const container = document.getElementById("portfoliolink");
+    if (!container) {
+        console.error("Element with ID 'portfoliolink' not found.");
+        return;
+    }
+
+    // Create the button element
+    const button = document.createElement('a');
+    button.href = portfolioLink;
+    button.rel = 'noopener noreferrer';
+
+    // Apply styles to match the given "cta" button
+    Object.assign(button.style, {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '11px 33px',
+        textDecoration: 'none',
+        fontSize: '20px',
+        color: 'white',
+        background: '#007BFF', // Blue color for portfolio
+        transition: '0.4s',
+        boxShadow: '6px 6px 0 black',
+        transform: 'skewX(-15deg)',
+        border: 'none',
+        cursor: 'pointer',
+        position: 'relative',
+        fontWeight: 'bold',
+        width: "400px",
+        marginRight: "auto"
+    });
+
+    // Remove outline on focus
+    button.onfocus = () => button.style.outline = 'none';
+
+    // Add hover effect
+    button.onmouseenter = () => {
+        button.style.transition = '0.2s';
+        button.style.boxShadow = '10px 10px 0 #fbc638';
+    };
+    button.onmouseleave = () => {
+        button.style.transition = '0.4s';
+        button.style.boxShadow = '6px 6px 0 black';
+    };
+
+    // Create span for text (to apply skew effect)
+    const spanText = document.createElement('span');
+    spanText.textContent = 'Visit My Portfolio';
+    spanText.style.transform = 'skewX(15deg)';
+
+    // Create moving arrow container
+    const arrowContainer = document.createElement('span');
+    arrowContainer.className = 'second';
+    arrowContainer.style.width = '20px';
+    arrowContainer.style.marginLeft = '30px';
+    arrowContainer.style.position = 'relative';
+    arrowContainer.style.top = '12%';
+    arrowContainer.style.transition = '0.2s';
+
+    // Create the SVG arrow
+    const arrowSVG = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    arrowSVG.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    arrowSVG.setAttribute("width", "20");
+    arrowSVG.setAttribute("height", "20");
+    arrowSVG.setAttribute("viewBox", "0 0 24 24");
+    arrowSVG.setAttribute("fill", "white");
+    arrowSVG.innerHTML = `
+        <path class="one" d="M9 18l6-6-6-6"></path>
+        <path class="two" d="M15 18l6-6-6-6"></path>
+    `;
+
+    // Apply arrow path animation
+    arrowSVG.querySelector('.one').style.transition = '0.14s';
+    arrowSVG.querySelector('.one').style.transform = 'translateX(-60%)';
+
+    arrowSVG.querySelector('.two').style.transition = '0.2s';
+    arrowSVG.querySelector('.two').style.transform = 'translateX(-30%)';
+
+    // Append SVG arrow to arrow container
+    arrowContainer.appendChild(arrowSVG);
+
+    // On hover, move arrow to the right
+    button.onmouseenter = () => {
+        button.style.boxShadow = '10px 10px 0 #fbc638';
+        arrowContainer.style.marginRight = '45px';
+
+        arrowSVG.querySelector('.one').style.transform = 'translateX(0%)';
+        arrowSVG.querySelector('.two').style.transform = 'translateX(0%)';
+    };
+
+    button.onmouseleave = () => {
+        button.style.boxShadow = '6px 6px 0 black';
+        arrowContainer.style.marginRight = '0px';
+
+        arrowSVG.querySelector('.one').style.transform = 'translateX(-60%)';
+        arrowSVG.querySelector('.two').style.transform = 'translateX(-30%)';
+    };
+
+    // Append elements to button
+    button.appendChild(spanText);
+    button.appendChild(arrowContainer);
+
+    // Append button to the container
+    container.appendChild(button);
 }
