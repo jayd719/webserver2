@@ -5,7 +5,7 @@ const projects = [
         description: "Developed a k-NN classifier from scratch using Euclidean and Manhattan distances, cross-validation, and hyperparameter tuning to find the best k for accurate predictions",
         link: "/pages/knn-1",
         Tools: ["Numpy", "Scikit Learn", "Matplotlib", "KNN"],
-        githubLink: "/pages/resume/1",
+        layout: "lg:col-span-2",
     },
     {
         title: "WorkFlow Tracker",
@@ -72,15 +72,19 @@ function renderProjects(prepend = true) {
         projectContianer.innerHTML = `${projectContianer.innerHTML}${text}`
     }
 
-    // Loop to generate project cards
 
 
 }
 
+function getRandomSpan(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+const items = ["lg:col-span-2", "lg:row-span-2", "lg:row-span-1", "lg:col-span-1"];
+
 function createProjectCard(title, description, link, tools, span = "") {
 
     // let baseColor = getColor_base();
-    let css = ""
+    let css = "1"
     let titleCss = "text-5xl font-normal tracking-tight font-title text-center font-bold mb-10 lg:text-8xl"
     let descriptionCSs = "mt-4 text-2xl text-center text-zinc-500 dark:text-zinc-400 font-light"
     let toolCss = "bg-gray-300 p-2 rounded-full px-6 shadow-md text-center text-gray-800 hover:bg-gray-400 transition-all duration-300"
@@ -88,9 +92,8 @@ function createProjectCard(title, description, link, tools, span = "") {
     tools.forEach(tool => {
         toolText += `<p class="${toolCss}">${tool}</p>`
     });
-
     return `
-       <a href="${link}" class="${css} ${span}">
+       <a href="${link}" class="${css} ${getRandomSpan(items)}">
             <div class="w-full h-full grid content-between">
                 <div>
                     <p class="${titleCss}">${title}</>
