@@ -20,9 +20,7 @@ from django.urls import path, include
 
 from homepage.views import HVAC
 from django.conf.urls import handler404
-from T04.views import custom_404_view
 
-handler404 = custom_404_view
 
 urlpatterns = [
     path("admin12/", admin.site.urls),
