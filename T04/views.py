@@ -4,6 +4,14 @@ from .models import GeoLocations
 import json
 
 
+def custom_404_view(request, exception):
+    return redirect("/")
+
+
+def hackathon_project(request):
+    return render(request, "ProjectReports/HackathonProject.html")
+
+
 def resume1(request):
     return render(request, "resume1.html")
 

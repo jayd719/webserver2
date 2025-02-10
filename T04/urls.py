@@ -10,5 +10,6 @@ urlpatterns = [
     path("image-processing-toolkit/", open_cv_project_1, name="imageprocessing"),
     path("computer-graphics-3d-renderer/", cp411_project, name="renderer"),
     path("pres", pres, name="temp"),
+    path("hk/", hackathon_project, name="hk"),
     path("testlink/", log_cordinates, name="test"),
 ]
