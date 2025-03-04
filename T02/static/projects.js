@@ -15,6 +15,13 @@ const projects = [
         githubLink: "/pages/resume/1",
     },
     {
+        title: "Stock Market Analysis I",
+        description: "Stock market analysis using Yahoo Finance API, visualizing volume trends, price movements, statistical distributions, error handling, and technical insights",
+        link: "/pages/data-visualisation-1",
+        Tools: ["Numpy", "Pandas", "Matplotlib", "Yahoo Finance API"],
+        githubLink: "/pages/resume/1",
+    },
+    {
         title: "Image Processing Toolkit",
         description: "Created a toolkit using OpenCV to simplify image processing tasks and visualize transformations in real-time on a live webpage.",
         link: "/pages/image-processing-toolkit/",

@@ -8,6 +8,10 @@ def custom_404_view(request, exception):
     return redirect("/")
 
 
+def data_viz_project_1(request):
+    return render(request, "ProjectReports/DataVizProject.html")
+
+
 def hackathon_project(request):
     return render(request, "ProjectReports/HackathonProject.html")
 
@@ -18,6 +22,10 @@ def resume1(request):
 
 def resume2(request):
     return render(request, "resume2.html")
+
+
+def resume3(request):
+    return render(request, "resume3.html")
 
 
 def about_me(request):
