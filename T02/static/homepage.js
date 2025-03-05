@@ -41,9 +41,8 @@ function getColor(placement) {
   ];
   const shades = ["200", "300", "400", "500", "600", "700", "800", "900"];
 
-  return `${placement}-${base[getRandomNumber(base.length)]}-${
-    shades[getRandomNumber(shades.length)]
-  }`;
+  return `${placement}-${base[getRandomNumber(base.length)]}-${shades[getRandomNumber(shades.length)]
+    }`;
 }
 
 /**
@@ -60,15 +59,15 @@ function updateElement(element) {
   element.classList.add(
     `bg-${"base"}-100`,
     "hover:scale-[1.01]",
-    `hover:bg-${baseColor}-200`,
-    "lg:opacity-80",
+    `hover:bg-${baseColor}-300`,
+    "lg:opacity-75",
     "hover:opacity-100",
     "hover:scale-[1.0]",
     "hover:z-[200]",
     "group",
     "scale-[.95]",
     "hover:shadow-xl",
-    `hover:shadow-${baseColor}-800`,
+    `hover:shadow-${baseColor}-900`,
     "transition",
     "duration-300",
     "backdrop-blur-md",

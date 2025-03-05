@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filterable Product Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.4/dist/full.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {},
+            },
+            daisyui: {
+                themes: ["light", "dark"],
+            },
+        };
+    </script>
+</head>
+
+<body class="bg-base-200 p-6">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-6">Product Grid</h1>
+
+        <!-- Filters -->
+        <div class="flex flex-wrap justify-between mb-6">
+            <select id="categoryFilter" class="select select-bordered w-full md:w-auto">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="fashion">Fashion</option>
+                <option value="home">Home</option>
+            </select>
+            <select id="sortPrice" class="select select-bordered w-full md:w-auto">
+                <option value="asc">Price: Low to High</option>
+                <option value="desc">Price: High to Low</option>
+            </select>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Product items will be inserted here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Laptop", price: 999, category: "electronics" },
+            { id: 2, name: "Smartphone", price: 699, category: "electronics" },
+            { id: 3, name: "Sneakers", price: 120, category: "fashion" },
+            { id: 4, name: "Sofa", price: 450, category: "home" },
+            { id: 5, name: "T-Shirt", price: 25, category: "fashion" },
+            { id: 6, name: "Coffee Table", price: 150, category: "home" },
+        ];
+
+        function renderProducts(filteredProducts) {
+            const grid = document.getElementById("productGrid");
+            grid.innerHTML = "";
+            filteredProducts.forEach(product => {
+                const productCard = `
+                    <div class="card bg-base-100 shadow-xl p-4">
+                        <h2 class="text-xl font-bold">${product.name}</h2>
+                        <p class="text-lg text-gray-600">$${product.price}</p>
+                        <p class="badge badge-primary">${product.category}</p>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+        }
+
+        function filterAndSortProducts() {
+            let category = document.getElementById("categoryFilter").value;
+            let sort = document.getElementById("sortPrice").value;
+
+            let filteredProducts = products.filter(p => category === "all" || p.category === category);
+            filteredProducts.sort((a, b) => sort === "asc" ? a.price - b.price : b.price - a.price);
+
+            renderProducts(filteredProducts);
+        }
+
+        document.getElementById("categoryFilter").addEventListener("change", filterAndSortProducts);
+        document.getElementById("sortPrice").addEventListener("change", filterAndSortProducts);
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+
+</html>

@@ -92,7 +92,7 @@ function createProjectCard(title, description, link, tools, span = "") {
 
     // let baseColor = getColor_base();
     let css = "1"
-    let titleCss = "text-5xl font-normal tracking-tight font-title text-center font-bold mb-10 lg:text-8xl"
+    let titleCss = "text-3xl font-normal tracking-tight font-title text-center font-bold mb-10 text-5xl"
     let descriptionCSs = "mt-4 text-2xl text-center text-zinc-500 dark:text-zinc-400 font-light"
     let toolCss = "bg-gray-300 p-2 rounded-full px-6 shadow-md text-center text-gray-800 hover:bg-gray-400 transition-all duration-300"
     let toolText = ""

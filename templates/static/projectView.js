@@ -46,9 +46,8 @@ function getColor(placement) {
   ];
   const shades = ["200", "300", "400", "500", "600", "700", "800", "900"];
 
-  return `${placement}-${base[getRandomNumber(base.length)]}-${
-    shades[getRandomNumber(shades.length)]
-  }`;
+  return `${placement}-${base[getRandomNumber(base.length)]}-${shades[getRandomNumber(shades.length)]
+    }`;
 }
 
 /**
@@ -86,7 +85,7 @@ function createTabs(tabs) {
     project.id = i;
     project.className = CLASS;
     project.innerHTML =
-      "<div class='hidden transition duration-1000 group-hover:flex'><h1 class='text-5xl text-7xl [text-shadow:_3px_4px_3px_rgb(130_100_2_/_60%)] translate-y-[100%] translate-x-[20%] '>d</h1></div>";
+      "<div class='hidden transition duration-1000 group-hover:flex'><h1 class='text-3xl text-7xl [text-shadow:_3px_4px_3px_rgb(130_100_2_/_60%)] translate-y-[100%] translate-x-[20%] '>d</h1></div>";
     tilesContainer.appendChild(project);
     projectsList.push(project);
   }
@@ -118,7 +117,7 @@ function createHeading() {
   mainContainer.className = "px-10 absolute w-full";
   let outputText = document.createElement("h1");
   mainContainer.appendChild(outputText);
-document.getElementById("mm").appendChild(mainContainer);
+  document.getElementById("mm").appendChild(mainContainer);
   return outputText;
 }
 

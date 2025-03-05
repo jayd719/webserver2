@@ -15,20 +15,28 @@
 </head>
 
 <body class="bg-base-300 oswald w-full overflow-x-hidden">
+  <script src="{%static 'common.js'%}"></script>
   {%include 'landingPage/background.html'%}
 
   <script src="{%static 'themeChanger.js'%}"></script>
   <header id="header"></header>
+  <canvas id="myCanvas"></canvas>
   <script src="{%static 'header.js'%}"></script>
+  <script src="{%static 'heroSection.js'%}"></script>
+
+
+  <script src="{%static 'animation.js'%}"></script>
+
+
   {%include 'components/contact.html' %}
   <div class="h-20"></div>
 
   <section style="max-width: 1500px;" class="p-1 md:p-4 mx-auto">
     <div id="sections" class="grid grid-cols-1 gap-1 list-none lg:grid-cols-3">
 
-      {%include 'landingPage/tileOne.html'%}
+      <!-- {%include 'landingPage/tileOne.html'%} -->
       {%include "projectsTiles/mainProjectsLink.html"%}
-      {%include "projectsTiles/resumeLink.html"%}
+      <!-- {%include "projectsTiles/resumeLink.html"%} -->
       {%include "skillTiles/programmingLang.html"%}
 
 
@@ -68,7 +76,6 @@
   <script src="{%static 'homepage.js'%}"></script>
 
 
-  <script src="{%static 'animations.js'%}"></script>
   <script src="{%static 'footer.js'%}"></script>
   <script src="{%static 'popper.js'%}"></script>
   <script src="{%static 'logo.js'%}"></script>
@@ -80,6 +87,8 @@
   {%csrf_token%}
   <script src="{%static 'logCords.js'%}"></script>
   <script src="{%static 'cookieConsent.js'%}"></script>
+
+
 </body>
 
 </html>

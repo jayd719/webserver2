@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Snake Animation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions
+        canvas.width = 800;
+        canvas.height = 600;
+
+        // Snake properties
+        const segmentSize = 20; // Size of each segment
+        const snakeLength = 10; // Number of segments
+        const speed = 2; // Movement speed
+        let snake = [];
+
+        // Initialize the snake
+        function initSnake() {
+            for (let i = 0; i < snakeLength; i++) {
+                snake.push({ x: i * segmentSize, y: canvas.height / 2 });
+            }
+        }
+        initSnake();
+
+        // Draw the snake
+        function drawSnake() {
+            ctx.fillStyle = 'lime';
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x, segment.y, segmentSize, segmentSize);
+            });
+        }
+
+        // Move the snake
+        function moveSnake() {
+            // Remove the tail segment
+            snake.pop();
+
+            // Add a new head segment in the direction of movement
+            const head = { x: snake[0].x, y: snake[0].y };
+
+            // Change direction when the snake hits the canvas edges
+            if (head.x + segmentSize > canvas.width && speed > 0) {
+                head.x = 0;
+            } else if (head.x < 0 && speed < 0) {
+                head.x = canvas.width;
+            } else {
+                head.x += speed;
+            }
+
+            snake.unshift(head);
+        }
+
+        // Main animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            moveSnake();
+            drawSnake();
+
+            requestAnimationFrame(animate);
+        }
+
+        // Start the animation
+        animate();
+    </script>
+</body>
+
+</html>
