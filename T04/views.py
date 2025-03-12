@@ -28,6 +28,10 @@ def resume3(request):
     return render(request, "resume3.html")
 
 
+def resume4(request):
+    return render(request, "resume4.html")
+
+
 def about_me(request):
     return render(request, "aboutMe/index.html")
 

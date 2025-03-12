@@ -6,6 +6,7 @@ urlpatterns = [
     path("resume/1/", resume1, name="resume"),
     path("resume/2/", resume2, name="resume-two"),
     path("resume/3/", resume3, name="resume-three"),
+    path("resume/4/", resume4, name="resume-foure"),
     path("aboutme/", about_me, name="about-me"),
     path("knn-1/", knn, name="knn-1"),
     path("image-processing-toolkit/", open_cv_project_1, name="imageprocessing"),
