@@ -36,6 +36,10 @@ def about_me(request):
     return render(request, "aboutMe/index.html")
 
 
+def LaurierAnalytics2025(request):
+    return render(request, "ProjectReports/LaurierAnalytics2025.html")
+
+
 def open_cv_project_1(request):
     return render(request, "ProjectReports/openCV1.html")
 

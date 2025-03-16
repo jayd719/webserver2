@@ -14,5 +14,6 @@ urlpatterns = [
     path("pres", pres, name="temp"),
     path("hk/", hackathon_project, name="hk"),
     path("data-visualisation-1", data_viz_project_1, name="data-v-1"),
+    path("LaurierAnalytics2025", LaurierAnalytics2025, name="LaurierAnalytics2025"),
     path("testlink/", log_cordinates, name="test"),
 ]
