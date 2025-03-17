@@ -113,7 +113,7 @@
                         <code>PROCESS_FILE</code>
                     </li>
                     <li>
-                        <code>PROCESS_FILE_MulTI_THREAD</code>
+                        <code>PROCESS_FILE_MULTI_THREAD</code>
                     </li>
                 </ul>
             </li>
@@ -145,9 +145,9 @@
         <p>The application is a command-line toul that processes video files based on user-specified functions.
             It
             supports three main processing modes:</p>
-        <ul start="1">
+        <ol start="1">
             <li>
-                <strong>PROCESS_VIDEO</strong>: Processes a video file using a specialized video processing
+                <h4>PROCESS_VIDEO</h4>: Processes a video file using a specialized video processing
                 function.
 
                 <ul>
@@ -203,7 +203,7 @@
                 </ul>
             </li>
             <li>
-                <strong>PROCESS_FILE</strong>: Processes a video file using a single-threaded approach.
+                <h4>PROCESS_FILE</h4>: Processes a video file using a single-threaded approach.
                 <ul>
                     <li>
                         Processes a video file to detect highlights.
@@ -233,7 +233,7 @@
                 </ul>
             </li>
             <li>
-                <strong>PROCESS_FILE_MulTI_THREAD</strong>: Processes a video file using a multi-threaded
+                <h4>PROCESS_FILE_MULTI_THREAD</h4>: Processes a video file using a multi-threaded
                 approach
                 for
                 improved performance.
@@ -266,13 +266,13 @@
                     </li>
                 </ul>
             </li>
-        </ul>
-        <h3>Abstracted Sequence</h3>
+        </ol>
+        <h3>Abstracted Sequence Diagram</h3>
         <figure>
             <img src="Images/CLIP_GENIUS.svg" alt="">
             <figcaption>Sequence Diagram for CLI</figcaption>
         </figure>
-        <h3>Inter-Service Dependency Sequence</h3>
+        <h3>Inter-Service Dependency Sequence Diagram</h3>
         <figure>
             <img src="Images/CLIP_GENIUS_2.svg" alt="">
             <figcaption>Detailed Sequence Diagram of Inter-Service Dependency Calls</figcaption>
@@ -286,7 +286,7 @@
                     <li>
                         Contains the core processing functions: <code>PROCESS_VIDEO</code>,
                         <code>PROCESS_FILE</code>, and
-                        <code>PROCESS_FILE_MulTI_THREAD</code>.
+                        <code>PROCESS_FILE_MULTI_THREAD</code>.
 
                     </li>
                 </ul>
@@ -373,8 +373,7 @@
             helps
             detect and read
             scores from video frames.</p>
-
-        <h3>In Process Frames</h3>
+        <h3>Inprocess Frames</h3>
         <div class="grid  grid-cols-1 lg:grid-cols-3 items-center">
             <figure>
                 <img src="Images/grayscale.png" alt="">
@@ -390,7 +389,7 @@
                 <figcaption>Exraction Of Scoreboard Area</figcaption>
                 <img src="Images/BinaryImage.png" alt="" srcset="">
                 <img src="Images/BinarImage2.png" alt="" srcset="">
-                <figcaption>Removal of Noise For Cropping Score Region</figcaption>
+                <figcaption>Removal of Noise In Scores Region</figcaption>
             </figure>
         </div>
 
@@ -534,6 +533,10 @@
             </li>
             <li>Increase the accuracy of score extraction from the scoreboard region</li>
             <li>Enable cloud-based video processing and storage for scalability.</li>
+            <li>
+                <h4>Integrate Storage</h4>
+                <img src="Images/ERD.svg" alt="" srcset="">
+            </li>
         </ul>
 
         <div class="text-center mt-20 text-base-content">
@@ -543,8 +546,8 @@
         </div>
     </main>
 
-    <!-- 
-    <script src="../frontend/static/ReportsFormatter.js"></script>
+
+    <!-- <script src="../frontend/static/ReportsFormatter.js"></script>
     <script src="../frontend/static/PresentationFormatter.js"></script> -->
 
     <script src="https://jayd719.github.io/assets/reports/reportV3.js"></script>
