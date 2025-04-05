@@ -32,6 +32,10 @@ def resume4(request):
     return render(request, "resume4.html")
 
 
+def resumeMO(request):
+    return render(request, "res_comp/MO/machineoperator.html")
+
+
 def about_me(request):
     return render(request, "aboutMe/index.html")
 
@@ -97,3 +101,7 @@ def log_cordinates(request):
             return JsonResponse({"error": "Invalid Json Data"}, status=400)
 
     return JsonResponse({"erorr": "only POST request allow"}, status=405)
+
+
+def cp321_final_project(request):
+    return render(request, "ProjectReports/CP321_FinalProject.html")
