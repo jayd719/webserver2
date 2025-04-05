@@ -23,6 +23,19 @@ function getColor_base() {
   return base[getRandomNumber(base.length)];
 }
 
+function getColor_defaults() {
+  const base = [
+    "primary",
+    "info",
+    "accent",
+    "error",
+    "success"
+  ];
+
+  return base[getRandomNumber(base.length)];
+}
+
+
 /**
  * Generates a random color string based on the given placement.
  * @param {string} placement - The placement identifier for the color.
@@ -55,11 +68,11 @@ function getRandomNumber(upperLimit) {
 }
 
 function updateElement(element) {
-  let baseColor = getColor_base();
+  let baseColor = getColor_defaults();
   element.classList.add(
     `bg-${"base"}-100`,
     "hover:scale-[1.01]",
-    `hover:bg-${baseColor}-300`,
+    `hover:bg-${baseColor}`,
     "lg:opacity-75",
     "hover:opacity-100",
     "hover:scale-[1.0]",
@@ -67,7 +80,7 @@ function updateElement(element) {
     "group",
     "scale-[.95]",
     "hover:shadow-xl",
-    `hover:shadow-${baseColor}-900`,
+    `hover:shadow-${baseColor}`,
     "transition",
     "duration-300",
     "backdrop-blur-md",
@@ -80,7 +93,7 @@ function updateElement(element) {
 
   element.querySelectorAll("p").forEach((pTage) => {
     pTage.classList.add(
-      `group-hover:text-${baseColor}-800`,
+      `group-hover:text-white`,
       "group-hover:scale-[1.075]",
       "transtion",
       "duration-500"
@@ -93,11 +106,11 @@ function updateElement(element) {
 
   element.querySelectorAll(".contactLink").forEach((button) => {
     button.classList.add(
-      `hover:bg-${baseColor}-500`,
+      `hover:bg-white`,
       "border",
-      `hover:text-${baseColor}-100`,
-      `group-hover:border-${baseColor}-500`,
-      `group-hover:text-${baseColor}-900`
+      `hover:text-${baseColor}`,
+      `group-hover:border-${baseColor}`,
+      `group-hover:text-${baseColor}`
     );
   });
 }
