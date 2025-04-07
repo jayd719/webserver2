@@ -1,32 +1,18 @@
-<div class="container mx-auto max-w-5xl px-4 py-16">
-    <div class="mt-5">
-        <h2 class="text-3xl font-bold mb-8">Things I Do</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- 3D Modelling -->
-            <div class="card bg-base-100 shadow-xl text-center">
-                <img class="rounded-md w-72 h-72   object-cover"
-                    src="https://github.com/jayd719/webServer/blob/main/templates/static/code/IMG_1385.jpg?raw=true"
-                    alt="3D Modelling">
-                <h2 class="text-xl font-medium mt-4">3D Modelling</h2>
-                <p class=" text-center">Using SolidWorks, I create precise 3D models</p>
-            </div>
-            <!-- Machining -->
-            <div class="card bg-base-100 shadow-xl text-center">
-                <img class="rounded-md w-96 h-72   object-cover "
-                    src="https://github.com/jayd719/jayd719.github.io/blob/main/staticfiles/code/cnc1.png?raw=true"
-                    alt="Machining">
-                <h2 class="text-xl font-medium mt-4">Machining</h2>
-                <p class=" text-center">With Mastercam, I craft CNC programs for metal machining</p>
-            </div>
-            <!-- Blueprints -->
-            <div class="card bg-base-100 shadow-xl text-center">
-                <img class="rounded-md w-72 h-72   object-cover"
-                    src="https://github.com/jayd719/webServer/blob/main/templates/static/code/IMG_1384.jpg?raw=true"
-                    alt="Blueprints">
-                <h2 class="text-xl font-medium mt-4">Blueprints</h2>
-                <p class=" text-center">And lastly, I create detailed 2D drawings for seamless project
-                    execution</p>
-            </div>
-        </div>
+<div class="container mx-auto max-w-6xl px-6 py-20">
+    <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold  mb-4">From <span class="text-primary">Model</span> to <span
+                class="text-error">Machine</span> to
+            <span class="text-info">Manual</span>
+        </h2>
+        <p class="text-lg  max-w-2xl mx-auto">My Approach to Precision Engineering Solutions</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+
+
+        {%include 'cards_ME/skill1.html'%}
+        {%include 'cards_ME/skill2.html'%}
+        {%include 'cards_ME/skill3.html'%}
     </div>
 </div>

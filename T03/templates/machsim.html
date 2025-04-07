@@ -1,100 +1,142 @@
-{%load static %}
-<video class="w-full name-image-before" autoplay muted loop>
-    <source src="{%static 'videos/MachSim_Video_20231107_101540.mp4'%}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+{% load static %}
+<section class="relative">
+    <!-- Hero Video -->
+    <div class="relative overflow-hidden">
+        <video class="w-full h-auto max-h-screen object-cover" autoplay muted loop playsinline>
+            <source src="{% static 'videos/MachSim_Video_20231107_101540.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div class="text-center px-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">CNC Machine Simulation Platform</h1>
+                <p class="text-xl md:text-2xl text-white max-w-4xl mx-auto">Virtual Simulations for
+                    DMG
+                    EcoMill
+                    50 & Matsuura HPlus 630 CNC machines</p>
+            </div>
+        </div>
+    </div>
+    <!-- 
 
+    <div class="container mx-auto max-w-7xl px-6 py-20">
+        <div class=" rounded-xl shadow-2xl overflow-hidden">
+            <div class="flex flex-col lg:flex-row">
+                <div class="w-full lg:w-1/2 p-8 lg:p-12">
+                    <div class="grid grid-cols-1 gap-8">
+                        <div class="relative rounded-xl overflow-hidden h-96 shadow-lg group">
+                            <img src="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/39605f7f38d4d38da1beef2dc45b2ae2/original.jpg"
+                                alt="DMG ECOMILL 50 CNC Machine"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h3 class="text-2xl font-bold text-white">DMG ECOMILL 50</h3>
+                            </div>
+                        </div>
 
-<div class="container mx-auto max-w-5xl px-4 pb-16 py-10">
-    <div class="card bg-base-100 shadow-xl p-3 py-5">
-        <div class="flex flex-col lg:flex-row items-center gap-5 py-1 mt-5">
-            <div class="w-full lg:w-6/12 justify-center mt-5">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 py-5 justify-center">
-                    <div class="relative rounded-lg shadow-lg h-80 bg-cover bg-center overflow-hidden"
-                        style="background-image: url('https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/39605f7f38d4d38da1beef2dc45b2ae2/original.jpg');">
-                        <div class="flex flex-col h-full p-5 text-white bg-black bg-opacity-50">
-                            <h5 class="mt-auto text-lg font-bold">DMG ECOMILL 50</h5>
+                        <div class="relative rounded-xl overflow-hidden h-96 shadow-lg group">
+                            <img src="https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/c760562cada3c017bb9544c84a8e5f92/large.jpg"
+                                alt="Matsuura HPlus 630 CNC Machine"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                                <h3 class="text-2xl font-bold text-white">Matsuura HPlus 630</h3>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="relative rounded-lg shadow-lg h-80 bg-cover bg-center overflow-hidden"
-                        style="background-image: url('https://d2t1xqejof9utc.cloudfront.net/screenshots/pics/c760562cada3c017bb9544c84a8e5f92/large.jpg');">
-                        <div class="flex flex-col h-full p-5 text-white bg-black bg-opacity-50">
-                            <h5 class="mt-auto text-lg font-bold">DMG</h5>
+
+                <div class="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                    <div class="mb-8">
+                        <span
+                            class="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-4">VIRTUAL
+                            TRAINING</span>
+                        <h2 class="text-4xl font-bold text-gray-800 mb-6">Advanced CNC Machine Simulation</h2>
+                        <p class="text-lg text-gray-600 mb-6">
+                            Our immersive virtual environment replicates the exact operation of industrial <strong
+                                class="font-semibold text-gray-800">DMG EcoMill 50</strong> and <strong
+                                class="font-semibold text-gray-800">Matsuura HPlus 630</strong> CNC milling machines,
+                            enabling:
+                        </p>
+
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">Risk-free training and process validation without physical
+                                    machine requirements</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">Realistic collision detection and toolpath
+                                    visualization</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span class="text-gray-700">Accurate machine kinematics and control panel
+                                    simulation</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                        <h4 class="font-semibold text-gray-800 mb-3">Key Benefits:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700">90% reduction in setup errors</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700">60% faster operator training</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700">Eliminate machine crashes</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <svg class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700">Program validation before production</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="w-full lg:w-6/12">
-                <h1 class="text-3xl font-bold  leading-tight">Machine Simulation</h1>
-                <p class="text-lg  mb-2">
-                    This project aims to offer an immersive virtual experience of operating the
-                    <strong class="font-bold">DMG EcoMill 50</strong> and <strong class="font-bold">Matsuura HPlus
-                        630</strong> CNC milling machines. Through this simulation, users can visualize and simulate
-                    machining processes without the need for physical setup.
-                </p>
-            </div>
         </div>
-
-        <!-- <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 py-2">
-                  <div class="flex flex-col items-start">
-                      <div class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full mb-3">
-                          <svg class="w-6 h-6">
-                              <use xlink:href="#collection"></use>
-                          </svg>
-                      </div>
-                      <h3 class="text-2xl font-bold ">Featured title</h3>
-                      <p class="">
-                          Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
-                          sentence and probably just keep going until we run out of words.
-                      </p>
-                      <a href="#" class="text-blue-500 mt-2 flex items-center">
-                          Call to action
-                          <svg class="w-4 h-4 ml-1">
-                              <use xlink:href="#chevron-right"></use>
-                          </svg>
-                      </a>
-                  </div>
-  
-                  <div class="flex flex-col items-start">
-                      <div class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full mb-3">
-                          <svg class="w-6 h-6">
-                              <use xlink:href="#people-circle"></use>
-                          </svg>
-                      </div>
-                      <h3 class="text-2xl font-bold ">Featured title</h3>
-                      <p class="">
-                          Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
-                          sentence and probably just keep going until we run out of words.
-                      </p>
-                      <a href="#" class="text-blue-500 mt-2 flex items-center">
-                          Call to action
-                          <svg class="w-4 h-4 ml-1">
-                              <use xlink:href="#chevron-right"></use>
-                          </svg>
-                      </a>
-                  </div>
-  
-                  <div class="flex flex-col items-start">
-                      <div class="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full mb-3">
-                          <svg class="w-6 h-6">
-                              <use xlink:href="#toggles2"></use>
-                          </svg>
-                      </div>
-                      <h3 class="text-2xl font-bold ">Featured title</h3>
-                      <p class="">
-                          Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
-                          sentence and probably just keep going until we run out of words.
-                      </p>
-                      <a href="#" class="text-blue-500 mt-2 flex items-center">
-                          Call to action
-                          <svg class="w-4 h-4 ml-1">
-                              <use xlink:href="#chevron-right"></use>
-                          </svg>
-                      </a>
-                  </div>
-              </div> -->
     </div>
-
-</div>
+</section> -->

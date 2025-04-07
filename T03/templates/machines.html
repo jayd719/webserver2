@@ -1,29 +1,35 @@
-<div class="container mx-auto max-w-5xl px-4 pb-16">
-  <div class="container mx-auto px-4 py-8 min-h-screen" data-id="1">
-    <h2 class="text-3xl font-bold mb-8">CNC Machines I've Programmed</h2>
+<div class="container mx-auto max-w-7xl px-6 py-16">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-bold text-gray-800 mb-4">CNC Machines I've Programmed</h2>
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Expertise in programming and operating a diverse range of
+      advanced CNC machining centers</p>
+    <div class="w-24 h-1 bg-blue-600 mx-auto mt-6"></div>
+  </div>
 
-    <div class="space-y-6" id="machinescontainer">
-      <!-- Template starts here -->
-      <div
-        class="rounded-lg border text-card-foreground shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-xl bg-white group p-5 pop">
-        <div class="md:flex">
-          <div class="md:w-1/3 relative h-64 md:h-auto">
-            <img src="" alt="" class="duration-300 hover:opacity-80 group-hover:scale-[.90]"
-              style="aspect-ratio: 400 / 300; object-fit: contain" />
+  <div class="grid grid-cols-1 gap-8 container mx-auto" id="machinescontainer" style="max-width: 800px;">
+    <!-- Template starts here -->
+    <div
+      class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100">
+      <div class="md:flex h-full">
+        <div class="md:w-2/5 relative overflow-hidden">
+          <img src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            style="min-height: 300px;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+        </div>
+        <div class="md:w-3/5 p-8 flex flex-col justify-center">
+          <div class="mb-4">
+            <span
+              class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-3 machine-type"></span>
+            <h3 class="text-3xl font-bold text-gray-800 mb-2 machine-name"></h3>
           </div>
-          <div class="md:w-2/3 p-6 group-hover:scale-[1.04] duration-500">
-            <div class="flex flex-col space-y-1.5 p-6">
-              <h3 class="whitespace-nowrap tracking-tight text-3xl font-bold text-gray-800"></h3>
-            </div>
-            <div class="p-6">
-              <p class="text-xl text-gray-600 font-medium mb-4"></p>
-              <p class="text-gray-700"></p>
-            </div>
+          <p class="text-gray-700 text-lg mb-6 machine-description"></p>
+          <div class="flex flex-wrap gap-2 machine-features">
+            <!-- Features will be added here by JavaScript -->
           </div>
         </div>
       </div>
-      <!-- Template ends here -->
     </div>
+    <!-- Template ends here -->
   </div>
 </div>
 
@@ -31,53 +37,64 @@
   const machines = [
     {
       name: "DMG CTX510",
-      caption: "Turning Center",
+      type: "Turning Center",
       image: "https://jashandeep.co.uk/static/images/machines/DMGEcoTurn310.jpeg",
-      description: "Horizontal Lathe with Live Tooling",
+      description: "Horizontal lathe with live tooling capabilities for complex turning operations",
+      features: ["Y-axis capability", "Live tooling", "C-axis control", "High-precision turning"]
     },
     {
       name: "Matsuura H-Plus 630",
-      caption: "Horizontal Machining Center",
+      type: "Horizontal Machining Center",
       image: "https://jashandeep.co.uk/static/images/machines/MatsuuraHPlus630.jpeg",
-      description: "Horizontal Machining Center With Renishaw OP90 Probe",
+      description: "High-speed horizontal machining center with pallet changer and probing system",
+      features: ["4th axis integration", "Renishaw OP90 probe", "Pallet changer", "High-speed machining"]
     },
     {
       name: "Fadal VMC-6030",
-      caption: "Vertical Machining Center",
+      type: "Vertical Machining Center",
       image: "https://jashandeep.co.uk/static/images/machines/fadal.png",
-      description: "Three Axis Vertical Machining Center",
+      description: "Reliable three-axis vertical machining center for precision milling operations",
+      features: ["3-axis milling", "Rigid tapping", "Programmable coolant", "High-rigidity construction"]
     },
     {
       name: "Toshiba TSS-C 30/55",
-      caption: "Vertical Turning Center",
+      type: "Vertical Turning Center",
       image: "https://jashandeep.co.uk/static/images/machines/tss-series.jpg",
-      description: "Vertical Lathe With Live Tooling",
+      description: "Vertical lathe with live tooling for complex turning and milling operations",
+      features: ["Live tooling", "Y-axis capability", "Large swing diameter", "Automated loading"]
     },
     {
       name: "Shibura TUE 200s",
-      caption: "Vertical Turning Center",
+      type: "Vertical Turning Center",
       image: "https://jashandeep.co.uk/static/images/machines/tue-200.jpeg",
-      description: "Vertical Lathe With Live Tooling",
-    },
+      description: "Precision vertical turning center with advanced control system",
+      features: ["Live tooling", "C-axis control", "High torque", "Precision turning"]
+    }
   ];
 
   const machinesContainer = document.getElementById("machinescontainer");
   const template = machinesContainer.firstElementChild.cloneNode(true);
 
-  machinesContainer.innerHTML = ""; // Clear container before populating with new content
+  machinesContainer.innerHTML = ""; // Clear container before populating
 
-  machines.forEach(({ name, caption, image, description }) => {
+  machines.forEach(({ name, type, image, description, features }) => {
     const newMachine = template.cloneNode(true);
-    const img = newMachine.querySelector("img");
-    const title = newMachine.querySelector("h3");
-    const captionEl = newMachine.querySelector(".text-xl");
-    const descriptionEl = newMachine.querySelector(".text-gray-700");
 
-    img.src = image;
-    img.alt = name;
-    title.textContent = name;
-    captionEl.textContent = caption;
-    descriptionEl.textContent = description;
+    // Set basic information
+    newMachine.querySelector('img').src = image;
+    newMachine.querySelector('img').alt = name;
+    newMachine.querySelector('.machine-name').textContent = name;
+    newMachine.querySelector('.machine-type').textContent = type;
+    newMachine.querySelector('.machine-description').textContent = description;
+
+    // Add features
+    const featuresContainer = newMachine.querySelector('.machine-features');
+    features.forEach(feature => {
+      const featureElement = document.createElement('span');
+      featureElement.className = 'inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-800 text-sm font-medium';
+      featureElement.textContent = feature;
+      featuresContainer.appendChild(featureElement);
+    });
 
     machinesContainer.appendChild(newMachine);
   });

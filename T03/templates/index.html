@@ -1,5 +1,5 @@
 {%load static %}
-<html lang="en">
+<html lang="en" data-theme="emerald">
 
 <head>
   <meta charset="utf-8" />
@@ -12,18 +12,18 @@
   <link rel="stylesheet" href="{%static 'homepage.css'%}" />
 </head>
 
-<body class="bg-base-200 oswald">
+<body class="bg-base-100 oswald w-full overflow-x-hidden">
   <header id="header"></header>
   <div class="h-16"></div>
   <script src="{%static 'header.js'%}"></script>
-  {%include 'landingPage/background.html'%}
+
 
   {%block content%}
   {%endblock%}
 
 
   {%include "landingPage/footerStatic.html"%}
-  <script src="{%static 'themeChanger.js'%}"></script>
+
   <script src="{%static 'footer.js'%}"></script>
   <script src="{%static 'homepage.js'%}"></script>
 

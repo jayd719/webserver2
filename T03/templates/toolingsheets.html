@@ -1,59 +1,129 @@
-{%load static%}
-<div class="container mx-auto max-w-5xl px-4 py-16">
-    <div class="flex flex-col lg:flex-row-reverse items-center gap-5 py-5">
-        <div class="w-10/12 sm:w-8/12 lg:w-6/12">
-            <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/Image1.PNG?raw=true"
-                class="mx-auto lg:mx-0 w-full max-w-lg rounded-lg" alt="Bootstrap Themes" width="700" height="500"
-                loading="lazy">
+{% load static %}
+<section class=" py-20">
+    <div class="container mx-auto max-w-6xl px-6">
+        <!-- Hero Section -->
+        <div class="flex flex-col lg:flex-row-reverse items-center gap-12 py-8">
+            <div class="w-full lg:w-1/2">
+                <div class="relative group">
+                    <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/Image1.PNG?raw=true"
+                        class="w-full rounded-xl shadow-xl transition-all duration-300 group-hover:shadow-2xl"
+                        alt="Mastercam Tooling Sheet Interface" loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/2">
+                <h1 class="text-4xl font-bold text-gray-800 leading-tight mb-6">Mastercam Tooling Sheet Automation</h1>
+                <p class="text-lg text-gray-600 mb-8">A sophisticated integration with Mastercam that revolutionizes
+                    machining setup by automatically generating comprehensive tooling documentation, reducing setup time
+                    by up to 75% while improving accuracy.</p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="{% static 'sampleSetupSheet.pdf' %}" target="_blank"
+                        class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Download Sample Sheet
+                    </a>
+                    <a href="#features"
+                        class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors duration-300 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        View Features
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="lg:w-6/12">
-            <h1 class="text-3xl font-bold  leading-tight mb-3">Tooling Sheetings For Mastercam</h1>
-            <p class="text-lg ">Integrated with Mastercam, meticulously designed to streamline the
-                machining process by providing machinists with all the essential tooling details required to set up
-                the
-                machine accurately and efficiently.</p>
-            <div class="flex gap-2 justify-start mt-3">
-                <a href="{% static 'sampleSetupSheet.pdf'%}" target="_blank" class="btn btn-primary">Sample
-                    Tooling Sheet</a>
+
+        <!-- Features Grid -->
+        <div id="features" class="grid gap-8 py-16 grid-cols-1 lg:grid-cols-3">
+            <!-- Feature 1 -->
+            <div
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-600">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-blue-100 p-4 rounded-full">
+                        <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool3.png?raw=true"
+                            alt="Tool Information Icon" class="w-16 h-16 object-contain">
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 text-center mb-4">Comprehensive Tool Data</h3>
+                <p class="text-gray-600 text-center">Automatically captures and displays all critical tool
+                    specifications including cutter diameter, flute length, number of flutes, tool material, and
+                    recommended speeds/feeds for optimal machining performance.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-600">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-blue-100 p-4 rounded-full">
+                        <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool4.png?raw=true"
+                            alt="Machining Operations Icon" class="w-16 h-16 object-contain">
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 text-center mb-4">Operation Sequencing</h3>
+                <p class="text-gray-600 text-center">Clearly outlines the complete machining process with detailed
+                    operation sequences, including tool paths, cutting strategies, and estimated cycle times for each
+                    manufacturing step.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div
+                class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-600">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-blue-100 p-4 rounded-full">
+                        <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool1.png?raw=true"
+                            alt="Tool Assembly Icon" class="w-16 h-16 object-contain">
+                    </div>
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 text-center mb-4">Tool Assembly Visualization</h3>
+                <p class="text-gray-600 text-center">Provides detailed tool holder specifications and visual
+                    representations of complete tool assemblies, ensuring proper setup and compatibility with your
+                    machine's tooling system.</p>
+            </div>
+        </div>
+
+        <!-- Additional Benefits -->
+        <div class="bg-white rounded-xl shadow-lg p-8 mt-8">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-6">Key Benefits</h3>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-800 mb-2">70% Faster Setup</h4>
+                        <p class="text-gray-600">Eliminate manual documentation and reduce setup time significantly with
+                            automatically generated, machine-ready tooling sheets.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-blue-100 p-2 rounded-full mr-4 flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-800 mb-2">Error Reduction</h4>
+                        <p class="text-gray-600">Minimize setup mistakes with accurate, automatically populated tool
+                            data directly from your Mastercam files.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="grid gap-4 py-5 grid-cols-1 lg:grid-cols-3">
-        <div class="bg-base-100 rounded-lg shadow-3xl p-4">
-            <div class="flex items-center justify-center bg-base-100  text-2xl mb-3 rounded-lg">
-                <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool3.png?raw=true"
-                    alt="" class="w-full">
-            </div>
-            <h3 class="text-2xl  mt-5">Tool Information</h3>
-            <p class="text-justify ">In a dynamic job shop environment, where setups are frequent and
-                time
-                is critical, having comprehensive setup sheets can make a significant difference in productivity and
-                accuracy. Each setup sheet catalogs the tools used by the programmer including vital information
-                like
-                cutter diameter, flute length, and number of flutes.</p>
-        </div>
-
-        <div class="bg-base-100 rounded-lg shadow-3xl p-4">
-            <div class="flex items-center justify-center bg-base-100  text-2xl mb-3 rounded-lg">
-                <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool4.png?raw=true"
-                    alt="" class="w-full">
-            </div>
-            <h3 class="text-2xl ">Machining Operations</h3>
-            <p class="">Each setup sheet outlines the sequence of operations required to complete the
-                machining job. This includes a clear breakdown of the individual steps involved, ensuring that
-                machinists are fully informed about the scope and complexity of the job.</p>
-        </div>
-
-        <div class="bg-base-100 rounded-lg shadow-3xl p-4">
-            <div class="flex items-center justify-center bg-base-100  text-2xl mb-3 rounded-lg">
-                <img src="https://github.com/jayd719/webServer/blob/main/templates/static/code/tool1.png?raw=true"
-                    alt="" class="w-1/2">
-            </div>
-            <h3 class="text-2xl  mt-3">Tool Assembly</h3>
-            <p class="">Describes the style of tool holder required for each tool, ensuring
-                compatibility
-                with the machine's tooling system. Provides a visual of tool assembly.</p>
-        </div>
-    </div>
-</div>
+</section>
