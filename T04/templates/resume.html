@@ -12,6 +12,12 @@
 
 </head>
 <style>
+  :root {
+    --color_1: #1e90ff;
+    /* --color_1: #B80C09; */
+  }
+
+
   .roboto-condensed {
     /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -23,17 +29,18 @@
     text-align: justify;
     margin-top: 5px;
     line-height: 12.775px;
-    color: rgba(79, 74, 74, 0.901);
+    color: rgba(79, 74, 74, 0.963);
   }
 
 
   strong {
-    font-weight: bold;
-    /* color: rgba(34, 34, 221, 0.682); */
+    font-weight: 600;
+    color: var(--color_1);
+    filter: brightness(.75);
   }
 
   h3 {
-    color: rgb(0, 0, 255);
+    color: var(--color_1);
     margin-top: 10px;
     margin-bottom: 5px;
   }
