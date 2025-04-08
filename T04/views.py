@@ -17,7 +17,7 @@ def hackathon_project(request):
 
 
 def resume1(request):
-    return render(request, "resume1.html")
+    return render(request, "resume4.html")
 
 
 def resume2(request):

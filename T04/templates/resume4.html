@@ -3,15 +3,30 @@
 
 {%include 'res_comp/header.html'%}
 <hr />
-{%include 'res_comp/summary2_BE.html'%}
-<hr />
-{%include 'res_comp/techinicalSkills_BE.html'%}
-<hr />
-{%include 'res_comp/projects_BE.html'%}
-<hr>
-{%include 'res_comp/educationSingle.html'%}
-<hr>
-{%include 'res_comp/worksection.html'%}
+<div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+    <div style="grid-column: span 2;  padding-right: 15px;">
+        {%include 'res_comp/summary2_BE.html'%}
+        <hr />
+        {%include 'res_comp/projects_BE.html'%}
+        <hr />
+        {%include 'res_comp/educationSingle.html'%}
+        <hr>
+        {%include 'res_comp/worksection.html'%}
+    </div>
+
+    <div style="border-left: solid gray 0px;padding-left: 15px;">
+        {%include 'res_comp/techinicalSkills_BE.html'%}
+        <hr />
+
+    </div>
+
+</div>
+
+
+
+
+
+
 <!-- <hr> -->
 <!-- {%include 'res_comp/KeyStrengths.html'%} -->
 
