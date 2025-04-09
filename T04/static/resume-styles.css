@@ -1,23 +1,22 @@
 body {
   background: rgb(204, 204, 204);
-  font-size: 12px;
   padding: 0px;
   margin: 0%;
 }
 p,
-h3 {
+h3,h1,h2,h4 {
   margin: 0;
 }
 hr {
   margin-top: 10px;
   margin-bottom: 5px;
 }
-h3 {
-  color: rgb(43, 62, 99);
-  font-size: large;
-}
 ul {
   margin: 3px;
+}
+h3{
+  font-size: large;
+  font-weight: bolder;
 }
 li {
   margin-bottom: 1px;
@@ -38,11 +37,6 @@ page[size="A4"] {
     margin: 0;
     box-shadow: 0;
     box-shadow: none;
-    background-color: white;
-    margin-left: 0.5%;
-  }
-  h3 {
-    color: black;
   }
 }
 .grid {

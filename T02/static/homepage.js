@@ -70,7 +70,7 @@ function getRandomNumber(upperLimit) {
 function updateElement(element) {
   let baseColor = getColor_defaults();
   element.classList.add(
-    `bg-${"base"}-100`,
+    `bg-base-100`,
     "hover:scale-[1.01]",
     `hover:bg-${baseColor}`,
     "lg:opacity-75",
@@ -80,7 +80,7 @@ function updateElement(element) {
     "group",
     "scale-[.95]",
     "hover:shadow-xl",
-    `hover:shadow-${baseColor}`,
+    `hover:shadow-base-300`,
     "transition",
     "duration-300",
     "backdrop-blur-md",
