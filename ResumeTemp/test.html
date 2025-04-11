@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode Stats & Badges</title>
+    <style>
+        .leetcode-container {
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        .stats-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .leetcode-card {
+            flex: 1;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 16px;
+            background-color: white;
+        }
+
+        .leetcode-card.dark {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            border-color: #30363d;
+        }
+
+        .badges-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .badge {
+            height: 28px;
+            border-radius: 4px;
+        }
+
+        details {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="leetcode-container">
+        <h1>LeetCode Statistics</h1>
+
+        <div class="stats-section">
+            <!-- Light Theme Card -->
+            <div class="leetcode-card">
+                <h3>My LeetCode Progress</h3>
+                <img src="https://leetcard.jacoblin.cool/jashansingh29?theme=light&font=Karma" alt="LeetCode Stats"
+                    onerror="this.style.display='none'">
+            </div>
+
+            <!-- Dark Theme Card -->
+            <div class="leetcode-card dark">
+                <h3>My LeetCode Progress</h3>
+                <img src="https://leetcard.jacoblin.cool/jashansingh29?theme=dark&font=Karma" alt="LeetCode Stats"
+                    onerror="this.style.display='none'">
+            </div>
+            <!-- Dark Theme Card -->
+            <div class="leetcode-card dark">
+                <h3>My LeetCode Progress</h3>
+                <img src="https://leetcard.jacoblin.cool/jashansingh29?theme=unicorn&font=Inter&border=0&radius=4" " alt="
+                    LeetCode Stats" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <h2>LeetCode Badges</h2>
+        <div class="badges-section">
+            <!-- Static Badges -->
+            <img class="badge"
+                src="https://img.shields.io/badge/LeetCode-000000?style=for-the-badge&logo=LeetCode&logoColor=#d16c06"
+                alt="LeetCode">
+
+            <!-- Dynamic Badges -->
+            <img class="badge" src="https://badges.peiyuan.ch/leetcode/jashansingh29/ranking?logo=leetcode&color=blue"
+                alt="LeetCode Ranking">
+
+            <img class="badge" src="https://badges.peiyuan.ch/leetcode/jashansingh29/solved?logo=leetcode"
+                alt="Problems Solved">
+
+            <img class="badge"
+                src="https://badges.peiyuan.ch/leetcode/jashansingh29/solved/top?logo=leetcode&color=green"
+                alt="Top Problems Solved">
+
+            <img class="badge"
+                src="https://badges.peiyuan.ch/leetcode/jashansingh29/acceptance?logo=leetcode&color=yellow"
+                alt="Acceptance Rate">
+        </div>
+
+        <details>
+            <summary>Customization Options</summary>
+            <h3>Stats Card Options</h3>
+            <ul>
+                <li><code>?theme=light</code> or <code>?theme=dark</code></li>
+                <li><code>&font=FontName</code> (e.g., Karma, Abel, etc.)</li>
+                <li><code>&ext=heatmap</code> - adds activity heatmap</li>
+                <li><code>&border=border_color</code> - adds border</li>
+            </ul>
+
+            <h3>Badge Options</h3>
+            <p>Format: <code>https://badges.peiyuan.ch/leetcode/jashansingh29/type?param=value</code></p>
+            <ul>
+                <li><strong>Types</strong>: ranking, solved, acceptance, streak</li>
+                <li><strong>Parameters</strong>:
+                    <ul>
+                        <li><code>logo=leetcode</code> - shows LeetCode logo</li>
+                        <li><code>color=color_name</code> - blue, green, yellow, red, etc.</li>
+                        <li><code>style=flat</code> - changes badge style</li>
+                    </ul>
+                </li>
+            </ul>
+        </details>
+    </div>
+</body>
+
+</html>
