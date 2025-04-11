@@ -5,14 +5,12 @@ const projects = [
         description: "Developed video processing application during the Laurier Analytics Hackathon hosted at Google Waterloo to automate the process of generating highlight clips from sports videos",
         link: "/pages/LaurierAnalytics2025",
         Tools: ["Python", "OpenCV", "Tesseract", "FFmpeg"],
-        layout: "lg:col-span-2",
     },
     {
         title: "k-Nearest Neighbors Classifier:",
         description: "Developed a k-NN classifier from scratch using Euclidean and Manhattan distances, cross-validation, and hyperparameter tuning to find the best k for accurate predictions",
         link: "/pages/knn-1",
         Tools: ["Numpy", "Scikit Learn", "Matplotlib", "KNN"],
-        layout: "lg:col-span-2",
     },
     {
         title: "WorkFlow Tracker",
