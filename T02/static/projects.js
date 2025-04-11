@@ -11,6 +11,7 @@ const projects = [
         description: "Developed a k-NN classifier from scratch using Euclidean and Manhattan distances, cross-validation, and hyperparameter tuning to find the best k for accurate predictions",
         link: "/pages/knn-1",
         Tools: ["Numpy", "Scikit Learn", "Matplotlib", "KNN"],
+        layout: "lg:col-span-2",
     },
     {
         title: "WorkFlow Tracker",
